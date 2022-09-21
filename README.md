@@ -1,2 +1,2 @@
 # PostilleBassani
-Tirocinio exist-db postille Bassani
+Tirocinio/tesi creazione applicazione postille Bassani exist-db
