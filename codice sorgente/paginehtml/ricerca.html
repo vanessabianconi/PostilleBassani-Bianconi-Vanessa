@@ -1,0 +1,76 @@
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+<div class="contenuto1">
+<h1 id="titolohome">Ricerca</h1>
+</div>
+<div class="introv">
+<p>In questa pagina è possibile effettuare una ricerca all'interno delle postille. E' stata realizzata usando Apache Lucene e sono stati implementati tre tipi di ricerca:
+    <ul>
+  <li>
+                    <b>Ricerca wildcard:</b> selezionando questo tipo di ricerca, è possibile cercare le parole che hanno la stessa radice</li>
+  <li>
+                    <b>Ricerca fuzzy:</b> è un tipo di ricerca approssimativa. </li>
+  <li>Possibilità di cercare <b>due termini vicini</b>
+                </li>
+</ul>  
+</p>
+</div>
+<div class="formric">
+<div class="form">
+    <label for="prova">Scegli un tipo di ricerca:</label> <br/>
+    <select id="prova" class="form-select" aria-label="Default select example">
+        <option value="">Seleziona...</option>
+        <option value="wildcard">Ricerca wildcard</option>
+        <option value="fuzzy">Ricerca fuzzy</option>
+        <option value="doppio">Ricerca due termini vicini</option>
+    </select>
+    
+</div>
+<div class="form-group wildcard">
+    <form method="GET">
+        <h6>Ricerca Wildcard</h6>
+            <label for="postille">Parola</label>
+            <div class="form-outline w-25 testo">
+            <input type="text" class="form-control" name="postille" value=""/>
+            </div>
+            <button type="submit" class="btn btn-primary bricerca">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg> Cerca</button>
+    </form>
+    
+</div>
+<div class="riswildcard" data-template="app:parolaradice"/>
+
+<div class="form-group fuzzy">
+    <form method="GET">
+        <h6>Ricerca fuzzy</h6>
+        <label for="fuzzy">Parola</label>
+        <div class="form-outline w-25 testo">
+        <input type="text" class="form-control" name="fuzzy" value=""/>
+        </div>
+        <button type="submit" class="btn btn-primary bricerca">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg> Cerca</button>
+    </form>
+</div>
+<div data-template="app:ricercafuzzy"/>
+
+<div class="form-group doppio">
+    <form method="GET">
+        <h6>Ricerca termini vicini</h6>
+        <div class="form-outline w-25 testo">
+        <label for="term1">Prima parola</label>
+        <input type="text" class="form-control" name="term1" value=""/>
+        <label for="term2">Seconda parola</label>
+        <input type="text" class="form-control" name="term2" value=""/>
+        </div>
+        <button type="submit" class="btn btn-primary bricerca">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg> Cerca</button>
+    </form>
+</div>
+<div data-template="app:cercatermini"/>
+</div>
+</div>
