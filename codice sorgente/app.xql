@@ -12,6 +12,8 @@ module namespace app="http://exist-db.org/apps/postille/templates";
 import module namespace templates="http://exist-db.org/xquery/html-templating";
 import module namespace lib="http://exist-db.org/xquery/html-templating/lib";
 import module namespace config="http://exist-db.org/apps/postille/config" at "config.xqm";
+(: modulo stanford nlp ner :)
+import module namespace ner = "http://exist-db.org/xquery/stanford-nlp/ner";
 (: modulo kwic :)
 import module namespace kwic= "http://exist-db.org/xquery/kwic";
 (: dichiarazione namespace tei :)
@@ -55,6 +57,7 @@ declare function functx:insert-string
    concat(upper-case(substring($arg,1,1)),
              substring($arg,2))
  } ;
+
 (: funzione che stampa il titolo. Uso %templates:wrap per preservare l'elemento h1 che ho definito nell'html :)
 declare
 %templates:wrap
@@ -161,9 +164,10 @@ declare function app:mostraimg($node as node(), $model as map(*), $immagine){
 
 (: inizio ricerca :)
 
+
 declare function app:cercaradice($postille as xs:string?){
     let $query := <query>
-        <bool><wildcard>{$postille}*</wildcard></bool>
+        <bool><wildcard>{$postille}</wildcard></bool>
     </query>
     for $hit in doc("/db/apps/postille/filexml/postille.xml")//tei:p[ft:query(., $query)]
     let $div := $hit/parent::tei:div/@xml:id
@@ -171,8 +175,6 @@ declare function app:cercaradice($postille as xs:string?){
     let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
     let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
     order by ft:score($hit) descending
-    
-    
     return
         if(contains($stringa, '.'))
     then 
@@ -191,12 +193,14 @@ declare function app:cercaradice($postille as xs:string?){
 
 
 declare function app:parolaradice($node as node(), $model as map(*), $postille as xs:string?){
-    if($postille != "")
+    let $contaoccorrenze := count(app:cercaradice($postille))
+    return
+    if($postille != " " and $contaoccorrenze> 0)
     then 
         <div class="cercawild">
         <p><b>Tipo di ricerca:</b> Wildcard </p>
         <p> <b>Parola cercata: </b> {$postille}</p>
-        <p><b>Occorrenze: </b> {count(app:cercaradice($postille))}</p>
+        <p><b>Occorrenze: </b> {$contaoccorrenze}</p>
         <div>
         <table>
         <tr>
@@ -206,11 +210,11 @@ declare function app:parolaradice($node as node(), $model as map(*), $postille a
         {app:cercaradice($postille)}
         </table>
         </div>
-        <hr></hr>
         </div>
-    else
-        " "
-        
+    else if($postille = " ") 
+    then
+        <p>Non hai cercato nessuna parola</p>
+    else ""
 };
 
 
@@ -267,36 +271,69 @@ declare function app:ricercafuzzy($node as node(), $model as map(*), $fuzzy as x
     else ""
 };
 
-declare function app:termini($term1 as xs:string?, $term2 as xs:string?){
-    let $query :=
+
+declare
+function app:evidenzia($risfrase as node()) {
+    let $nomenodo := $risfrase/local-name()
+    return 
+        if ($nomenodo = "" ) then
+            $risfrase
+        else if ($nomenodo = "match" ) then
+                <b style="background-color:yellow"> {$risfrase} </b>
+            else
+                for $nodofiglio in $risfrase/child::node()
+                return app:evidenzia($nodofiglio)
+};
+
+declare function app:termini($term1 as xs:string?, $term2 as xs:string?, $should1 as xs:string?, $should2 as xs:string?){
+    let $query := 
+    if (not($should1) and not($should2))then
     <query>
-        <phrase slop="5"><term>{$term1}</term><term>{$term2}</term></phrase>
+        <bool><term occur="must">{$term1}</term><term occur="must">{$term2}</term></bool>
     </query>
+    else if($should2 = "on")
+    then 
+    <query>
+        <bool><term occur="must">{$term1}</term><term occur="{$should2}">{$term2}</term></bool>
+    </query>
+    else if(not($should2))
+    then 
+    <query>
+        <bool><term occur="{$should1}">{$term1}</term><term occur="must">{$term2}</term></bool>
+    </query>
+    else 
+       <query>
+        <bool><term occur="should">{$term1}</term><term occur="should">{$term2}</term></bool>
+    </query> 
+    
     for $hit in doc("/db/apps/postille/filexml/postille.xml")//tei:p[ft:query(., $query)]
     let $div := $hit/parent::tei:div/@xml:id
     let $stringa := replace($div,"t", "")
     let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
     let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
+    let $expanded := util:expand($hit)
     return
         if(contains($stringa, '.'))
     then 
         <tr>
         <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
-        <td>{$hit}</td>
+        <td>{app:evidenzia($expanded)}</td>
         </tr>
-    else <div>
-        <a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a>
-        {$hit}
-        </div>
+    else <tr>
+        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
+        <td>{app:evidenzia($expanded)}</td>
+        </tr>
 };
 
-declare function app:cercatermini($node as node(), $model as map(*), $term1 as xs:string?, $term2 as xs:string?){
-    if($term1 != "" and $term2 !="")
+declare function app:cercatermini($node as node(), $model as map(*), $term1 as xs:string?, $term2 as xs:string?,  $should1 as xs:string?, $should2 as xs:string?){
+    let $conta := count(app:termini($term1, $term2, $should1, $should2))
+    return
+    if($term1 != "" and $term2 != "" and $conta > 0)
     then
         <div class="cercadoppio">
             <p><b>Tipo di ricerca:</b> Due termini vicini </p>
-            <p><b>Termini cercati:</b>1) {$term1} 2) {$term2}</p>
-            <p><b>Occorrenze:</b>{count(app:termini($term1, $term2))}</p>
+            <p><b>Termini cercati:</b>1) {$term1}, 2) {$term2}</p>
+            <p><b>Occorrenze:</b>{count(app:termini($term1, $term2, $should1, $should2))}</p>
             <div>
                 <table>
                     <thead>
@@ -305,11 +342,118 @@ declare function app:cercatermini($node as node(), $model as map(*), $term1 as x
                             <th>Risultato</th>
                     </tr>
                     </thead>
-            {app:termini($term1, $term2)}
+            {app:termini($term1, $term2, $should1, $should2)}
             </table>
             </div>
         </div>
     else " "
+};
+
+
+declare function app:cercafrase($frase as xs:string?, $distanza as xs:integer?){
+    let $token := tokenize($frase)
+    return
+    if(count($token)<=10) then 
+    let $query := <query><near slop="{$distanza}" ordered="no">{for $i in $token return <term>{$i}</term>}</near></query>
+    for $hit in doc("/db/apps/postille/filexml/postille.xml")//tei:p[ft:query(., $query)]
+    let $div := $hit/parent::tei:div/@xml:id
+    let $stringa := replace($div,"t", "")
+    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
+    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
+    let $expanded := util:expand($hit)
+    return
+        if(contains($stringa, '.'))
+    then 
+        <tr>
+        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
+        <td>{app:evidenzia($expanded)}</td>
+        </tr>
+    else <tr>
+        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
+        <td>{app:evidenzia($expanded)}</td>
+        </tr>
+    else <div>Hai scritto troppe parole</div>
+};
+
+declare function app:frase($node as node(), $model as map(*), $frase as xs:string?, $distanza as xs:integer?){
+    if($frase != "")
+    then
+        <div class="cercadoppio">
+            <p><b>Tipo di ricerca:</b> Termini vicini o frase </p>
+            <p><b>Frase:</b>{$frase}</p>
+            <p><b>Occorrenze:</b>{count(app:cercafrase($frase, $distanza))}</p>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Pagina</th>
+                            <th>Risultato</th>
+                    </tr>
+                    </thead>
+            {app:cercafrase($frase, $distanza)}
+            </table>
+            </div>
+        </div>
+    else " "
+};
+
+declare %templates:wrap function app:personecitate($node as node(), $model as map(*)){
+let $listapersone := doc("/db/apps/postille/filexml/postille.xml")//tei:listPerson
+return
+    <span>
+        <label for="persone">Persone citate:</label>
+        <select name="persona">
+        <option value="">seleziona...</option>
+        {for $i in $listapersone/tei:person
+        return
+            <option value="{$i/@xml:id}">{$i}</option>
+        }
+        </select>
+        </span>
+};
+
+declare function app:cercapersonecitate($persona as xs:string?){
+    for $hit in doc("/db/apps/postille/filexml/postille.xml")//tei:p[ft:query(., $persona)]
+    let $div := $hit/parent::tei:div/@xml:id
+    let $stringa := replace($div,"t", "")
+    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
+    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
+    let $expanded := util:expand($hit)
+    return
+        if(contains($stringa, '.'))
+    then 
+        <tr>
+        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
+        <td>{app:evidenzia($expanded)}</td>
+        </tr>
+    else <tr>
+        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
+        <td>{app:evidenzia($expanded)}</td>
+        </tr>
+};
+
+
+declare function app:stampapersonecitate($node as node(), $model as map(*), $persona as xs:string?){
+     let $conta := count(app:cercapersonecitate($persona))
+    return
+    if($persona != " " and $conta > 0)
+    then 
+        <div class="risultato">
+        <p> <b>Persona selezionata: </b> {$persona}</p>
+        <p><b>Occorrenze: </b> {$conta}</p>
+        <div>
+        <table>
+        <tr>
+            <th>Pagina</th>
+            <th>Risultato</th>
+        </tr>
+        {app:cercapersonecitate($persona)}
+        </table>
+        </div>
+        </div>
+    else if($persona = " ")
+    then ""
+    else ""
 };
 
 declare function app:cercaparolevoc($parola as xs:string?){
@@ -343,7 +487,7 @@ declare %templates:wrap function app:vocabolario($node as node(), $model as map(
     if($parola != " " and $conta > 0)
     then 
         <div class="vocabolario">
-        <p> <b>Parola cercata: </b> {$parola}</p>
+        <p> <b>Parola selezionata: </b> {$parola}</p>
         <p><b>Occorrenze: </b> {$conta}</p>
         <div>
         <table class="tablevoc">
@@ -440,6 +584,15 @@ declare function app:citazioni($immagine as xs:string){
     else ()
 };
 
+declare function app:ungaretti($immagine as xs:string?){
+       if($immagine = "pag152.jpg")
+       then <div>
+           In questa postilla Bassani cita il verso 15 della poesia <a href="https://www.poeticous.com/giuseppe-ungaretti/auguri-per-il-proprio-compleanno">"Auguri per il proprio compleanno"</a> di Giuseppe Ungaretti.
+            </div>
+       else ""
+    
+};
+
 (: funzione che stampa le postille verbali e il testo a cui sono riferite :)
 declare function app:postilleverbali($node as node(), $model as map(*), $immagine as xs:string){
 let $immaginestr := replace($immagine, '.jpg', '')
@@ -488,6 +641,7 @@ return
             }
                 {app:handverbali($immagine)}
                 {app:citazioni($immagine)}
+                {app:ungaretti($immagine)}
             </div>
         }
         <hr></hr>
@@ -602,6 +756,7 @@ declare function app:postmute($node as node(), $model as map(*), $immagine as xs
                 </div>
         else <p class="paramute">Non sono presenti postille mute in questa pagina</p>
 };
+
 declare
 %templates:wrap function app:stampatitolo2($node as node(), $model as map(*)){
     let $doc := doc("/db/apps/postille/filexml/postille.xml")
@@ -710,44 +865,69 @@ declare function app:codificaxml($node as node(), $model as map(*), $immagine as
     
 };
 
-declare function app:provaoverlay($node as node(), $model as map(*)){
-    let $doc := doc("/db/apps/postille/filexml/postille.xml")
-    let $ulx := data($doc//tei:surface[@xml:id="pag1"]/tei:zone[1]/@ulx)
-    let $uly := data($doc//tei:surface[@xml:id="pag1"]/tei:zone[1]/@uly)
-    return 
+declare function app:commento($commento as xs:string?){
+let $text := doc("/db/apps/postille/filexml/postille.xml")//tei:div[@type="testo_critico"]//tei:div
+return
+for $i in $text
+let $comm := doc("/db/apps/postille/filexml/postille.xml")//tei:msContents//tei:msItem
+for $n in $comm
+where replace($i/@corresp, "#", "") = $n/@xml:id and contains($n//@class, $commento)
+return 
+    let $div := $i/@xml:id
+    let $stringa := replace($div,"t", "")
+    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
+    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
+    return
+        if(contains($stringa, '.'))
+    then 
+        <tr>
+        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
+        <td>{$i}</td>
+        </tr>
+    else <tr>
+        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
+        <td>{$i}</td>
+        </tr>
+};
+
+declare function app:stampacommento($node as node(), $model as map(*), $commento as xs:string?){
+    if ($commento = "polemica") then
         <div>
-        <style>
-            .highlight{{
-            opacity:    0.4;
-            filter:     alpha(opacity=40);
-            outline:    12px auto #0A7EbE;
-            background-color: white;
-        }}
-        </style>
-        <div id="seadragon1-viewer" style="width:300px; height:500px;"/>
-        <script src="//openseadragon.github.io/openseadragon/openseadragon.min.js"/>
-        <script>
-            var viewer = OpenSeadragon({{ 
-            id: "seadragon1-viewer",
-        prefixUrl: "//openseadragon.github.io/openseadragon/images/",
-        tileSources: {{
-            type: 'image',
-            url:  "http://localhost:8080/exist/apps/postille/riproduzioni/pag1.jpg",
-            buildPyramid: false,
-            overlays: [{{
-                        id: 'example-overlay',
-                        x: imageToViewportCoordinates({$ulx}),
-                        y: viewer.viewport.pointFromPixel({$uly}),
-                        width: 0.2,
-                        height: 0.25,
-                        className: 'highlight'
-                    }}],
-        }},
-        showNavigator: true,
-        showRotationControl: true
-        }});
-        </script>
+        <h3>Categoria: Postille polemiche </h3>
+        <p>Occorrenze: {count(app:commento($commento))}</p>
+        <table>
+        <tr>
+            <th>Pagina</th>
+            <th>Postilla</th>
+        </tr>
+        {app:commento($commento)}
+        </table>
         </div>
+    else if ($commento = "elogiativa") then
+        <div>
+        <h3>Categoria: Postille elogiative </h3>
+        <p>Occorrenze: {count(app:commento($commento))}</p>
+        <table>
+        <tr>
+            <th>Pagina</th>
+            <th>Postilla</th>
+        </tr>
+        {app:commento($commento)}
+        </table>
+        </div>
+    else if ($commento = "personale") then
+        <div>
+        <h3>Categoria: Postille personali </h3>
+        <p>Occorrenze: {count(app:commento($commento))}</p>
+        <table>
+        <tr>
+            <th>Pagina</th>
+            <th>Postilla</th>
+        </tr>
+        {app:commento($commento)}
+        </table>
+        </div>
+    else ""
 };
 
 
