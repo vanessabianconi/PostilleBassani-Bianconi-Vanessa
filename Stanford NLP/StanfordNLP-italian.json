@@ -1,0 +1,12 @@
+{
+    "annotators": ["tokenize", "cdc_tokenize", "ssplit","pos", "lemma","ner","depparse"],
+    "ner.applyFineGrained": "false",
+    "ner.applyNumericClassifiers" : "false",
+    "ner.useSUTime" : "false",
+    "pos.model" : "http://localhost:8080/exist/apps/stanford-nlp/data/edu/stanford/nlp/models/pos-tagger/italian-big.tagger",
+    "ner.model" : "http://localhost:8080/exist/apps/stanford-nlp/data/edu/stanford/nlp/models/ner/italian-ner-wikinews.ser.gz",
+    "depparse.model" : "http://localhost:8080/exist/apps/stanford-nlp/data/edu/stanford/nlp/models/parser/nndep/UD_Italian.gz",
+    "cdc_tokenize.model" : "http://localhost:8080/exist/apps/stanford-nlp/data/edu/stanford/nlp/models/cdc-tokenize/it-tokenizer.ser.gz",
+    "cdc_tokenize.multiWordRules" : "http://localhost:8080/exist/apps/stanford-nlp/data/edu/stanford/nlp/models/cdc-tokenize/it-multiword.txt",
+    "parse.model" : "http://localhost:8080/exist/apps/stanford-nlp/data/edu/stanford/nlp/models/srparser/italian-consituency.ser.gz"
+}
