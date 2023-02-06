@@ -2,7 +2,6 @@
   <index xmlns:tei="http://www.tei-c.org/ns/1.0">
     <lucene>
             <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
-            <text qname="tei:person"/> 
             <text qname="tei:p"/> 
     </lucene>
   </index>
