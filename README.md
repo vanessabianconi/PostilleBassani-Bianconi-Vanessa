@@ -1,2 +1,2 @@
 # Postille Bassani eXist-db
-Tirocinio/tesi creazione applicazione postille Bassani exist-db
+Repository tesi creazione applicazione postille Bassani eXist-db
