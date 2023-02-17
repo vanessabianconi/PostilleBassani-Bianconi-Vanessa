@@ -72,7 +72,7 @@
       <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
         <h5 class="text-uppercase">Sito</h5>
         <p>
-          Applicazione web realizzata da Vanessa Bianconi per il progetto di tirocinio.<br/>
+          Applicazione web realizzata da Vanessa Bianconi per il progetto di tirocinio e tesi.<br/>
           Corso di laurea in Informatica Umanistica
         </p>
       </div>
@@ -86,18 +86,12 @@
         Codifica delle postille a cura di Angela Siciliano <br/>
         </p>
       </div>
-      <!--Grid column-->
     </div>
-    <!--Grid row-->
   </div>
-  <!-- Grid container -->
-
-  <!-- Copyright -->
   <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
     © 2022 Copyright:
     <a class="text-dark" href="https://www.unipi.it/">Università di Pisa</a> 
   </div>
-  <!-- Copyright -->
 </footer>
     </body>
     <script src="//openseadragon.github.io/openseadragon/openseadragon.min.js"/>
@@ -110,12 +104,17 @@
     <script>
     
     $(document).ready(function() {
+        
+        
+    $(".postilleverbalidiv li:first").addClass("active");
+    $(".tab-content div:first").addClass("active");
  
     $("#errore").hide();
     $(".fuzzy").hide();
     $(".wildcard").hide();
     $(".doppio").hide();
     $(".personecitate").hide();
+    $(".argomento").hide();
     
     $("select#prova").on("change", function(){
         var selectedValue = $("select#prova").val();
@@ -126,6 +125,7 @@
             $('.cercadoppio').hide();
             $('.cercafuzzy').hide();
             $(".personecitate").hide();
+            $('.argomento').hide();
         }else if(selectedValue == 'fuzzy'){
             $('.fuzzy').show();
             $('.doppio').hide();
@@ -133,6 +133,7 @@
             $('.cercawild').hide();
             $('.cercadoppio').hide();
             $(".personecitate").hide();
+            $('.argomento').hide();
         }else if(selectedValue == 'doppio'){
             $('.doppio').show();
             $('.fuzzy').hide();
@@ -141,8 +142,19 @@
             $('.cercafuzzy').hide();
             $('.cercawild').hide();
             $(".personecitate").hide();
+            $('.argomento').hide();
         }else if(selectedValue == 'personecitate'){
             $('.personecitate').show();
+            $('.fuzzy').hide();
+            $('.wildcard').hide();
+            $('.cercadoppio').hide();
+            $('.cercafuzzy').hide();
+            $('.cercawild').hide();
+            $(".doppio").hide();
+            $('.argomento').hide();
+        }else if(selectedValue == 'argomento'){
+            $('.argomento').show();
+            $('.personecitate').hide();
             $('.fuzzy').hide();
             $('.wildcard').hide();
             $('.cercadoppio').hide();
@@ -211,6 +223,13 @@
         $("#"+id).slideToggle('slow');
         
     });
+    
+    $(".analisi").click(function(){
+        var id = $(this).attr('rel');
+        $("#"+id).slideToggle('slow');
+        
+    });
+    
     $(".dettagli").click(function(){
         var id = $(this).attr('rel');
         $("#"+id).toggle();
@@ -306,5 +325,6 @@ $('#next').attr('href', "mostra.html?immagine=pag" + nextPageID + ".jpg");
 }
 </script>
 <script type="text/javascript" src="input.js"/>
+<script type="text/javascript" src="postillemostra.js"/>
 
 </html>
