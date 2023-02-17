@@ -446,7 +446,7 @@
                      <note resp="#AS">  barra laterale ondulata a lapis, sul margine sinistro </note>
                   </msItem>
                   <msItem n="51" xml:id="p51" class="#postilla_verbale_semplice #postilla_esegetica #postilla_di_filosofia">
-                     <locus target="#t56.2" facs="#p56.p2"> p. 56 </locus>
+                     <locus target="#t56.2" facs="#pag56.p2"> p. 56 </locus>
                      <textLang> italiano </textLang>
                      <textLang> tedesco </textLang>
                      <note resp="#AS"> postilla verbale a lapis, sul margine sinistro; presenta una sottolineatura </note>
@@ -1789,9 +1789,9 @@
          <zone xml:id="pag1.p2" type="authornote" points=" 1068,1776 1070,1825 1342,1833 1330,1766 1202,1772 1223,1737 1255,1772 " hand="#m1" corresp="#pag1.p2t"> 
             <line> γλυκέρων </line>
          </zone>
-         <zone xml:id="pag1.p1t" ulx="306" uly="1740" lrx="1184" lry="1797" type="printedtext" start="idtext1">  
+         <zone xml:id="pag1.p1t" ulx="306" uly="1740" lrx="1184" lry="1797" type="printedtext" start="#idtext1">  
          </zone>
-         <zone xml:id="pag1.p2t" ulx="875" uly="1796" lrx="1054" lry="1831" type="printedtext" start="idtext2">  
+         <zone xml:id="pag1.p2t" ulx="875" uly="1796" lrx="1054" lry="1831" type="printedtext" start="#idtext2">  
          </zone>
       </surface>
          <surface xml:id="pag4"> 
@@ -1808,8 +1808,8 @@
                      <metamark function="highlighting" rend="underlining" place="inline" target="#pag4.det2m2"/>
                   </zone>
                </zone>
-               <zone xml:id="pag4.t1" ulx="475" uly="832" lrx="1508" lry="1084" type="printedtext" start="idtext3"/>     
-               <zone xml:id="pag4.t2" ulx="1011" uly="945" lrx="1390" lry="985" type="printedtext" start="idtext4"/>     
+               <zone xml:id="pag4.t1" ulx="475" uly="832" lrx="1508" lry="1084" type="printedtext" start="#idtext3"/>     
+               <zone xml:id="pag4.t2" ulx="1011" uly="945" lrx="1390" lry="985" type="printedtext" start="#idtext4"/>     
             </zone>
          </surface> 
          <surface xml:id="pag5">
@@ -1821,7 +1821,7 @@
             <zone xml:id="pag5.detm2" ulx="241" uly="601" lrx="531" lry="621" hand="#m2" corresp="#pag5.t">
                <metamark function="evihighlighting" rend="underlining" place="inline" target="#pag5.detm2"/>
             </zone>
-            <zone xml:id="pag5.t" ulx="242" uly="567" lrx="543" lry="620" type="printedtext" start="idtext5">  
+            <zone xml:id="pag5.t" ulx="242" uly="567" lrx="543" lry="620" type="printedtext" start="#idtext5">  
             </zone>
             </zone>
          </surface>
@@ -1839,9 +1839,9 @@
                </choice>
                </line>
             </zone>
-            <zone xml:id="pag7.p1t" ulx="289" uly="538" lrx="1270" lry="698" type="printedtext" start="idtext6">  
+            <zone xml:id="pag7.p1t" ulx="289" uly="538" lrx="1270" lry="698" type="printedtext" start="#idtext6">  
             </zone>
-            <zone xml:id="pag7.p2t" ulx="279" uly="1241" lrx="1262" lry="1397" type="printedtext" start="idtext7">  
+            <zone xml:id="pag7.p2t" ulx="279" uly="1241" lrx="1262" lry="1397" type="printedtext" start="#idtext7">  
             </zone>
          </surface>
          <surface xml:id="pag8">
@@ -1855,7 +1855,7 @@
                   <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag8.det1 #pag8.det2"/>
                </zone>
             </zone>
-            <zone xml:id="pag8.t" ulx="451" uly="902" lrx="1430" lry="1157" type="printedtext" start="idtext8">  
+            <zone xml:id="pag8.t" ulx="451" uly="902" lrx="1430" lry="1157" type="printedtext" start="#idtext8">  
             </zone>
             </zone>
          </surface>
@@ -1873,7 +1873,7 @@
           <zone xml:id="right_line9" ulx="1229" uly="1153" lrx="1281" lry="1349"/>
             <zone xml:id="left_line9" ulx="213" uly="1175" lrx="263" lry="1345"/>           
       </zone>
-      <zone xml:id="pag9.t" ulx="213" uly="1117" lrx="1244" lry="1372" type="printedtext" start="idtext9">  
+      <zone xml:id="pag9.t" ulx="213" uly="1117" lrx="1244" lry="1372" type="printedtext" start="#idtext9">  
       </zone>
       </zone>
       </surface>
@@ -1883,7 +1883,7 @@
              <zone xml:id="pag10.det1" ulx="497" uly="771" lrx="559" lry="1293" hand="#m2">
                 <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag10.det"/>
              </zone>
-             <zone xml:id="pag10.t" ulx="546" uly="724" lrx="1442" lry="1289" type="printedtext" start="idtext10">  
+             <zone xml:id="pag10.t" ulx="546" uly="724" lrx="1442" lry="1289" type="printedtext" start="#idtext10">  
             </zone>
           </zone>
       </surface>
@@ -1893,7 +1893,7 @@
               <zone xml:id="pag12.p1det" ulx="419" uly="517" lrx="469" lry="641" hand="#m2">
                  <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag12.p1"/>
               </zone>
-              <zone xml:id="pag12.p1t" ulx="464" uly="475" lrx="1439" lry="618" type="printedtext" start="idtext11"/>
+              <zone xml:id="pag12.p1t" ulx="464" uly="475" lrx="1439" lry="618" type="printedtext" start="#idtext11"/>
            </zone>
            <zone xml:id="pag12.p2" ulx="121" uly="673" lrx="1449" lry="1063">
               <zone xml:id="pag12.p2det" ulx="125" uly="799" lrx="411" lry="877" hand="#m2" corresp="#pag12.p2t">
@@ -1904,7 +1904,7 @@
                  <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag12.p2det #pag12.p2det1"/>
               </zone>
            </zone>
-           <zone xml:id="pag12.p2t" ulx="459" uly="592" lrx="1435" lry="1049" type="printedtext" start="idtext12"/>
+           <zone xml:id="pag12.p2t" ulx="459" uly="592" lrx="1435" lry="1049" type="printedtext" start="#idtext12"/>
            </zone> 
         </surface>
         <surface xml:id="pag13">
@@ -1912,7 +1912,7 @@
               <zone xml:id="pag.13" type="authornote" ulx="1305" uly="755" lrx="1553" lry="877" hand="#m2" corresp="#pag13.t">
                  <line> Papini </line>
               </zone> 
-              <zone xml:id="pag13.t" ulx="329" uly="752" lrx="1290" lry="890" type="printedtext" start="idtext13"/>
+              <zone xml:id="pag13.t" ulx="329" uly="752" lrx="1290" lry="890" type="printedtext" start="#idtext13"/>
        </surface>
        <surface xml:id="pag18">
          <graphic url="pag18.jpg" width="1668px" height="2500px"/>
@@ -1920,7 +1920,7 @@
             <line> fermezza </line>
             <line> dell'io soggettivo </line>
          </zone> 
-         <zone xml:id="pag18.t" ulx="450" uly="621" lrx="1442" lry="715" type="printedtext" start="idtext14"/>
+         <zone xml:id="pag18.t" ulx="450" uly="621" lrx="1442" lry="715" type="printedtext" start="#idtext14"/>
        </surface>
        <surface xml:id="pag21">
           <graphic url="pag21.jpg" width="1668px" height="2500px"/>
@@ -1928,7 +1928,7 @@
              <zone xml:id="pag21.p1det" points=" 1311,1195 1307,1321 261,1305 261,1251 529,1249 529,1195 " hand="#m3" corresp="#pag21.p1t">
                 <metamark function="highlighting" rend="square_bracket_and_straight_vertical_line" place="margin" target="#pag21.p1"/>
              </zone>
-             <zone xml:id="pag21.p1t" ulx="265" uly="1200" lrx="1211" lry="1297" type="printedtext" start="idtext15"/>
+             <zone xml:id="pag21.p1t" ulx="265" uly="1200" lrx="1211" lry="1297" type="printedtext" start="#idtext15"/>
           </zone>   
           <zone xml:id="pag21.p2" type="authornote" ulx="1223" uly="1373" lrx="1453" lry="1745" hand="#m1" corresp="#pag21.p2t">
              <line> gli uomini </line>
@@ -1940,7 +1940,7 @@
              <line> sforzo mo </line>
              <line> rale. </line>
           </zone>
-          <zone xml:id="pag21.p2t" ulx="1009" uly="1422" lrx="1222" lry="1463" type="printedtext" start="idtext16"/>
+          <zone xml:id="pag21.p2t" ulx="1009" uly="1422" lrx="1222" lry="1463" type="printedtext" start="#idtext16"/>
        </surface>
        <surface xml:id="pag23">
           <graphic url="pag23.jpg" width="1668px" height="2500px"/>
@@ -1948,24 +1948,24 @@
              <zone xml:id="pag23.p1det" ulx="1137" uly="779" lrx="1165" lry="939" hand="#m1" corresp="#pag23.p1t">
                 <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag23.p1"/>
              </zone>
-             <zone xml:id="pag23.p1t" ulx="271" uly="772" lrx="1144" lry="1005" type="printedtext" start="idtext17"/>
+             <zone xml:id="pag23.p1t" ulx="271" uly="772" lrx="1144" lry="1005" type="printedtext" start="#idtext17"/>
           </zone>
           <zone xml:id="pag23.p2" ulx="803" uly="1529" lrx="1103" lry="1553" hand="#m1" corresp="#pag23.p2t">
              <metamark function="highlighting" rend="underlining" place="inline" target="#pag23.p2"/>
           </zone>
-          <zone xml:id="pag23.p2t" ulx="807" uly="1509" lrx="1086" lry="1539" type="printedtext" start="idtext18"/>
+          <zone xml:id="pag23.p2t" ulx="807" uly="1509" lrx="1086" lry="1539" type="printedtext" start="#idtext18"/>
        </surface>
       <surface xml:id="pag24">
          <graphic url="pag24.jpg"/>
          <zone xml:id="pag24.p1" points=" 921,1463 1421,1463 1419,1513 927,1515 929,1553 543,1561 545,1509 " hand="#m1" corresp="#pag24.p1t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag24.p1"/>
          </zone>
-         <zone xml:id="pag24.p1t" ulx="550" uly="1468" lrx="1419" lry="1549" type="printedtext" start="idtext19"/>
+         <zone xml:id="pag24.p1t" ulx="550" uly="1468" lrx="1419" lry="1549" type="printedtext" start="#idtext19"/>
          <zone xml:id="pag24.p2" ulx="505" uly="1585" lrx="1423" lry="1805" corresp="#pag24.p2t">
             <zone xml:id="pag24.p2det" ulx="515" uly="1581" lrx="549" lry="1807" hand="#m1">
                <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag24.p2"/>
             </zone>  
-            <zone xml:id="pag24.p2t" ulx="555" uly="1564" lrx="1423" lry="1784" type="printedtext" start="idtext20"/> 
+            <zone xml:id="pag24.p2t" ulx="555" uly="1564" lrx="1423" lry="1784" type="printedtext" start="#idtext20"/> 
          </zone>
       </surface> 
       <surface xml:id="pag25">
@@ -1973,7 +1973,7 @@
          <zone xml:id="pag25.det" ulx="833" uly="1961" lrx="1099" lry="1987" hand="#m3" corresp="#pag25.t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag25.det"/>
          </zone>
-         <zone xml:id="pag25.t" ulx="831" uly="1936" lrx="1083" lry="1978" type="printedtext" start="idtext21"/> 
+         <zone xml:id="pag25.t" ulx="831" uly="1936" lrx="1083" lry="1978" type="printedtext" start="#idtext21"/> 
       </surface>
       <surface xml:id="pag26">
          <graphic url="pag26.jpg" width="1668px" height="2500px"/>
@@ -1981,13 +1981,13 @@
             <zone xml:id="pag26.p1det" ulx="521" uly="557" lrx="565" lry="691" hand="#m3" corresp="#pag26.p1t">
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag26.p1"/>
             </zone>
-            <zone xml:id="pag26.p1t" ulx="567" uly="573" lrx="1435" lry="659" type="printedtext" start="idtext22"/> 
+            <zone xml:id="pag26.p1t" ulx="567" uly="573" lrx="1435" lry="659" type="printedtext" start="#idtext22"/> 
          </zone>
          <zone xml:id="pag26.p2" ulx="521" uly="1825" lrx="1417" lry="1933">
             <zone xml:id="pag26.p2det" ulx="523" uly="1833" lrx="555" lry="1931" hand="#m3" corresp="#pag26.p2t">
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag26.p2"/>
             </zone>
-            <zone xml:id="pag26.p2t" ulx="565" uly="1830" lrx="1425" lry="1932" type="printedtext" start="idtext23"/> 
+            <zone xml:id="pag26.p2t" ulx="565" uly="1830" lrx="1425" lry="1932" type="printedtext" start="#idtext23"/> 
          </zone>
       </surface>
       <surface xml:id="pag28">
@@ -1996,7 +1996,7 @@
             <zone xml:id="pag.28det1" ulx="503" uly="1493" lrx="567" lry="1913" hand="#m1" corresp="#pag28.t">
                <metamark function="highlighting" rend="double_curve" place="vertical_line" target="#pag28.det"/>
             </zone>
-            <zone xml:id="pag28.t" ulx="568" uly="1471" lrx="1444" lry="1886" type="printedtext" start="idtext24"/> 
+            <zone xml:id="pag28.t" ulx="568" uly="1471" lrx="1444" lry="1886" type="printedtext" start="#idtext24"/> 
          </zone>
       </surface>
       <surface xml:id="pag29">
@@ -2024,13 +2024,13 @@
               <metamark function="highlighting" rend="wavy" place="inline" target="#pag29.p1det2m2 #pag29.p1det"/>  
             </zone>
             </zone> 
-            <zone xml:id="pag29.p1t" ulx="209" uly="1207" lrx="1177" lry="1308" type="printedtext" start="idtext25"/> 
+            <zone xml:id="pag29.p1t" ulx="209" uly="1207" lrx="1177" lry="1308" type="printedtext" start="#idtext25"/> 
             </zone>
             <zone xml:id="pag29.p2" ulx="193" uly="1621" lrx="1207" lry="1795">
                <zone xml:id="pag29.p2det" ulx="1159" uly="1637" lrx="1219" lry="1805" hand="#m1" corresp="#pag29.p2t"> 
                   <metamark function="highlighting" rend="wavy" place="vertical line" target="#pag29.p2"/>
                </zone>
-               <zone xml:id="pag29.p2t" ulx="193" uly="1626" lrx="1158" lry="1778" type="printedtext" start="idtext26"/> 
+               <zone xml:id="pag29.p2t" ulx="193" uly="1626" lrx="1158" lry="1778" type="printedtext" start="#idtext26"/> 
             </zone>
          </surface>
       <surface xml:id="pag31">
@@ -2042,8 +2042,8 @@
             <zone xml:id="pag31.p1det2" points=" 571,501 567,547 213,543 211,597 691,611 697,559 1163,563 1163,515 " hand="#m1" corresp="#pag31.p1det2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag31.p1det2"/>
             </zone> 
-            <zone xml:id="pag31.p1det1t" ulx="216" uly="493" lrx="1181" lry="990" type="printedtext" start="idtext27"/> 
-            <zone xml:id="pag31.p1det2t" ulx="209" uly="490" lrx="1175" lry="613" type="printedtext" start="idtext28"/> 
+            <zone xml:id="pag31.p1det1t" ulx="216" uly="493" lrx="1181" lry="990" type="printedtext" start="#idtext27"/> 
+            <zone xml:id="pag31.p1det2t" ulx="209" uly="490" lrx="1175" lry="613" type="printedtext" start="#idtext28"/> 
          </zone>  
          <zone xml:id="pag31.p2" points=" 751,1681 751,1641 1253,1645 1241,1465 195,1461 191,1675 ">
             <zone xml:id="pag31.p2det1" ulx="1175" uly="1467" lrx="1259" lry="1677" hand="#m1" corresp="#pag31.p2t">
@@ -2052,7 +2052,7 @@
             <zone xml:id="pag31.p2det2" points=" 515,1629 517,1581 1169,1587 1167,1483 201,1465 197,1619 " hand="#m1" corresp="#pag31.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag31.p2det2"/>
             </zone>
-            <zone xml:id="pag31.p2t" ulx="193" uly="1468" lrx="1160" lry="1634" type="printedtext" start="idtext29"/> 
+            <zone xml:id="pag31.p2t" ulx="193" uly="1468" lrx="1160" lry="1634" type="printedtext" start="#idtext29"/> 
          </zone> 
          <zone xml:id="pag31.p3" points=" 1503,1791 1497,1901 167,1909 171,1845 827,1847 829,1789 ">
             <zone xml:id="pag31.p3det" ulx="1161" uly="1803" lrx="1505" lry="1883" hand="#m1" corresp="#pag31.p3t">
@@ -2062,7 +2062,7 @@
             <zone xml:id="pag31.p3det1" points=" 829,1795 817,1841 199,1841 201,1897 1149,1899 1145,1795 " hand="#m1" corresp="#pag31.p3t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag31.p3det1 #pag31.p3det"/>
             </zone>
-            <zone xml:id="pag31.p3t" ulx="185" uly="1788" lrx="1154" lry="1900" type="printedtext" start="idtext30"/> 
+            <zone xml:id="pag31.p3t" ulx="185" uly="1788" lrx="1154" lry="1900" type="printedtext" start="#idtext30"/> 
          </zone>
       </surface>
       <surface xml:id="pag33">
@@ -2074,13 +2074,13 @@
             <zone xml:id="pag33.p1det2" points=" 375,439 373,491 211,495 207,557 473,565 477,497 1183,505 1179,455 " hand="#m1" corresp="#pag33.p1t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag33.p1det2"/>
             </zone> 
-            <zone xml:id="pag33.p1t" ulx="214" uly="442" lrx="1180" lry="558" type="printedtext" start="idtext31"/> 
+            <zone xml:id="pag33.p1t" ulx="214" uly="442" lrx="1180" lry="558" type="printedtext" start="#idtext31"/> 
          </zone> 
          <zone xml:id="pag33.p2" ulx="203" uly="599" lrx="1227" lry="1155">
             <zone xml:id="pag33.p2det" points=" 1135,1163 1135,1139 1179,1137 1181,611 1213,611 1215,1163 " hand="#m1" corresp="#pag33.p2t">
                <metamark function="highlighting" rend="corner_bracket" place="margin" target="#pag33.p2"/>
             </zone>
-            <zone xml:id="pag33.p2t" ulx="217" uly="596" lrx="1175" lry="1142" type="printedtext" start="idtext32"/> 
+            <zone xml:id="pag33.p2t" ulx="217" uly="596" lrx="1175" lry="1142" type="printedtext" start="#idtext32"/> 
          </zone>      
          <zone xml:id="pag33.p3" ulx="141" uly="1299" lrx="1537" lry="1523">
             <zone xml:id="pag33.p3det" ulx="1175" uly="1335" lrx="1537" lry="1477" hand="#m1" corresp="#pag33.p3t1">
@@ -2096,8 +2096,8 @@
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag33.p3det1m2"/>
             </zone> 
          </zone> 
-         <zone xml:id="pag33.p3t1" ulx="204" uly="1301" lrx="1176" lry="1410" type="printedtext" start="idtext33"/> 
-         <zone xml:id="pag33.p3t2" ulx="210" uly="1304" lrx="1172" lry="1569" type="printedtext" start="idtext34"/> 
+         <zone xml:id="pag33.p3t1" ulx="204" uly="1301" lrx="1176" lry="1410" type="printedtext" start="#idtext33"/> 
+         <zone xml:id="pag33.p3t2" ulx="210" uly="1304" lrx="1172" lry="1569" type="printedtext" start="#idtext34"/> 
          </zone>    
       </surface>
       <surface xml:id="pag34">
@@ -2111,7 +2111,7 @@
             <zone xml:id="pag34.det2" ulx="425" uly="1501" lrx="475" lry="1669" hand="#m1" corresp="#pag34.t">
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag34.det2 #pag34.det1"/>
             </zone>
-            <zone xml:id="pag34.t" ulx="475" uly="1493" lrx="1437" lry="1692" type="printedtext" start="idtext35"/> 
+            <zone xml:id="pag34.t" ulx="475" uly="1493" lrx="1437" lry="1692" type="printedtext" start="#idtext35"/> 
          </zone>
       </surface>
       <surface xml:id="pag37">
@@ -2133,8 +2133,8 @@
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag37.det2m2"/>  
             </zone>
             </zone>
-            <zone xml:id="pag37.t1" ulx="209" uly="1779" lrx="1168" lry="1990" type="printedtext" start="idtext36"/> 
-            <zone xml:id="pag37.t2" ulx="568" uly="1901" lrx="909" lry="1933" type="printedtext" start="idtext37"/> 
+            <zone xml:id="pag37.t1" ulx="209" uly="1779" lrx="1168" lry="1990" type="printedtext" start="#idtext36"/> 
+            <zone xml:id="pag37.t2" ulx="568" uly="1901" lrx="909" lry="1933" type="printedtext" start="#idtext37"/> 
          </zone>
       </surface>
       <surface xml:id="pag38">
@@ -2150,7 +2150,7 @@
                   <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag38.det2 #pag38.det1"/>
                </zone>
             </zone>
-            <zone xml:id="pag38.t" ulx="468" uly="569" lrx="1447" lry="1168" type="printedtext" start="idtext38"/> 
+            <zone xml:id="pag38.t" ulx="468" uly="569" lrx="1447" lry="1168" type="printedtext" start="#idtext38"/> 
          </zone>
       </surface>
       <surface xml:id="pag39">
@@ -2219,7 +2219,7 @@
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag42.p1det1 #pag42.p1det "/>
             </zone>
             </zone>
-            <zone xml:id="pag42.p1t" ulx="434" uly="703" lrx="1388" lry="908" type="printedtext" start="idtext39"/> 
+            <zone xml:id="pag42.p1t" ulx="434" uly="703" lrx="1388" lry="908" type="printedtext" start="#idtext39"/> 
          </zone>
          <zone xml:id="pag42.p2" points=" 923,1609 923,1655 359,1643 367,1831 1069,1831 1071,1767 1397,1773 1397,1613 ">
              <zone xml:id="pag42.p2det" ulx="361" uly="1645" lrx="431" lry="1859" hand="#m1" corresp="#pag42.p2t1">
@@ -2228,8 +2228,8 @@
              <zone xml:id="pag42.p2det1" points=" 929,1609 923,1657 431,1657 433,1723 1185,1729 1191,1679 1385,1671 1385,1613 " hand="#m1" corresp="#pag42.p2t2">
                    <metamark function="highlighting" rend="underlining" place="inline" target="#pag42.p2det1"/>
              </zone>
-             <zone xml:id="pag42.p2t1" ulx="425" uly="1611" lrx="1393" lry="1817" type="printedtext" start="idtext40"/> 
-             <zone xml:id="pag42.p2t2" ulx="423" uly="1605" lrx="1398" lry="1710" type="printedtext" start="idtext41"/> 
+             <zone xml:id="pag42.p2t1" ulx="425" uly="1611" lrx="1393" lry="1817" type="printedtext" start="#idtext40"/> 
+             <zone xml:id="pag42.p2t2" ulx="423" uly="1605" lrx="1398" lry="1710" type="printedtext" start="#idtext41"/> 
          </zone>
       </surface>
       <surface xml:id="pag43">
@@ -2246,8 +2246,8 @@
             <zone xml:id="pag43.p1det1m2" ulx="1157" uly="859" lrx="1209" lry="1051" hand="#m1" corresp="#pag43.p1t1">
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag43.p1det1 #pag43.p1det"/>  
             </zone>
-            <zone xml:id="pag43.p1t1" ulx="188" uly="839" lrx="1168" lry="1039" type="printedtext" start="idtext42"/> 
-            <zone xml:id="pag43.p1t2" ulx="198" uly="837" lrx="1156" lry="931" type="printedtext" start="idtext43"/> 
+            <zone xml:id="pag43.p1t1" ulx="188" uly="839" lrx="1168" lry="1039" type="printedtext" start="#idtext42"/> 
+            <zone xml:id="pag43.p1t2" ulx="198" uly="837" lrx="1156" lry="931" type="printedtext" start="#idtext43"/> 
          </zone>
          <zone xml:id="pag43.p2" ulx="347" uly="1459" lrx="1253" lry="1541">
          <zone xml:id="pag43.p2det" ulx="343" uly="1509" lrx="1127" lry="1541" hand="#m1" corresp="#pag43.p2t">
@@ -2256,7 +2256,7 @@
          <zone xml:id="pag43.p2det1" ulx="1161" uly="1439" lrx="1279" lry="1553" hand="#m1" corresp="#pag43.p2t">
             <metamark function="highlighting" rend="angle_bracket" place="margin" target="#pag43.p2det"/>
          </zone>
-         <zone xml:id="pag43.p2t" ulx="342" uly="1478" lrx="1154" lry="1535" type="printedtext" start="idtext44"/> 
+         <zone xml:id="pag43.p2t" ulx="342" uly="1478" lrx="1154" lry="1535" type="printedtext" start="#idtext44"/> 
          </zone>
       </surface>
       <surface xml:id="pag44">
@@ -2265,7 +2265,7 @@
             <zone xml:id="pag44.p1det" ulx="423" uly="529" lrx="483" lry="947" hand="#m1" corresp="#pag44.p1t">
                <metamark function="highlighting" rend="curve" place="vertical_line" target="#pag44.p1"/>
             </zone>
-            <zone xml:id="pag44.p1t" ulx="502" uly="529" lrx="1462" lry="934" type="printedtext" start="idtext45"/> 
+            <zone xml:id="pag44.p1t" ulx="502" uly="529" lrx="1462" lry="934" type="printedtext" start="#idtext45"/> 
          </zone>
          <zone xml:id="pag44.p2" ulx="167" uly="1419" lrx="1535" lry="1715">
          <zone xml:id="pag44.p2det" ulx="157" uly="1465" lrx="473" lry="1737" hand="#m1" corresp="#pag44.p2t">
@@ -2282,7 +2282,7 @@
                <zone xml:id="right_line44" ulx="467" uly="1455" lrx="515" lry="1667"/>
                <zone xml:id="left_line44" ulx="1465" uly="1453" lrx="1513" lry="1669"/>   
             </zone>
-            <zone xml:id="pag44.p2t" ulx="497" uly="1429" lrx="1471" lry="1636" type="printedtext" start="idtext46"/> 
+            <zone xml:id="pag44.p2t" ulx="497" uly="1429" lrx="1471" lry="1636" type="printedtext" start="#idtext46"/> 
          </zone>
       </surface>
       <surface xml:id="pag45">
@@ -2295,12 +2295,12 @@
             <zone xml:id="pag45.p1det1" ulx="449" uly="847" lrx="960" lry="865" hand="#m1" corresp="#pag45.p1t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag45.p1det1 #pag45.p1det"/>
             </zone>
-            <zone xml:id="pag45.p1t" ulx="450" uly="809" lrx="1011" lry="856" type="printedtext" start="idtext47"/> 
+            <zone xml:id="pag45.p1t" ulx="450" uly="809" lrx="1011" lry="856" type="printedtext" start="#idtext47"/> 
          </zone>
          <zone xml:id="pag45.p2" points=" 1123,1925 1125,1973 215,1985 219,2055 1193,2041 1191,1923 " hand="#m1" corresp="#pag45.p2t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag45.p2"/>
          </zone>
-         <zone xml:id="pag45.p2t" ulx="210" uly="1932" lrx="1187" lry="2034" type="printedtext" start="idtext48"/> 
+         <zone xml:id="pag45.p2t" ulx="210" uly="1932" lrx="1187" lry="2034" type="printedtext" start="#idtext48"/> 
       </surface>
       <surface xml:id="pag47">
          <graphic url="pag47.jpg" width="1668px" height="2500px"/>
@@ -2313,7 +2313,7 @@
                   <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag.47det2 #pag47.det"/>
                </zone>
             </zone>
-            <zone xml:id="pag47.t" ulx="211" uly="530" lrx="1182" lry="1488" type="printedtext" start="idtext49"/> 
+            <zone xml:id="pag47.t" ulx="211" uly="530" lrx="1182" lry="1488" type="printedtext" start="#idtext49"/> 
          </zone>
       </surface>
       <surface xml:id="pag48">
@@ -2322,7 +2322,7 @@
             <zone xml:id="pag48.det1" ulx="377" uly="975" lrx="545" lry="1167" hand="#m1">
                <metamark function="highlighting" rend="pound_sign" place="margin" target="#pag48.det"/>
             </zone>
-            <zone xml:id="pag48.t" ulx="535" uly="928" lrx="1410" lry="1109" type="printedtext" start="idtext50"/> 
+            <zone xml:id="pag48.t" ulx="535" uly="928" lrx="1410" lry="1109" type="printedtext" start="#idtext50"/> 
          </zone>
       </surface>
       <surface xml:id="pag51">
@@ -2334,8 +2334,8 @@
             <zone xml:id="pag51.det2" points=" 327,913 327,959 243,963 241,1017 943,1025 939,981 1125,983 1115,931 " hand="#m1" corresp="#pag51.det2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag51.det2"/>
             </zone>
-            <zone xml:id="pag51.det1t" ulx="240" uly="864" lrx="1132" lry="1030" type="printedtext" start="idtext51"/> 
-            <zone xml:id="pag51.det2t" ulx="247" uly="913" lrx="1110" lry="1017" type="printedtext" start="idtext52"/> 
+            <zone xml:id="pag51.det1t" ulx="240" uly="864" lrx="1132" lry="1030" type="printedtext" start="#idtext51"/> 
+            <zone xml:id="pag51.det2t" ulx="247" uly="913" lrx="1110" lry="1017" type="printedtext" start="#idtext52"/> 
          </zone>
       </surface>
       <surface xml:id="pag53">
@@ -2347,7 +2347,7 @@
             </metamark>
             <zone xml:id="right_line53" ulx="1143" uly="1133" lrx="1223" lry="1251"/>
             <zone xml:id="left_line53" ulx="177" uly="1137" lrx="243" lry="1283"/>    
-            <zone xml:id="pag53.t" ulx="256" uly="1137" lrx="1142" lry="1243" type="printedtext" start="idtext53"/>  
+            <zone xml:id="pag53.t" ulx="256" uly="1137" lrx="1142" lry="1243" type="printedtext" start="#idtext53"/>  
          </zone> 
       </surface>
       <surface xml:id="pag55">
@@ -2356,12 +2356,12 @@
             <zone xml:id="pag55.p1det" ulx="1107" uly="1053" lrx="1155" lry="1679" hand="#m1">
                <metamark function="highlighting" rend="square_bracket" place="margin" target="#pag55.p1"/>
             </zone>
-            <zone xml:id="pag55.p1t" ulx="241" uly="1041" lrx="1097" lry="1722" type="printedtext" start="idtext54"/>  
+            <zone xml:id="pag55.p1t" ulx="241" uly="1041" lrx="1097" lry="1722" type="printedtext" start="#idtext54"/>  
          </zone>
          <zone xml:id="pag55.p2" ulx="698" uly="1853" lrx="1071" lry="1875" hand="#m1" corresp="#pag55.p2t">
             <metamark function="highlighting" rend="underlining" place="inline"/>
          </zone>
-         <zone xml:id="pag55.p2t" ulx="698" uly="1827" lrx="1098" lry="1870" type="printedtext" start="idtext55"/>  
+         <zone xml:id="pag55.p2t" ulx="698" uly="1827" lrx="1098" lry="1870" type="printedtext" start="#idtext55"/>  
       </surface>  
       <surface xml:id="pag56">
          <graphic url="pag56.jpg" width="1668px" height="2500px"/>
@@ -2369,27 +2369,27 @@
             <zone xml:id="pag56.p1det" ulx="433" uly="409" lrx="479" lry="535" hand="#m1" corresp="#pag56.p1t">
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag56.p1"/>
             </zone>
-            <zone xml:id="pag56.p1t" ulx="477" uly="416" lrx="1443" lry="501" type="printedtext" start="idtext56"/>  
+            <zone xml:id="pag56.p1t" ulx="477" uly="416" lrx="1443" lry="501" type="printedtext" start="#idtext56"/>  
          </zone>
          <zone xml:id="pag56.p2" type="authornote" ulx="123" uly="1397" lrx="441" lry="1529" hand="#m1" corresp="#pag56.p2t">
             <line> La libertà </line>
             <line> <hi rend="italic"> Kant </hi> </line>
          </zone>
-         <zone xml:id="pag56.p2t" ulx="473" uly="1215" lrx="1433" lry="1529" type="printedtext" start="idtext57"/>  
+         <zone xml:id="pag56.p2t" ulx="473" uly="1215" lrx="1433" lry="1529" type="printedtext" start="#idtext57"/>  
       <zone xml:id="pag56.p3" points=" 273,1533 263,1829 1217,1799 1215,1755 1485,1747 1443,1541 ">
          <zone xml:id="pag56.p3det" ulx="259" uly="1527" lrx="483" lry="1599" hand="#m1" corresp="#pag56.p3t">
             <line> <hi rend="italic"> Bergson </hi> </line>
          </zone>
-         <zone xml:id="pag56.p3t" ulx="472" uly="1479" lrx="1430" lry="1940" type="printedtext" start="idtext58"/>  
+         <zone xml:id="pag56.p3t" ulx="472" uly="1479" lrx="1430" lry="1940" type="printedtext" start="#idtext58"/>  
          <zone xml:id="pag56.p3det1" points=" 431,1667 441,1809 1213,1801 1215,1753 1437,1747 1433,1681 ">
             <zone xml:id="pag56.p3det1m2" ulx="441" uly="1665" lrx="479" lry="1853" hand="#m1" corresp="#pag56.p3det1m2t">
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag56.p3det1m2"/>
             </zone>
-            <zone xml:id="pag56.p3det1m2t" ulx="480" uly="1641" lrx="1438" lry="1794" type="printedtext" start="idtext59"/>  
+            <zone xml:id="pag56.p3det1m2t" ulx="480" uly="1641" lrx="1438" lry="1794" type="printedtext" start="#idtext59"/>  
             <zone xml:id="pag56.p3det1m1" points=" 1451,1691 913,1695 907,1737 487,1741 487,1799 1205,1799 1209,1753 1455,1749 " hand="#m1" corresp="#pag56.p3det1m1t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag56.p3det1m1"/>
             </zone>
-            <zone xml:id="pag56.p3det1m1t" ulx="483" uly="1695" lrx="1436" lry="1792" type="printedtext" start="idtext60"/>  
+            <zone xml:id="pag56.p3det1m1t" ulx="483" uly="1695" lrx="1436" lry="1792" type="printedtext" start="#idtext60"/>  
          </zone>
       </zone>
       </surface>
@@ -2399,20 +2399,20 @@
             <zone xml:id="pag57.p1det" points=" 1217,535 1095,533 1095,561 1151,579 1133,1199 1053,1235 1061,1255 1193,1249 " hand="#m1" corresp="#pag57.p1t">
                <metamark function="highlighting" rend="parentesi_quadra" place="margin" target="#pag57.p1"/>
             </zone> 
-            <zone xml:id="pag57.p1t" ulx="260" uly="557" lrx="1133" lry="1246" type="printedtext" start="idtext61"/>  
+            <zone xml:id="pag57.p1t" ulx="260" uly="557" lrx="1133" lry="1246" type="printedtext" start="#idtext61"/>  
             <zone xml:id="pag57.p1det1" ulx="269" uly="1073" lrx="837" lry="1101" hand="#m1" corresp="#pag57.p1det1t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag57.p1det1"/>
             </zone> 
-            <zone xml:id="pag57.p1det1t" ulx="263" uly="1039" lrx="852" lry="1099" type="printedtext" start="idtext62"/>  
+            <zone xml:id="pag57.p1det1t" ulx="263" uly="1039" lrx="852" lry="1099" type="printedtext" start="#idtext62"/>  
          </zone> 
          <zone xml:id="pag57.p2" points=" 249,1227 245,1433 737,1443 737,1395 1141,1387 1139,1241 " hand="#m1">
             <zone xml:id="pag57.p2det1" ulx="417" uly="1313" lrx="633" lry="1335" corresp="#pag57.p2det1t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag57.p2det1"/>
             </zone>
-            <zone xml:id="pag57.p2det1t" ulx="417" uly="1291" lrx="706" lry="1333" type="printedtext" start="idtext63"/>  
+            <zone xml:id="pag57.p2det1t" ulx="417" uly="1291" lrx="706" lry="1333" type="printedtext" start="#idtext63"/>  
             <zone xml:id="pag57.p2det2" points=" 515,1339 511,1383 257,1373 255,1433 739,1439 733,1393 1139,1391 1133,1341 " corresp="#pag57.p2det2t"/>
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag57.p2det2"/>
-            <zone xml:id="pag57.p2det2t" ulx="256" uly="1335" lrx="1125" lry="1435" type="printedtext" start="idtext64"/>  
+            <zone xml:id="pag57.p2det2t" ulx="256" uly="1335" lrx="1125" lry="1435" type="printedtext" start="#idtext64"/>  
          </zone> 
       </surface>
       <surface xml:id="pag58">
@@ -2424,7 +2424,7 @@
             <zone xml:id="pag58.det2" points=" 851,1657 845,1697 581,1713 577,1811 1397,1797 1393,1753 1453,1749 1447,1647 " hand="#m1" corresp="#pag58.t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag58.det2"/>
             </zone> 
-            <zone xml:id="pag58.t" ulx="577" uly="1669" lrx="1449" lry="1792" type="printedtext" start="idtext65"/>  
+            <zone xml:id="pag58.t" ulx="577" uly="1669" lrx="1449" lry="1792" type="printedtext" start="#idtext65"/>  
          </zone> 
       </surface> 
       <surface xml:id="pag59">
@@ -2438,11 +2438,11 @@
                <zone xml:id="pag59.p1det1m1" ulx="1201" uly="505" lrx="1257" lry="685" hand="#m1" corresp="#pag59.p1t1">
                   <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag59.p1det1 #pag59.p1det"/>
             </zone> 
-            <zone xml:id="pag59.p1t1" ulx="222" uly="483" lrx="1179" lry="689" type="printedtext" start="idtext66"/>  
+            <zone xml:id="pag59.p1t1" ulx="222" uly="483" lrx="1179" lry="689" type="printedtext" start="#idtext66"/>  
             <zone xml:id="pag59.p1det1m2" ulx="565" uly="579" lrx="751" lry="605" hand="#m1" corresp="#pag59.p1t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag59.p1det1m2"/>
             </zone>
-            <zone xml:id="pag59.p1t2" ulx="571" uly="547" lrx="749" lry="588" type="printedtext" start="idtext67"/>  
+            <zone xml:id="pag59.p1t2" ulx="571" uly="547" lrx="749" lry="588" type="printedtext" start="#idtext67"/>  
             </zone>
          </zone>
          <zone xml:id="pag59.p2" points=" 1269,1451 547,1449 547,1497 231,1499 223,1775 451,1771 451,1723 1279,1713 ">
@@ -2452,7 +2452,7 @@
             <zone xml:id="pag59.p2det1" points=" 555,1461 555,1501 229,1499 227,1773 447,1767 447,1721 1197,1705 1179,1457 " hand="#m1" corresp="#pag59.p2t">
                <metamark function="highlighting" rend="wavy" place="inline" target="#pag59.p2det1"/>
             </zone> 
-            <zone xml:id="pag59.p2t" ulx="223" uly="1452" lrx="1187" lry="1771" type="printedtext" start="idtext68"/>  
+            <zone xml:id="pag59.p2t" ulx="223" uly="1452" lrx="1187" lry="1771" type="printedtext" start="#idtext68"/>  
          </zone>  
          <zone xml:id="pag59.p3" points=" 1239,1817 539,1819 531,1875 225,1873 227,1931 1249,1941 ">
             <zone xml:id="pag59.p3det" ulx="1191" uly="1825" lrx="1233" lry="1937" hand="#m1" corresp="#pag59.p3t">
@@ -2461,7 +2461,7 @@
             <zone xml:id="pag59.p3det1" points=" 535,1825 535,1863 231,1873 231,1929 1193,1931 1189,1823 " hand="#m1" corresp="#pag59.p3t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag59.p3det1"/>
             </zone>
-            <zone xml:id="pag59.p3t" ulx="238" uly="1825" lrx="1190" lry="1919" type="printedtext" start="idtext69"/>  
+            <zone xml:id="pag59.p3t" ulx="238" uly="1825" lrx="1190" lry="1919" type="printedtext" start="#idtext69"/>  
          </zone> 
       </surface>
       <surface xml:id="pag60">
@@ -2470,7 +2470,7 @@
             <line> quindi dalla </line>
             <line> realtà. </line>
          </zone>
-         <zone xml:id="pag60.t" ulx="474" uly="732" lrx="1451" lry="825" type="printedtext" start="idtext70"/>  
+         <zone xml:id="pag60.t" ulx="474" uly="732" lrx="1451" lry="825" type="printedtext" start="#idtext70"/>  
       </surface>
       <surface xml:id="pag61">
          <graphic url="pag61.jpg" width="1668px" height="2500px"/>
@@ -2478,7 +2478,7 @@
             <zone xml:id="pag61.det1" type="authornote" ulx="1219" uly="925" lrx="1535" lry="999" hand="#m1" corresp="#pag61.t">
                <line> potere, volontà. </line>
             </zone> 
-            <zone xml:id="pag61.t" ulx="862" uly="938" lrx="982" lry="979" type="printedtext" start="idtext71"/>  
+            <zone xml:id="pag61.t" ulx="862" uly="938" lrx="982" lry="979" type="printedtext" start="#idtext71"/>  
             <zone xml:id="pag61.det2" ulx="861" uly="965" lrx="967" lry="979" hand="#m1">   
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag61.det2 #pag61.det1"/>
             </zone>
@@ -2490,21 +2490,21 @@
             <zone xml:id="pag62.p1det" ulx="539" uly="859" lrx="573" lry="1565" hand="#m1" corresp="#pag62.p1t">
                <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag62.p1"/>
             </zone>
-            <zone xml:id="pag62.p1t" ulx="530" uly="839" lrx="1447" lry="1569" type="printedtext" start="idtext72"/>  
+            <zone xml:id="pag62.p1t" ulx="530" uly="839" lrx="1447" lry="1569" type="printedtext" start="#idtext72"/>  
          </zone>
          <zone xml:id="pag62.p2" points=" 545,1571 549,1675 1221,1677 1221,1617 1445,1617 1445,1569 ">
          <zone xml:id="pag62.p2det" ulx="549" uly="1575" lrx="583" lry="1661" hand="#m1" corresp="#pag62.p2t1">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag62.p2"/>
          </zone>
-         <zone xml:id="pag62.p2t1" ulx="580" uly="1582" lrx="1446" lry="1664" type="printedtext" start="idtext73"/>  
+         <zone xml:id="pag62.p2t1" ulx="580" uly="1582" lrx="1446" lry="1664" type="printedtext" start="#idtext73"/>  
             <zone xml:id="pag62.p2det2" points=" 973,1611 969,1621 1045,1637 1049,1629 " hand="#m1" corresp="#pag62.p2t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag62.p2det2"/>
             </zone>
-            <zone xml:id="pag62.p2t2" ulx="964" uly="1576" lrx="1075" lry="1618" type="printedtext" start="idtext74"/>  
+            <zone xml:id="pag62.p2t2" ulx="964" uly="1576" lrx="1075" lry="1618" type="printedtext" start="#idtext74"/>  
             <zone xml:id="pag62.p2det3" ulx="1137" uly="1657" lrx="1189" lry="1677" hand="#m1" corresp="#pag62.p2t3">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag62.p2det3"/>
             </zone>
-            <zone xml:id="pag62.p2t3" ulx="1130" uly="1621" lrx="1210" lry="1665" type="printedtext" start="idtext75"/>  
+            <zone xml:id="pag62.p2t3" ulx="1130" uly="1621" lrx="1210" lry="1665" type="printedtext" start="#idtext75"/>  
          </zone>
       </surface>   
       <surface xml:id="pag63">
@@ -2513,7 +2513,7 @@
             <zone xml:id="pag63.p1det" ulx="1201" uly="913" lrx="1227" lry="1043" hand="#m1" corresp="#pag63.p1t">
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag63.p1"/>
             </zone>
-            <zone xml:id="pag63.p1t" ulx="236" uly="874" lrx="1193" lry="1042" type="printedtext" start="idtext76"/>  
+            <zone xml:id="pag63.p1t" ulx="236" uly="874" lrx="1193" lry="1042" type="printedtext" start="#idtext76"/>  
          </zone>
          <zone xml:id="pag63.p2" points=" 1279,1085 455,1093 445,1137 233,1133 233,1205 901,1203 907,1149 1285,1165 ">
             <zone xml:id="pag63.p2det" ulx="1209" uly="1085" lrx="1271" lry="1193" hand="#m1" corresp="#pag63.p2t">
@@ -2522,18 +2522,18 @@
             <zone xml:id="pag63.p2det1" points=" 453,1095 445,1135 233,1141 233,1199 899,1207 901,1147 1201,1145 1201,1101 " hand="#m1" corresp="#pag63.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag63.p2det1"/>
             </zone> 
-            <zone xml:id="pag63.p2t" ulx="235" uly="1086" lrx="1199" lry="1203" type="printedtext" start="idtext77"/>  
+            <zone xml:id="pag63.p2t" ulx="235" uly="1086" lrx="1199" lry="1203" type="printedtext" start="#idtext77"/>  
          </zone> 
          <zone xml:id="pag63.p3" points=" 225,1399 219,1613 347,1617 353,1569 1447,1591 1449,1387 ">
             <zone xml:id="pag63.p3det" ulx="1187" uly="1421" lrx="1449" lry="1611" hand="#m1" corresp="#pag63.p3t">
                <metamark function="highlighting" rend="vertical_wavy_line_and_plus_sign" place="margin" target="#pag63.p3"/>
             </zone>
-            <zone xml:id="pag63.p3t" ulx="219" uly="1409" lrx="1192" lry="1616" type="printedtext" start="idtext78"/>  
+            <zone xml:id="pag63.p3t" ulx="219" uly="1409" lrx="1192" lry="1616" type="printedtext" start="#idtext78"/>  
          </zone> 
          <zone xml:id="pag63.p4" type="authornote" ulx="1201" uly="1637" lrx="1519" lry="1709" hand="#m1" corresp="#pag63.p4t">
             <line> importantissimo </line>
          </zone>
-         <zone xml:id="pag63.p4t" ulx="222" uly="1572" lrx="1192" lry="1997" type="printedtext" start="idtext79"/>  
+         <zone xml:id="pag63.p4t" ulx="222" uly="1572" lrx="1192" lry="1997" type="printedtext" start="#idtext79"/>  
       </surface>
       <surface xml:id="pag64">
          <graphic url="pag64.jpg" width="1668px" height="2500px"/>
@@ -2541,7 +2541,7 @@
             <zone xml:id="pag64.det1" points=" 613,1525 615,1507 571,1505 569,611 537,613 533,1527 " hand="#m1">
                <metamark function="highlighting" rend="corner_bracket" place="margin" target="#pag64.det"/>
             </zone>
-            <zone xml:id="pag64.t" ulx="562" uly="610" lrx="1450" lry="1505" type="printedtext" start="idtext80"/>  
+            <zone xml:id="pag64.t" ulx="562" uly="610" lrx="1450" lry="1505" type="printedtext" start="#idtext80"/>  
          </zone>  
       </surface>
       <surface xml:id="pag65">
@@ -2550,7 +2550,7 @@
             <zone xml:id="pag65.det1" ulx="1113" uly="923" lrx="1275" lry="1047">
                <metamark function="highlighting" rend="asterisk" place="margin" target="#pag65.det"/>
             </zone>
-            <zone xml:id="pag65.t" ulx="245" uly="894" lrx="1116" lry="1077" type="printedtext" start="idtext81"/>  
+            <zone xml:id="pag65.t" ulx="245" uly="894" lrx="1116" lry="1077" type="printedtext" start="#idtext81"/>  
          </zone>  
       </surface>
       <surface xml:id="pag66">
@@ -2559,18 +2559,18 @@
          <zone xml:id="pag66.p1det" ulx="413" uly="431" lrx="463" lry="529" hand="#m1" corresp="#pag66.p1t">
             <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag66.p1"/>
          </zone>   
-         <zone xml:id="pag66.p1t" ulx="458" uly="430" lrx="1419" lry="518" type="printedtext" start="idtext82"/>  
+         <zone xml:id="pag66.p1t" ulx="458" uly="430" lrx="1419" lry="518" type="printedtext" start="#idtext82"/>  
          </zone>
          <zone xml:id="pag66.p2" points=" 1333,673 1327,727 185,731 187,849 1449,829 1431,673 ">
          <zone xml:id="pag66.p2det" ulx="189" uly="715" lrx="463" lry="837" hand="#m1" corresp="#pag66.p2t">
             <metamark function="highlighting" rend="double_straight_line_and_ics" place="margin" target="#pag66.p2"/>  
          </zone> 
-         <zone xml:id="pag66.p2t" ulx="460" uly="693" lrx="1420" lry="835" type="printedtext" start="idtext83"/>  
+         <zone xml:id="pag66.p2t" ulx="460" uly="693" lrx="1420" lry="835" type="printedtext" start="#idtext83"/>  
          </zone>
          <zone xml:id="pag66.p3" type="authornote" ulx="247" uly="1127" lrx="419" lry="1211" hand="#m1" corresp="#pag66.p3t">
             <line> perfetto </line>
          </zone>
-         <zone xml:id="pag66.p3t" ulx="458" uly="1117" lrx="1418" lry="1206" type="printedtext" start="idtext84"/>  
+         <zone xml:id="pag66.p3t" ulx="458" uly="1117" lrx="1418" lry="1206" type="printedtext" start="#idtext84"/>  
       </surface>
       <surface xml:id="pag68">
          <graphic url="pag68.jpg" width="1668px" height="2500px"/>
@@ -2578,7 +2578,7 @@
          <zone xml:id="pag68.det1" ulx="583" uly="1783" lrx="645" lry="1985" hand="#m1" corresp="#pag68.t">
             <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag68.det"/>
          </zone>
-         <zone xml:id="pag68.t" ulx="636" uly="1776" lrx="1502" lry="1962" type="printedtext" start="idtext85"/>  
+         <zone xml:id="pag68.t" ulx="636" uly="1776" lrx="1502" lry="1962" type="printedtext" start="#idtext85"/>  
          </zone>
       </surface>
       <surface xml:id="pag69">
@@ -2587,11 +2587,11 @@
             <zone xml:id="pag69.det1" ulx="1097" uly="1033" lrx="1151" lry="1203" hand="#m1" corresp="#pag69.t1">
                <metamark function="highlighting" rend="square_bracket_and_straight_vertical_line" place="margin" target="#pag69.det"/>
             </zone> 
-            <zone xml:id="pag69.t1" ulx="234" uly="1044" lrx="1100" lry="1189" type="printedtext" start="idtext86"/>  
+            <zone xml:id="pag69.t1" ulx="234" uly="1044" lrx="1100" lry="1189" type="printedtext" start="#idtext86"/>  
             <zone xml:id="pag69.det2" ulx="421" uly="1175" lrx="995" lry="1193" hand="#m1" corresp="#pag69.t2">   
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag69.det2"/>
             </zone>
-            <zone xml:id="pag69.t2" ulx="420" uly="1145" lrx="1021" lry="1188" type="printedtext" start="idtext87"/>  
+            <zone xml:id="pag69.t2" ulx="420" uly="1145" lrx="1021" lry="1188" type="printedtext" start="#idtext87"/>  
          </zone>
       </surface>
       <surface xml:id="pag70">
@@ -2603,18 +2603,18 @@
                <line> libertà-au </line>
                <line> torità. </line>
             </zone> 
-            <zone xml:id="pag70.p1det1" points=" 437,459 455,683 1433,671 1437,415 1119,405 1115,457 ">
-               <zone xml:id="pag70.p1det1m" points=" 439,461 461,685 481,689 467,463 " hand="#m1" corresp="#pag70.p1t">
+            <zone xml:id="pag70.p1det1" points=" 437,459 455,683 1433,671 1437,415 1119,405 1115,457 " corresp="#pag70.p1t">
+               <zone xml:id="pag70.p1det1m" points=" 439,461 461,685 481,689 467,463 " hand="#m1">
                   <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag70.p1det #pag70.p1det1"/>
             </zone>
-            <zone xml:id="pag70.p1t" ulx="463" uly="434" lrx="1425" lry="679" type="printedtext" start="idtext88"/>  
+            <zone xml:id="pag70.p1t" ulx="463" uly="434" lrx="1425" lry="679" type="printedtext" start="#idtext88"/>  
             </zone>
          </zone>
          <zone xml:id="pag70.p2" points=" 437,1159 433,1323 1215,1315 1213,1265 1449,1271 1433,1163 " hand="#m1">
             <zone xml:id="pag70.p2det" ulx="437" uly="1169" lrx="483" lry="1313" hand="#m1" corresp="#pag70.p2t">
                <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag70.p2"/>
             </zone> 
-            <zone xml:id="pag70.p2t" ulx="473" uly="1116" lrx="1438" lry="1313" type="printedtext" start="idtext89"/>  
+            <zone xml:id="pag70.p2t" ulx="473" uly="1116" lrx="1438" lry="1313" type="printedtext" start="#idtext89"/>  
          </zone>
       </surface>
       <surface xml:id="pag72">
@@ -2623,7 +2623,7 @@
          <zone xml:id="pag72.det1" ulx="553" uly="807" lrx="595" lry="887" hand="#m1" corresp="#pag72.t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag72.det"/>
          </zone>
-         <zone xml:id="pag72.t" ulx="588" uly="794" lrx="1459" lry="876" type="printedtext" start="idtext90"/>  
+         <zone xml:id="pag72.t" ulx="588" uly="794" lrx="1459" lry="876" type="printedtext" start="#idtext90"/>  
          </zone>  
       </surface>
       <surface xml:id="pag74">
@@ -2635,13 +2635,13 @@
             <zone xml:id="pag74.p1det1" ulx="621" uly="885" lrx="929" lry="909" hand="#m1" corresp="#pag74.p1t">   
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag74.p1det1 #pag74.p1det"/>
             </zone>
-            <zone xml:id="pag74.p1t" ulx="624" uly="858" lrx="942" lry="896" type="printedtext" start="idtext91"/>  
+            <zone xml:id="pag74.p1t" ulx="624" uly="858" lrx="942" lry="896" type="printedtext" start="#idtext91"/>  
          </zone>
          <zone xml:id="pag74.p2" points=" 893,1333 893,1373 401,1359 413,1485 595,1475 593,1427 1423,1425 1415,1327 ">
             <zone xml:id="pag74.p2det" ulx="413" uly="1355" lrx="461" lry="1471" hand="#m1" corresp="#pag74.p2t">
                <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag74.p2"/>
             </zone>
-            <zone xml:id="pag74.p2t" ulx="457" uly="1328" lrx="1415" lry="1478" type="printedtext" start="idtext92"/>  
+            <zone xml:id="pag74.p2t" ulx="457" uly="1328" lrx="1415" lry="1478" type="printedtext" start="#idtext92"/>  
          </zone>
       </surface>
       <surface xml:id="pag75">
@@ -2649,7 +2649,7 @@
          <zone xml:id="pag75.det" ulx="239" uly="877" lrx="785" lry="895" hand="#m1" corresp="#pag75.t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag75.det"/>
          </zone>  
-         <zone xml:id="pag75.t" ulx="232" uly="842" lrx="797" lry="886" type="printedtext" start="idtext93"/>  
+         <zone xml:id="pag75.t" ulx="232" uly="842" lrx="797" lry="886" type="printedtext" start="#idtext93"/>  
       </surface>
       <surface xml:id="pag77">
          <graphic url="pag77.jpg" width="1668px" height="2500px"/>
@@ -2664,7 +2664,7 @@
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag77.p1det #pag77.p1det1"/>
             </zone>
             </zone>
-            <zone xml:id="pag77.p1t" ulx="258" uly="450" lrx="1216" lry="658" type="printedtext" start="idtext94"/>  
+            <zone xml:id="pag77.p1t" ulx="258" uly="450" lrx="1216" lry="658" type="printedtext" start="#idtext94"/>  
          </zone>      
          <zone xml:id="pag77.p2" points=" 1411,1807 763,1833 765,1889 257,1895 259,2005 1075,1981 1067,1937 1443,1933 ">   
             <zone xml:id="pag77.p2det" ulx="1235" uly="1811" lrx="1409" lry="1961" hand="#m1" corresp="#pag77.p2t">
@@ -2673,7 +2673,7 @@
             <zone xml:id="pag77.p2det1" points=" 1089,1821 1073,1871 277,1891 275,1953 709,1945 715,1895 1237,1887 1237,1819 " corresp="#pag77.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag77.p2det1"/>
             </zone> 
-            <zone xml:id="pag77.p2t" ulx="278" uly="1841" lrx="1233" lry="1926" type="printedtext" start="idtext95"/>  
+            <zone xml:id="pag77.p2t" ulx="278" uly="1841" lrx="1233" lry="1926" type="printedtext" start="#idtext95"/>  
          </zone>
       </surface>
       <surface xml:id="pag79">
@@ -2687,7 +2687,7 @@
                <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag79.det1 #pag79.det2"/>
             </zone>
             </zone>
-            <zone xml:id="pag79.t" ulx="247" uly="444" lrx="1199" lry="652" type="printedtext" start="idtext96"/>  
+            <zone xml:id="pag79.t" ulx="247" uly="444" lrx="1199" lry="652" type="printedtext" start="#idtext96"/>  
          </zone>
       </surface>
       <surface xml:id="pag82">
@@ -2696,7 +2696,7 @@
          <zone xml:id="pag82.det1" ulx="525" uly="583" lrx="569" lry="791" hand="#m1" corresp="#pag82.t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag82.det"/>
          </zone> 
-         <zone xml:id="pag82.t" ulx="569" uly="602" lrx="1433" lry="832" type="printedtext" start="idtext97"/>  
+         <zone xml:id="pag82.t" ulx="569" uly="602" lrx="1433" lry="832" type="printedtext" start="#idtext97"/>  
          </zone>
       </surface>
       <surface xml:id="pag83">
@@ -2705,7 +2705,7 @@
          <zone xml:id="pag83.det1" ulx="1085" uly="497" lrx="1115" lry="903" hand="#m1" corresp="#pag83.t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag83.det"/>
          </zone> 
-         <zone xml:id="pag83.t" ulx="195" uly="487" lrx="1087" lry="954" type="printedtext" start="idtext98"/>  
+         <zone xml:id="pag83.t" ulx="195" uly="487" lrx="1087" lry="954" type="printedtext" start="#idtext98"/>  
          </zone>
       </surface>
       <surface xml:id="pag84">
@@ -2714,7 +2714,7 @@
          <zone xml:id="pag84.det1" points=" 623,691 581,729 597,1787 553,1789 519,1387 553,695 " hand="#m1" corresp="#pag84.t">
             <metamark function="highlighting" rend="corner_bracket" place="margin" target="#pag84.det"/>
          </zone>  
-         <zone xml:id="pag84.t" ulx="597" uly="708" lrx="1465" lry="1795" type="printedtext" start="idtext99"/>  
+         <zone xml:id="pag84.t" ulx="597" uly="708" lrx="1465" lry="1795" type="printedtext" start="#idtext99"/>  
          </zone>
       </surface>
       <surface xml:id="pag85">
@@ -2726,7 +2726,7 @@
             <zone xml:id="pag85.p1det1" points=" 825,1507 823,1545 255,1547 269,1665 1249,1657 1233,1491 " hand="#m1" corresp="#pag85.p1t">&gt;   
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag85.p1det1"/>
             </zone>
-            <zone xml:id="pag85.p1t" ulx="274" uly="1501" lrx="1233" lry="1643" type="printedtext" start="idtext100"/>  
+            <zone xml:id="pag85.p1t" ulx="274" uly="1501" lrx="1233" lry="1643" type="printedtext" start="#idtext100"/>  
          </zone>  
          <zone xml:id="pag85.p2" points=" 247,1663 259,1965 1075,1969 1077,1931 1447,1933 1445,1645 ">
             <zone xml:id="pag85.p2det" points=" 1245,1721 1253,1773 1259,1837 1259,1909 1453,1925 1437,1711 " hand="#m1" corresp="#pag85.p2t">
@@ -2744,7 +2744,7 @@
                <zone xml:id="right_line85" points=" 1261,1941 1263,1857 1259,1811 1253,1769 1235,1669 1219,1669 1247,1937 "/>
                <zone xml:id="left_line85" points=" 271,1685 293,1929 259,1933 255,1691 "/>
             </zone>
-            <zone xml:id="pag85.p2t" ulx="277" uly="1670" lrx="1237" lry="1960" type="printedtext" start="idtext101"/>  
+            <zone xml:id="pag85.p2t" ulx="277" uly="1670" lrx="1237" lry="1960" type="printedtext" start="#idtext101"/>  
          </zone>
          </surface>
       <surface xml:id="pag86">
@@ -2752,7 +2752,7 @@
          <zone xml:id="pag86.p1" ulx="587" uly="531" lrx="1465" lry="623" hand="#m1" corresp="#pag86.p1t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag86.p1"/>
          </zone>
-         <zone xml:id="pag86.p1t" ulx="595" uly="531" lrx="1459" lry="614" type="printedtext" start="idtext102"/>  
+         <zone xml:id="pag86.p1t" ulx="595" uly="531" lrx="1459" lry="614" type="printedtext" start="#idtext102"/>  
          <zone xml:id="pag86.p2" ulx="565" uly="1039" lrx="1079" lry="1107">
             <zone xml:id="pag86.p2det" ulx="555" uly="1045" lrx="595" lry="1119" hand="#m1" corresp="#pag86.p2t">
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag86.p2"/>
@@ -2760,7 +2760,7 @@
             <zone xml:id="pag86.p2det1" ulx="595" uly="1085" lrx="1033" lry="1105" hand="#m1" corresp="#pag86.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag86.p2det1"/>
             </zone> 
-            <zone xml:id="pag86.p2t" ulx="601" uly="1056" lrx="1061" lry="1101" type="printedtext" start="idtext103"/>  
+            <zone xml:id="pag86.p2t" ulx="601" uly="1056" lrx="1061" lry="1101" type="printedtext" start="#idtext103"/>  
          </zone> 
       </surface>
       <surface xml:id="pag88">
@@ -2769,7 +2769,7 @@
          <zone xml:id="pag88.p1det" ulx="457" uly="581" lrx="497" lry="689" hand="#m1" corresp="#pag88.p1t">   
             <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag88.p1"/>
          </zone>
-         <zone xml:id="pag88.p1t" ulx="501" uly="592" lrx="1453" lry="687" type="printedtext" start="idtext104"/>  
+         <zone xml:id="pag88.p1t" ulx="501" uly="592" lrx="1453" lry="687" type="printedtext" start="#idtext104"/>  
          </zone>
          <zone xml:id="pag88.p2" type="authornote" ulx="123" uly="761" lrx="503" lry="1051" hand="#m1" corresp="#pag88.p2t">
             <line> Come non c'è il </line>
@@ -2789,12 +2789,12 @@
             <line> Diritto trascenden </line>
             <line> tale. </line>
          </zone>
-         <zone xml:id="pag88.p2t" ulx="486" uly="752" lrx="1470" lry="902" type="printedtext" start="idtext105"/>  
+         <zone xml:id="pag88.p2t" ulx="486" uly="752" lrx="1470" lry="902" type="printedtext" start="#idtext105"/>  
          <zone xml:id="pag88.p3" points=" 465,1761 469,1917 1229,1923 1229,1879 1457,1875 1451,1769 ">
          <zone xml:id="pag88.p3det" ulx="469" uly="1763" lrx="503" lry="1905" hand="#m1" corresp="#pag88.p3t">   
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag88.p3"/>
          </zone>
-         <zone xml:id="pag88.p3t" ulx="488" uly="1720" lrx="1461" lry="1930" type="printedtext" start="idtext106"/>  
+         <zone xml:id="pag88.p3t" ulx="488" uly="1720" lrx="1461" lry="1930" type="printedtext" start="#idtext106"/>  
          </zone>
       </surface>
       <surface xml:id="pag89">
@@ -2803,11 +2803,11 @@
             <zone xml:id="pag89.det1" points=" 1071,553 1285,541 1273,1363 1027,1369 1025,1343 1083,1311 " hand="#m1" corresp="#pag89.t1">
                <metamark function="highlighting" rend="square_barcket_and_ics" place="margin" target="#pag89.det1"/>
             </zone>
-            <zone xml:id="pag89.t1" ulx="194" uly="553" lrx="1095" lry="1363" type="printedtext" start="idtext107"/>  
+            <zone xml:id="pag89.t1" ulx="194" uly="553" lrx="1095" lry="1363" type="printedtext" start="#idtext107"/>  
             <zone xml:id="pag89.det2" ulx="203" uly="679" lrx="781" lry="693" hand="#m1" corresp="#pag89.t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag89.det2"/>
             </zone>
-            <zone xml:id="pag89.t2" ulx="207" uly="655" lrx="814" lry="683" type="printedtext" start="idtext108"/>  
+            <zone xml:id="pag89.t2" ulx="207" uly="655" lrx="814" lry="683" type="printedtext" start="#idtext108"/>  
          </zone>
       </surface>     
       <surface xml:id="pag90">
@@ -2815,7 +2815,7 @@
          <zone xml:id="pag90.p1" type="authornote" ulx="163" uly="415" lrx="337" lry="471" hand="#m1" corresp="#pag90.p1t">
                <line> non certo </line>
          </zone>
-         <zone xml:id="pag90.p1t" ulx="491" uly="429" lrx="1465" lry="531" type="printedtext" start="idtext109"/>  
+         <zone xml:id="pag90.p1t" ulx="491" uly="429" lrx="1465" lry="531" type="printedtext" start="#idtext109"/>  
          <zone xml:id="pag90.p2" points=" 157,837 155,1163 665,1127 669,1073 1461,1065 1467,843 ">   
             <zone xml:id="pag90.p2det" points=" 147,901 159,1159 487,1141 495,1007 443,997 433,889 " hand="#m1" corresp="#pag90.p2t">
                <line> separazione </line>
@@ -2831,7 +2831,7 @@
             <zone xml:id="pag90.p2det1m2" points=" 989,855 989,899 495,905 493,1067 751,1067 753,1015 1463,1019 1461,853 " hand="#m1" corresp="#pag90.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag90.p2det1m2 #pag90.p2det"/>
             </zone> 
-            <zone xml:id="pag90.p2t" ulx="493" uly="854" lrx="1460" lry="1062" type="printedtext" start="idtext110"/>  
+            <zone xml:id="pag90.p2t" ulx="493" uly="854" lrx="1460" lry="1062" type="printedtext" start="#idtext110"/>  
             </zone>
          </zone>
       </surface>
@@ -2841,17 +2841,17 @@
          <zone xml:id="pag93.p1det" ulx="1047" uly="1400" lrx="1083" lry="1543" hand="#m1" corresp="#pag93.p1t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag93.p1"/>
          </zone>
-         <zone xml:id="pag93.p1t" ulx="163" uly="1379" lrx="1059" lry="1570" type="printedtext" start="idtext111"/>  
+         <zone xml:id="pag93.p1t" ulx="163" uly="1379" lrx="1059" lry="1570" type="printedtext" start="#idtext111"/>  
          </zone>
          <zone xml:id="pag93.p2" points=" 894,1662 896,1701 164,1716 179,1820 339,1817 337,1769 1059,1749 1059,1652 " hand="#m1" corresp="#pag93.p2t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag93.p2"/>
          </zone> 
-         <zone xml:id="pag93.p2t" ulx="190" uly="1672" lrx="1052" lry="1798" type="printedtext" start="idtext112"/>  
+         <zone xml:id="pag93.p2t" ulx="190" uly="1672" lrx="1052" lry="1798" type="printedtext" start="#idtext112"/>  
          <zone xml:id="pag93.p3" points=" 1105,1739 346,1764 344,1815 186,1820 187,1911 526,1900 530,1859 1102,1856 ">
          <zone xml:id="pag93.p3det" ulx="1059" uly="1739" lrx="1098" lry="1887" hand="#m1" corresp="#pag93.p3t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag93.p3"/>
          </zone> 
-         <zone xml:id="pag93.p3t" ulx="193" uly="1762" lrx="1065" lry="1891" type="printedtext" start="idtext113"/>  
+         <zone xml:id="pag93.p3t" ulx="193" uly="1762" lrx="1065" lry="1891" type="printedtext" start="#idtext113"/>  
          </zone>
       </surface>
       <surface xml:id="pag96">
@@ -2877,7 +2877,7 @@
             <zone xml:id="pag96.p1det1" points=" 1035,449 1035,498 509,509 511,670 1091,665 1090,611 1473,601 1473,434 " hand="#m1" corresp="#pag96.p1t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag96.p1det1 #pag96.p1det"/>
             </zone>
-            <zone xml:id="pag96.p1t" ulx="499" uly="447" lrx="1468" lry="659" type="printedtext" start="idtext114"/>  
+            <zone xml:id="pag96.p1t" ulx="499" uly="447" lrx="1468" lry="659" type="printedtext" start="#idtext114"/>  
          </zone>
          <zone xml:id="pag96.p2" points=" 712,1996 170,2006 170,1737 1492,1723 1493,1936 708,1948 ">
             <zone xml:id="pag96.p2det" ulx="169" uly="1790" lrx="485" lry="1965" hand="#m1" corresp="#pag96.p2t">
@@ -2890,7 +2890,7 @@
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag96.p2det1 #pag96.p2det"/>
             </zone>
             </zone>
-            <zone xml:id="pag96.p2t" ulx="507" uly="1730" lrx="1490" lry="1936" type="printedtext" start="idtext115"/>  
+            <zone xml:id="pag96.p2t" ulx="507" uly="1730" lrx="1490" lry="1936" type="printedtext" start="#idtext115"/>  
          </zone> 
       </surface>
       <surface xml:id="pag98">
@@ -2904,7 +2904,7 @@
             <line> della psicologia e </line>
             <line> della volontà. </line>
          </zone>
-         <zone xml:id="pag98.t" ulx="513" uly="711" lrx="1482" lry="974" type="printedtext" start="idtext116"/>  
+         <zone xml:id="pag98.t" ulx="513" uly="711" lrx="1482" lry="974" type="printedtext" start="#idtext116"/>  
       </surface>
       <surface xml:id="pag100">
          <graphic url="pag100.jpg" width="1668px" height="2500px"/>
@@ -2931,11 +2931,11 @@
             <zone xml:id="pag100.p1det1m1" ulx="1456" uly="530" lrx="1492" lry="815" hand="#m1" corresp="#pag100.p1t1">   
                <metamark function="highlighting" rend="wavy" place="vertical line" target="#pag100.p1det1 #pag100.p1det"/>
             </zone>
-            <zone xml:id="pag100.p1t1" ulx="486" uly="520" lrx="1474" lry="876" type="printedtext" start="idtext117"/>  
+            <zone xml:id="pag100.p1t1" ulx="486" uly="520" lrx="1474" lry="876" type="printedtext" start="#idtext117"/>  
             <zone xml:id="pag100.p1det1m2" ulx="720" uly="546" lrx="1435" lry="575" hand="#m1" corresp="#pag100.p1t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag100.p1det1m2"/>  
             </zone>
-            <zone xml:id="pag100.p1t2" ulx="712" uly="513" lrx="1452" lry="559" type="printedtext" start="idtext118"/>  
+            <zone xml:id="pag100.p1t2" ulx="712" uly="513" lrx="1452" lry="559" type="printedtext" start="#idtext118"/>  
             </zone>
          </zone>
          <zone xml:id="pag100.p2" points=" 519,897 526,961 496,965 488,1082 249,1096 252,1505 492,1488 499,1065 824,1062 824,999 1460,992 1456,878 ">
@@ -2952,7 +2952,7 @@
             <zone xml:id="pag100.p2det1" points=" 529,895 533,947 499,951 498,1065 821,1064 820,999 1467,991 1463,871 " hand="#m1" corresp="#pag100.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag100.p2det1 #pag100.p2det"/>
             </zone> 
-            <zone xml:id="pag100.p2t" ulx="487" uly="902" lrx="1451" lry="1045" type="printedtext" start="idtext119"/>  
+            <zone xml:id="pag100.p2t" ulx="487" uly="902" lrx="1451" lry="1045" type="printedtext" start="#idtext119"/>  
          </zone>
       </surface>
       <surface xml:id="pag103">
@@ -2969,7 +2969,7 @@
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag103.det2m2 #pag103.det1"/>
             </zone>
             </zone>
-            <zone xml:id="pag103.t" ulx="255" uly="1886" lrx="1222" lry="1986" type="printedtext" start="idtext120"/>  
+            <zone xml:id="pag103.t" ulx="255" uly="1886" lrx="1222" lry="1986" type="printedtext" start="#idtext120"/>  
          </zone>
       </surface>
       <surface xml:id="pag105">
@@ -2989,7 +2989,7 @@
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag105.det2 #pag105.det1"/>
             </zone>
          </zone>
-         <zone xml:id="pag105.t" ulx="248" uly="1462" lrx="1207" lry="1569" type="printedtext" start="idtext121"/>  
+         <zone xml:id="pag105.t" ulx="248" uly="1462" lrx="1207" lry="1569" type="printedtext" start="#idtext121"/>  
          </zone>
       </surface>
       <surface xml:id="pag106">
@@ -2997,12 +2997,12 @@
          <zone xml:id="pag106.p1" points=" 825,1254 829,1298 597,1306 599,1402 1317,1394 1315,1346 1469,1348 1463,1238 " hand="#m1" corresp="#pag106.p1t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag106.p1"/> 
          </zone>
-         <zone xml:id="pag106.p1t" ulx="590" uly="1247" lrx="1467" lry="1386" type="printedtext" start="idtext122"/>  
+         <zone xml:id="pag106.p1t" ulx="590" uly="1247" lrx="1467" lry="1386" type="printedtext" start="#idtext122"/>  
          <zone xml:id="pag106.p2" points=" 565,1770 565,1922 727,1918 727,1874 1469,1860 1465,1766 ">
          <zone xml:id="pag106.p2det" ulx="569" uly="1784" lrx="611" lry="1918" hand="#m1" corresp="#pag106.p2t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag106.p2"/>
          </zone>
-         <zone xml:id="pag106.p2t" ulx="598" uly="1732" lrx="1473" lry="1910" type="printedtext" start="idtext123"/>  
+         <zone xml:id="pag106.p2t" ulx="598" uly="1732" lrx="1473" lry="1910" type="printedtext" start="#idtext123"/>  
          </zone>
       </surface>
       <surface xml:id="pag107">
@@ -3011,7 +3011,7 @@
          <zone xml:id="pag107.p1det" points=" 1139,533 1152,568 1140,891 1198,891 1153,531 " hand="#m1" corresp="#pag107.p1t">
             <metamark function="highlighting" rend="corner_bracket" place="margin" target="#pag107.p1"/>
          </zone>
-         <zone xml:id="pag107.p1t" ulx="202" uly="511" lrx="1157" lry="886" type="printedtext" start="idtext124"/>  
+         <zone xml:id="pag107.p1t" ulx="202" uly="511" lrx="1157" lry="886" type="printedtext" start="#idtext124"/>  
          </zone>
          <zone xml:id="pag107.p2" points=" 345,1510 348,1570 186,1570 191,1830 539,1836 541,1784 1501,1790 1502,1499 ">
             <zone xml:id="pag107.p2det" ulx="1203" uly="1671" lrx="1494" lry="1740" hand="#m1" corresp="#pag107.p2t1">
@@ -3021,11 +3021,11 @@
             <zone xml:id="pag107.p2det1m1" ulx="1163" uly="1536" lrx="1201" lry="1850" hand="#m1" corresp="#pag107.p2t1">
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag107.p2det1 #pag107.p2det"/>
             </zone> 
-            <zone xml:id="pag107.p2t1" ulx="204" uly="1511" lrx="1151" lry="1830" type="printedtext" start="idtext125"/>  
+            <zone xml:id="pag107.p2t1" ulx="204" uly="1511" lrx="1151" lry="1830" type="printedtext" start="#idtext125"/>  
             <zone xml:id="pag107.p2det1m2" points=" 885,1635 881,1674 201,1669 205,1832 550,1835 547,1788 1150,1779 1143,1625 " hand="#m1" corresp="#pag107.p2t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag107.p2det1m2"/>
             </zone> 
-            <zone xml:id="pag107.p2t2" ulx="202" uly="1619" lrx="1148" lry="1826" type="printedtext" start="idtext126"/>  
+            <zone xml:id="pag107.p2t2" ulx="202" uly="1619" lrx="1148" lry="1826" type="printedtext" start="#idtext126"/>  
             </zone>
          </zone> 
       </surface>
@@ -3035,7 +3035,7 @@
          <zone xml:id="pag108.p1det" points=" 491,619 498,455 455,455 457,585 " hand="#m1" corresp="#pag108.p1t">
             <metamark function="highlighting" rend="underlining" place="vertical_line" target="#pag108.p1"/>
          </zone>
-         <zone xml:id="pag108.p1t" ulx="506" uly="431" lrx="1467" lry="675" type="printedtext" start="idtext127"/>  
+         <zone xml:id="pag108.p1t" ulx="506" uly="431" lrx="1467" lry="675" type="printedtext" start="#idtext127"/>  
          </zone>
          <zone xml:id="pag108.p2" points=" 417,590 1459,577 1461,628 1002,638 1002,698 414,706 ">
             <zone xml:id="pag108.p2det" ulx="521" uly="681" lrx="984" lry="701" hand="#m1" corresp="#pag108.p2t">
@@ -3044,17 +3044,17 @@
             <zone xml:id="pag108.p2det1" ulx="407" uly="592" lrx="519" lry="717" hand="#m1" corresp="#pag108.p2t">
                <metamark function="highlighting" rend="ics" place="margin" target="#pag108.p2det"/>
             </zone>
-            <zone xml:id="pag108.p2t" ulx="518" uly="647" lrx="993" lry="699" type="printedtext" start="idtext128"/>  
+            <zone xml:id="pag108.p2t" ulx="518" uly="647" lrx="993" lry="699" type="printedtext" start="#idtext128"/>  
          </zone>
          <zone xml:id="pag108.p3" points=" 219,928 657,905 657,861 1472,851 1465,791 211,801 ">
             <zone xml:id="pag108.p3det" ulx="221" uly="842" lrx="455" lry="905" hand="#m1" corresp="#pag108.p3t1">
                <line> bellissimo </line>
             </zone> 
-            <zone xml:id="pag108.p3t1" ulx="509" uly="796" lrx="1461" lry="898" type="printedtext" start="idtext129"/>  
+            <zone xml:id="pag108.p3t1" ulx="509" uly="796" lrx="1461" lry="898" type="printedtext" start="#idtext129"/>  
             <zone xml:id="pag108.p3det1" points=" 1315,798 1300,839 509,851 511,905 657,905 657,861 1450,852 1448,801 " hand="#m1" corresp="#pag108.p3t2">   
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag108.p3det1 #pag108.p3det"/>
             </zone>
-            <zone xml:id="pag108.p3t2" ulx="509" uly="796" lrx="1461" lry="898" type="printedtext" start="idtext130"/>  
+            <zone xml:id="pag108.p3t2" ulx="509" uly="796" lrx="1461" lry="898" type="printedtext" start="#idtext130"/>  
          </zone> 
          <zone xml:id="pag108.p4" points=" 173,1152 174,1366 527,1351 542,1226 1357,1221 1352,1150 ">
             <zone xml:id="pag108.p4det" ulx="170" uly="1155" lrx="529" lry="1366" hand="#m1" corresp="#pag108.p4t">
@@ -3072,7 +3072,7 @@
             <zone xml:id="pag108.p4det1" ulx="695" uly="1200" lrx="1315" lry="1220" hand="#m1" corresp="#pag108.p4t">   
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag108.p4det1 #pag108.p4det"/>
             </zone>
-            <zone xml:id="pag108.p4t" ulx="692" uly="1173" lrx="1336" lry="1207" type="printedtext" start="idtext131"/>  
+            <zone xml:id="pag108.p4t" ulx="692" uly="1173" lrx="1336" lry="1207" type="printedtext" start="#idtext131"/>  
          </zone>
          <zone xml:id="pag108.p5" points=" 171,1457 1101,1470 1103,1429 1541,1425 1541,1751 527,1735 515,1865 174,1859 ">
          <zone xml:id="pag108.p5det" ulx="165" uly="1465" lrx="513" lry="1855" hand="#m1" corresp="#pag108.p5t1">
@@ -3097,8 +3097,8 @@
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag108.p5det1 #pag108.p5det"/>
          </zone>
          </zone>
-         <zone xml:id="pag108.p5t1" ulx="525" uly="1476" lrx="1473" lry="1686" type="printedtext" start="idtext132"/>  
-         <zone xml:id="pag108.p5t2" ulx="918" uly="1486" lrx="1375" lry="1531" type="printedtext" start="idtext133"/>    
+         <zone xml:id="pag108.p5t1" ulx="525" uly="1476" lrx="1473" lry="1686" type="printedtext" start="#idtext132"/>  
+         <zone xml:id="pag108.p5t2" ulx="918" uly="1486" lrx="1375" lry="1531" type="printedtext" start="#idtext133"/>    
          </zone>
       </surface> 
       <surface xml:id="pag109">
@@ -3107,16 +3107,16 @@
             <zone xml:id="pag109.p1det" ulx="252" uly="1252" lrx="911" lry="1266" corresp="#pag109.p1t1">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag109.p1m1"/>
             </zone> 
-            <zone xml:id="pag109.p1t1" ulx="234" uly="1221" lrx="947" lry="1263" type="printedtext" start="idtext134"/>  
+            <zone xml:id="pag109.p1t1" ulx="234" uly="1221" lrx="947" lry="1263" type="printedtext" start="#idtext134"/>  
             <zone xml:id="pag109.p1det1" ulx="1177" uly="1155" lrx="1457" lry="1283" corresp="#pag109.p1t2">
                <metamark function="highlighting" rend="vertical_wavy_line_and_dash" place="margin" target="#pag109.p1"/>
             </zone> 
-            <zone xml:id="pag109.p1t2" ulx="235" uly="1118" lrx="1177" lry="1257" type="printedtext" start="idtext135"/>  
+            <zone xml:id="pag109.p1t2" ulx="235" uly="1118" lrx="1177" lry="1257" type="printedtext" start="#idtext135"/>  
          </zone>  
          <zone xml:id="pag109.p2" type="authornote" ulx="1189" uly="1283" lrx="1459" lry="1337" hand="#m1" corresp="#pag109.p2t">
                <line> Male, Bene, </line>  
          </zone>
-         <zone xml:id="pag109.p2t" ulx="244" uly="1277" lrx="1195" lry="1563" type="printedtext" start="idtext136"/>  
+         <zone xml:id="pag109.p2t" ulx="244" uly="1277" lrx="1195" lry="1563" type="printedtext" start="#idtext136"/>  
          <zone xml:id="pag109.p3" points=" 395,1523 387,1581 239,1585 239,1697 415,1697 415,1645 1307,1637 1307,1493 ">
             <zone xml:id="pag109.p3det" ulx="1211" uly="1493" lrx="1259" lry="1593" hand="#m1" corresp="#pag109.p3t">
                <line> ? </line>
@@ -3124,7 +3124,7 @@
             <zone xml:id="pag109.p3det1" points=" 393,1537 387,1579 245,1587 243,1693 409,1693 413,1643 1195,1623 1191,1521 " hand="#m1" corresp="#pag109.p3t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag109.p3det1 #pag109.p3det"/>
             </zone>
-            <zone xml:id="pag109.p3t" ulx="245" uly="1539" lrx="1193" lry="1685" type="printedtext" start="idtext137"/>  
+            <zone xml:id="pag109.p3t" ulx="245" uly="1539" lrx="1193" lry="1685" type="printedtext" start="#idtext137"/>  
          </zone>
       </surface>
       <surface xml:id="pag110">
@@ -3138,7 +3138,7 @@
             <line> Ehi Ermetici? </line>
             <line> ... </line>
          </zone>
-         <zone xml:id="pag110.p1t" ulx="491" uly="454" lrx="1442" lry="765" type="printedtext" start="idtext138"/>  
+         <zone xml:id="pag110.p1t" ulx="491" uly="454" lrx="1442" lry="765" type="printedtext" start="#idtext138"/>  
          <zone xml:id="pag110.p2" points=" 795,717 795,761 507,767 503,883 1595,893 1595,711 ">   
             <zone xml:id="pag110.p2det" ulx="1481" uly="751" lrx="1593" lry="817" hand="#m1" corresp="#pag110.p2t">
                <line> <hi rend="italic"> Bergson </hi> </line>
@@ -3148,7 +3148,7 @@
                <metamark function="highlighting" rend="double_square_bracket" place="margin" target="#pag110.p2det1 #pag110.p2det"/>
             </zone>
             </zone>
-            <zone xml:id="pag110.p2t" ulx="497" uly="724" lrx="1447" lry="873" type="printedtext" start="idtext139"/>  
+            <zone xml:id="pag110.p2t" ulx="497" uly="724" lrx="1447" lry="873" type="printedtext" start="#idtext139"/>  
          </zone>
          <zone xml:id="pag110.p3" ulx="199" uly="1255" lrx="1583" lry="1901" hand="#m1">
               <line> Insomma, riportando la storia a manifestazione dell'"io" </line>
@@ -3179,7 +3179,7 @@
          <zone xml:id="pag111.det1" ulx="1055" uly="977" lrx="1113" lry="1167" hand="#m1" corresp="#pag111.t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag111.det"/>
          </zone> 
-         <zone xml:id="pag111.t" ulx="180" uly="970" lrx="1057" lry="1195" type="printedtext" start="idtext140"/>  
+         <zone xml:id="pag111.t" ulx="180" uly="970" lrx="1057" lry="1195" type="printedtext" start="#idtext140"/>  
          </zone>
       </surface>
       <surface xml:id="pag113">
@@ -3192,7 +3192,7 @@
             <zone xml:id="pag113.det2" ulx="753" uly="759" lrx="885" lry="795" hand="#m1">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag113.det2 #pag113.det1"/>
             </zone>
-            <zone xml:id="pag113.t" ulx="758" uly="736" lrx="909" lry="772" type="printedtext" start="idtext141"/>  
+            <zone xml:id="pag113.t" ulx="758" uly="736" lrx="909" lry="772" type="printedtext" start="#idtext141"/>  
          </zone>
       </surface>   
       <surface xml:id="pag115">
@@ -3212,7 +3212,7 @@
             <zone xml:id="pag115.det3" points=" 843,1631 843,1665 263,1675 263,1771 613,1775 617,1729 1207,1731 1205,1631 " hand="#m1" corresp="#pag115.t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag115.det3"/>   
             </zone>
-            <zone xml:id="pag115.t" ulx="265" uly="1611" lrx="1199" lry="1770" type="printedtext" start="idtext142"/>  
+            <zone xml:id="pag115.t" ulx="265" uly="1611" lrx="1199" lry="1770" type="printedtext" start="#idtext142"/>  
          </zone>
       </surface>    
       <surface xml:id="pag117">
@@ -3233,7 +3233,7 @@
                <zone xml:id="right_line117" ulx="1227" uly="1543" lrx="1257" lry="1707"/>
                <zone xml:id="left_line117" ulx="247" uly="1573" lrx="281" lry="1739"/>   
             </zone>
-            <zone xml:id="pag117.t" ulx="291" uly="1544" lrx="1240" lry="1746" type="printedtext" start="idtext143"/>  
+            <zone xml:id="pag117.t" ulx="291" uly="1544" lrx="1240" lry="1746" type="printedtext" start="#idtext143"/>  
          </zone>
       </surface>
       <surface xml:id="pag118">
@@ -3242,7 +3242,7 @@
             <zone xml:id="pag118.det1" hand="#m1" corresp="#pag118.t">
                <metamark function="hightlining" rend="wavy" place="vertical_line" target="#pag118.det"/>
             </zone>
-            <zone xml:id="pag118.t" ulx="565" uly="1684" lrx="1422" lry="1821" type="printedtext" start="idtext144"/>  
+            <zone xml:id="pag118.t" ulx="565" uly="1684" lrx="1422" lry="1821" type="printedtext" start="#idtext144"/>  
          </zone> 
       </surface>      
       <surface xml:id="pag119">
@@ -3255,7 +3255,7 @@
                <line> degli istinti </line>
                <line> <hi rend="italic"> Rilke </hi> </line>
             </zone>
-            <zone xml:id="pag119.t" ulx="280" uly="905" lrx="1218" lry="1214" type="printedtext" start="idtext145"/>  
+            <zone xml:id="pag119.t" ulx="280" uly="905" lrx="1218" lry="1214" type="printedtext" start="#idtext145"/>  
       </surface>
       <surface xml:id="pag122">
          <graphic url="pag122.jpg" width="1668px" height="2500px"/>
@@ -3263,7 +3263,7 @@
          <zone xml:id="pag122.det1" ulx="539" uly="959" lrx="587" lry="1443" hand="#m1" corresp="#pag122.t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag122.det"/>
          </zone>
-         <zone xml:id="pag122.t" ulx="573" uly="926" lrx="1468" lry="1447" type="printedtext" start="idtext146"/>  
+         <zone xml:id="pag122.t" ulx="573" uly="926" lrx="1468" lry="1447" type="printedtext" start="#idtext146"/>  
          </zone>
       </surface>
       <surface xml:id="pag123">
@@ -3272,7 +3272,7 @@
          <zone xml:id="pag123.det1" ulx="1073" uly="1277" lrx="1121" lry="1463" hand="#m1" corresp="#pag123.t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag123.det"/>
          </zone> 
-         <zone xml:id="pag123.t" ulx="573" uly="926" lrx="1468" lry="1447" type="printedtext" start="idtext147"/>  
+         <zone xml:id="pag123.t" ulx="573" uly="926" lrx="1468" lry="1447" type="printedtext" start="#idtext147"/>  
          </zone>
       </surface>
       <surface xml:id="pag124">
@@ -3281,7 +3281,7 @@
             <line> vedi Gentile </line>
             <line> <hi rend="italic"> settembre 1940 </hi> </line>
          </zone>
-         <zone xml:id="pag124.p1t" ulx="468" uly="435" lrx="1431" lry="523" type="printedtext" start="idtext148"/>  
+         <zone xml:id="pag124.p1t" ulx="468" uly="435" lrx="1431" lry="523" type="printedtext" start="#idtext148"/>  
          <zone xml:id="pag124.p2" ulx="399" uly="545" lrx="1456" lry="940">
          <zone xml:id="pag124.p2det" ulx="410" uly="632" lrx="455" lry="711" hand="#m3" corresp="#pag124.p2t">
             <line> ? </line>
@@ -3290,13 +3290,13 @@
          <zone xml:id="pag124.p2det1m" ulx="449" uly="725" lrx="472" lry="889" hand="#m3" corresp="#pag124.p2t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag124.p2det1 #pag124.p2det"/>
          </zone> 
-         <zone xml:id="pag124.p2t" ulx="466" uly="529" lrx="1428" lry="938" type="printedtext" start="idtext149"/>
+         <zone xml:id="pag124.p2t" ulx="466" uly="529" lrx="1428" lry="938" type="printedtext" start="#idtext149"/>
          </zone>
          <zone xml:id="pag124.p3" ulx="466" uly="536" lrx="1448" lry="1827">
          <zone xml:id="pag124.p3det" ulx="610" uly="1777" lrx="701" lry="1845" hand="#m1">
             <metamark function="highlighting" rend="ics" place="inline" target="#pag124.p3"/>
          </zone> 
-         <zone xml:id="pag124.p3t" ulx="470" uly="538" lrx="1440" lry="1813" type="printedtext" start="idtext150"/>
+         <zone xml:id="pag124.p3t" ulx="470" uly="538" lrx="1440" lry="1813" type="printedtext" start="#idtext150"/>
          </zone>
          </zone>
     </surface>
@@ -3306,7 +3306,7 @@
          <zone xml:id="pag125.det1" ulx="1059" uly="695" lrx="1127" lry="983" hand="#m3" corresp="#pag125.t">
             <metamark function="highlighting" rend="double_wavy" place="vertical_line" target="#pag125.det"/>
          </zone>  
-         <zone xml:id="pag125.t" ulx="192" uly="649" lrx="1062" lry="982" type="printedtext" start="idtext151"/>  
+         <zone xml:id="pag125.t" ulx="192" uly="649" lrx="1062" lry="982" type="printedtext" start="#idtext151"/>  
          </zone>
       </surface> 
       <surface xml:id="pag126">
@@ -3318,8 +3318,8 @@
               <zone xml:id="pag126.p1det2" points=" 1269,799 1267,851 465,849 471,915 1417,919 1407,797 " hand="#m3" corresp="#pag126.p1t2">
                  <metamark function="highlighting" rend="underlining" place="inline" target="#pag126.p1detm2"/>
               </zone>
-              <zone xml:id="pag126.p1t1" ulx="476" uly="600" lrx="1410" lry="906" type="printedtext" start="idtext152"/>  
-              <zone xml:id="pag126.p1t2" ulx="473" uly="804" lrx="1420" lry="911" type="printedtext" start="idtext153"/>  
+              <zone xml:id="pag126.p1t1" ulx="476" uly="600" lrx="1410" lry="906" type="printedtext" start="#idtext152"/>  
+              <zone xml:id="pag126.p1t2" ulx="473" uly="804" lrx="1420" lry="911" type="printedtext" start="#idtext153"/>  
          </zone>
          <zone xml:id="pag126.p2" ulx="131" uly="1267" lrx="1447" lry="1853">
             <zone xml:id="pag126.p2det" ulx="139" uly="1327" lrx="471" lry="1689" hand="#m1" corresp="#pag126.p2t">
@@ -3334,12 +3334,12 @@
             <zone xml:id="pag126.p2det1" points=" 593,1273 593,1319 469,1325 469,1449 879,1445 883,1391 1415,1397 1411,1265 " hand="#m3" corresp="#pag126.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag126.p2det1 #pag126.p2det"/>
             </zone>
-            <zone xml:id="pag126.p2t" ulx="460" uly="1271" lrx="1425" lry="1431" type="printedtext" start="idtext154"/>   
+            <zone xml:id="pag126.p2t" ulx="460" uly="1271" lrx="1425" lry="1431" type="printedtext" start="#idtext154"/>   
             <zone xml:id="pag26.p3" ulx="453" uly="1673" lrx="1421" lry="1857">
             <zone xml:id="pag126.p3det" ulx="453" uly="1675" lrx="480" lry="1852" hand="#m1" corresp="#pag126.p3t">
                <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag126.p3"/>
             </zone>
-            <zone xml:id="pag126.p3t" ulx="470" uly="1639" lrx="1400" lry="1845" type="printedtext" start="idtext155"/>     
+            <zone xml:id="pag126.p3t" ulx="470" uly="1639" lrx="1400" lry="1845" type="printedtext" start="#idtext155"/>     
             </zone>
          </zone>
       </surface>
@@ -3352,8 +3352,8 @@
             <zone xml:id="pag.129detm2" points=" 535,1577 533,1613 237,1625 237,1685 557,1681 561,1631 1103,1625 1101,1563 " hand="#m1" corresp="#pag129.t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag129.detm2"/>
             </zone> 
-            <zone xml:id="pag129.t1" ulx="235" uly="1482" lrx="1100" lry="1752" type="printedtext" start="idtext156"/>   
-            <zone xml:id="pag129.t2" ulx="237" uly="1575" lrx="1100" lry="1661" type="printedtext" start="idtext157"/>   
+            <zone xml:id="pag129.t1" ulx="235" uly="1482" lrx="1100" lry="1752" type="printedtext" start="#idtext156"/>   
+            <zone xml:id="pag129.t2" ulx="237" uly="1575" lrx="1100" lry="1661" type="printedtext" start="#idtext157"/>   
          </zone>
       </surface>
       <surface xml:id="pag130">
@@ -3367,7 +3367,7 @@
                   <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag130.p1det1 #pag130.p1det"/>
                </zone>
             </zone>
-            <zone xml:id="pag130.p1t" ulx="451" uly="918" lrx="1393" lry="1166" type="printedtext" start="idtext158"/>   
+            <zone xml:id="pag130.p1t" ulx="451" uly="918" lrx="1393" lry="1166" type="printedtext" start="#idtext158"/>   
          </zone>
          <zone xml:id="pag130.p2" points=" 135,1527 137,1633 471,1633 473,1603 1397,1603 1395,1531 ">
             <zone xml:id="pag130.p2det" ulx="143" uly="1533" lrx="435" lry="1639" hand="#m1" corresp="#pag130.p2t">
@@ -3379,7 +3379,7 @@
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag130.p2det1 #pag130.p2det"/>
             </zone>
             </zone>
-            <zone xml:id="pag130.p2t" ulx="450" uly="1546" lrx="1387" lry="1592" type="printedtext" start="idtext159"/>   
+            <zone xml:id="pag130.p2t" ulx="450" uly="1546" lrx="1387" lry="1592" type="printedtext" start="#idtext159"/>   
          </zone>
       </surface>
       <surface xml:id="pag132">
@@ -3393,7 +3393,7 @@
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag132.det2 #pag132.det1"/>
             </zone>
             </zone>
-            <zone xml:id="pag132.t" ulx="519" uly="886" lrx="1386" lry="1069" type="printedtext" start="idtext160"/>   
+            <zone xml:id="pag132.t" ulx="519" uly="886" lrx="1386" lry="1069" type="printedtext" start="#idtext160"/>   
          </zone>
       </surface>
       <surface xml:id="pag133">
@@ -3405,7 +3405,7 @@
             <zone xml:id="pag133.det2" ulx="415" uly="499" lrx="881" lry="523" hand="#m1" corresp="#pag133.t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag133.det2 #pag133.det1"/>
             </zone>
-            <zone xml:id="pag133.t" ulx="394" uly="460" lrx="891" lry="511" type="printedtext" start="idtext161"/>   
+            <zone xml:id="pag133.t" ulx="394" uly="460" lrx="891" lry="511" type="printedtext" start="#idtext161"/>   
          </zone>
       </surface>
       <surface xml:id="pag137">
@@ -3414,7 +3414,7 @@
             <zone xml:id="pag137.det1" ulx="1071" uly="1527" lrx="1121" lry="1705" hand="#m1" corresp="#pag137.t">
                <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag137.det"/>
             </zone>
-            <zone xml:id="pag137.t" ulx="202" uly="1530" lrx="1078" lry="1709" type="printedtext" start="idtext162"/>   
+            <zone xml:id="pag137.t" ulx="202" uly="1530" lrx="1078" lry="1709" type="printedtext" start="#idtext162"/>   
          </zone>
       </surface>
       <surface xml:id="pag139">
@@ -3431,7 +3431,7 @@
             <zone xml:id="pag139.p1det1" points=" 587,991 585,1023 245,1037 241,1097 1049,1095 1049,1045 1175,1043 1175,983 " hand="#m1" corresp="#pag139.p1t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag139.p1det1 #pag139.p1det"/>
             </zone>
-            <zone xml:id="pag139.p1t" ulx="238" uly="987" lrx="1178" lry="1073" type="printedtext" start="idtext163"/>   
+            <zone xml:id="pag139.p1t" ulx="238" uly="987" lrx="1178" lry="1073" type="printedtext" start="#idtext163"/>   
          </zone>
          <zone xml:id="pag139.p2" ulx="330" uly="1859" lrx="1458" lry="1936">
             <zone xml:id="pag139.p2det" ulx="1207" uly="1847" lrx="1469" lry="1935" hand="#m1" corresp="#pag139.p2t">
@@ -3440,7 +3440,7 @@
             <zone xml:id="pag139.p2det1" ulx="333" uly="1913" lrx="643" lry="1935" hand="#m1" corresp="#pag139.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag139.p2det1 #pag139.p2det"/>
             </zone>
-            <zone xml:id="pag139.p2t" ulx="324" uly="1883" lrx="644" lry="1922" type="printedtext" start="idtext164"/>   
+            <zone xml:id="pag139.p2t" ulx="324" uly="1883" lrx="644" lry="1922" type="printedtext" start="#idtext164"/>   
          </zone>
       </surface>
       <surface xml:id="pag140">
@@ -3452,7 +3452,7 @@
             <zone xml:id="pag140.p1det1" points=" 587,1347 583,1493 733,1495 737,1449 1449,1433 1443,1331 " hand="#m1" corresp="#pag140.p1t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag140.p1det1"/>
             </zone>
-            <zone xml:id="pag140.p1t" ulx="577" uly="1344" lrx="1443" lry="1482" type="printedtext" start="idtext165"/>   
+            <zone xml:id="pag140.p1t" ulx="577" uly="1344" lrx="1443" lry="1482" type="printedtext" start="#idtext165"/>   
          </zone>
          <zone xml:id="pag140.p2" points=" 537,1715 533,1877 811,1875 813,1831 1453,1823 1443,1711 ">
             <zone xml:id="pag140.p2det" ulx="549" uly="1725" lrx="591" lry="1897" hand="#m1" corresp="#pag140.p2t">
@@ -3461,7 +3461,7 @@
             <zone xml:id="pag140.p2det1" points=" 1065,1735 1063,1765 587,1777 593,1877 811,1873 807,1831 1445,1825 1443,1729 " hand="#m1" corresp="#pag140.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag140.p2det1"/>
             </zone> 
-            <zone xml:id="pag140.p2t" ulx="585" uly="1722" lrx="1450" lry="1868" type="printedtext" start="idtext166"/>   
+            <zone xml:id="pag140.p2t" ulx="585" uly="1722" lrx="1450" lry="1868" type="printedtext" start="#idtext166"/>   
          </zone> 
       </surface>
       <surface xml:id="pag142">
@@ -3470,7 +3470,7 @@
          <zone xml:id="pag142.det1" ulx="519" uly="1673" lrx="575" lry="2045" hand="#m1" corresp="#pag142.t">
             <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag142.det"/>
          </zone> 
-         <zone xml:id="pag142.t" ulx="577" uly="1670" lrx="1468" lry="2006" type="printedtext" start="idtext167"/>    
+         <zone xml:id="pag142.t" ulx="577" uly="1670" lrx="1468" lry="2006" type="printedtext" start="#idtext167"/>    
          </zone>
       </surface>
       <surface xml:id="pag143">
@@ -3479,7 +3479,7 @@
          <zone xml:id="pag143.det1" ulx="1081" uly="569" lrx="1167" lry="1695" hand="#m1" corresp="#pag143.t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag143.det"/>
          </zone> 
-         <zone xml:id="pag143.t" ulx="199" uly="589" lrx="1107" lry="1775" type="printedtext" start="idtext168"/>    
+         <zone xml:id="pag143.t" ulx="199" uly="589" lrx="1107" lry="1775" type="printedtext" start="#idtext168"/>    
          </zone>
       </surface>
       <surface xml:id="pag144">
@@ -3488,7 +3488,7 @@
          <zone xml:id="pag144.det1" ulx="555" uly="1239" lrx="589" lry="1553" hand="#m1" corresp="#pag144.t">
             <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag144.det"/>
          </zone>  
-         <zone xml:id="pag144.t" ulx="567" uly="1184" lrx="1463" lry="1511" type="printedtext" start="idtext169"/>    
+         <zone xml:id="pag144.t" ulx="567" uly="1184" lrx="1463" lry="1511" type="printedtext" start="#idtext169"/>    
          </zone>
       </surface>
       <surface xml:id="pag145">
@@ -3505,8 +3505,8 @@
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag145.det2m2"/>  
             </zone>
             </zone>
-            <zone xml:id="pag145.t1" ulx="263" uly="1062" lrx="1206" lry="1522" type="printedtext" start="idtext170"/>    
-            <zone xml:id="pag145.t2" ulx="257" uly="1063" lrx="1198" lry="1211" type="printedtext" start="idtext171"/>    
+            <zone xml:id="pag145.t1" ulx="263" uly="1062" lrx="1206" lry="1522" type="printedtext" start="#idtext170"/>    
+            <zone xml:id="pag145.t2" ulx="257" uly="1063" lrx="1198" lry="1211" type="printedtext" start="#idtext171"/>    
          </zone>
       </surface>
       <surface xml:id="pag146">
@@ -3515,7 +3515,7 @@
          <zone xml:id="pag146.det1" ulx="513" uly="1645" lrx="555" lry="1845" hand="#m1" corresp="#pag146.t">
             <metamark function="highlighting" rend="doppia" place="vertical_line" target="#pag146.det"/>
          </zone> 
-         <zone xml:id="pag146.t" ulx="552" uly="1652" lrx="1420" lry="1847" type="printedtext" start="idtext172"/>    
+         <zone xml:id="pag146.t" ulx="552" uly="1652" lrx="1420" lry="1847" type="printedtext" start="#idtext172"/>    
          </zone>
       </surface>
       <surface xml:id="pag148">
@@ -3527,8 +3527,8 @@
             <zone xml:id="pag148.det2" points=" 523,1131 521,1287 951,1289 947,1233 1373,1245 1383,1131 " hand="#m1" corresp="#pag148.t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag148.det2"/>
             </zone> 
-            <zone xml:id="pag148.t1" ulx="517" uly="1039" lrx="1374" lry="1286" type="printedtext" start="idtext173"/>    
-            <zone xml:id="pag148.t2" ulx="521" uly="1129" lrx="1372" lry="1318" type="printedtext" start="idtext174"/>    
+            <zone xml:id="pag148.t1" ulx="517" uly="1039" lrx="1374" lry="1286" type="printedtext" start="#idtext173"/>    
+            <zone xml:id="pag148.t2" ulx="521" uly="1129" lrx="1372" lry="1318" type="printedtext" start="#idtext174"/>    
          </zone>  
       </surface>
       <surface xml:id="pag150">
@@ -3540,13 +3540,13 @@
             <zone xml:id="pag150.p1det1" points=" 703,1195 703,1227 583,1239 581,1283 1213,1279 1211,1243 1445,1237 1441,1185 " hand="#m1">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag150.p1det1"/>
             </zone>
-            <zone xml:id="pag150.p1t" ulx="570" uly="707" lrx="1452" lry="1375" type="printedtext" start="idtext175"/>    
+            <zone xml:id="pag150.p1t" ulx="570" uly="707" lrx="1452" lry="1375" type="printedtext" start="#idtext175"/>    
          </zone>
          <zone xml:id="pag150.p2" ulx="523" uly="1643" lrx="1451" lry="1761">
          <zone xml:id="pag150.p2det" ulx="527" uly="1641" lrx="587" lry="1777" hand="#m1" corresp="#pag150.p2t">
               <metamark function="highlighting" rend="double_curve" place="vertical_line" target="#pag150.p2"/>
          </zone>
-         <zone xml:id="pag150.p2t" ulx="583" uly="1666" lrx="1437" lry="1755" type="printedtext" start="idtext176"/>    
+         <zone xml:id="pag150.p2t" ulx="583" uly="1666" lrx="1437" lry="1755" type="printedtext" start="#idtext176"/>    
          </zone>
       </surface>
       <surface xml:id="pag151">
@@ -3555,7 +3555,7 @@
          <zone xml:id="pag151.det1" ulx="1099" uly="1757" lrx="1179" lry="1971" hand="#m1" corresp="#pag151.t">
             <metamark function="highlighting" rend="triple_straight" place="vertical_line" target="#pag151.det"/>
          </zone>
-         <zone xml:id="pag151.t" ulx="235" uly="1745" lrx="1099" lry="1977" type="printedtext" start="idtext177"/>    
+         <zone xml:id="pag151.t" ulx="235" uly="1745" lrx="1099" lry="1977" type="printedtext" start="#idtext177"/>    
          </zone>
       </surface>    
       <surface xml:id="pag152">
@@ -3582,13 +3582,13 @@
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag152.p1det1m2 #pag152.p1det"/>
             </zone> 
             </zone>
-            <zone xml:id="pag152.p1t" ulx="496" uly="614" lrx="1443" lry="773" type="printedtext" start="idtext178"/>    
+            <zone xml:id="pag152.p1t" ulx="496" uly="614" lrx="1443" lry="773" type="printedtext" start="#idtext178"/>    
          </zone>   
          <zone xml:id="pag152.p2" ulx="452" uly="1707" lrx="1442" lry="1830">
             <zone xml:id="pag152.p2det" ulx="453" uly="1701" lrx="493" lry="1805" hand="#m1" corresp="#pag152.p2t">
                <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag152.p2"/>
             </zone>
-            <zone xml:id="pag152.p2t" ulx="492" uly="1709" lrx="1435" lry="1832" type="printedtext" start="idtext179"/>    
+            <zone xml:id="pag152.p2t" ulx="492" uly="1709" lrx="1435" lry="1832" type="printedtext" start="#idtext179"/>    
          </zone>
       </surface>
       <surface xml:id="pag153">
@@ -3597,12 +3597,12 @@
          <zone xml:id="pag153.p1det" ulx="1065" uly="1253" lrx="1141" lry="1563" hand="#m1" corresp="#pag153.p1t">
             <metamark function="highlighting" rend="double_straight" place="vertical_line" target="#pag153.p1"/>
          </zone>
-         <zone xml:id="pag153.p1t" ulx="200" uly="1224" lrx="1077" lry="1543" type="printedtext" start="idtext180"/>    
+         <zone xml:id="pag153.p1t" ulx="200" uly="1224" lrx="1077" lry="1543" type="printedtext" start="#idtext180"/>    
          </zone>
          <zone xml:id="pag153.p2" points=" 471,1807 471,1845 197,1849 197,1901 657,1893 661,1851 1067,1855 1065,1793 " hand="#m1" corresp="#pag153.p2t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag153.p2"/>
          </zone> 
-         <zone xml:id="pag153.p2t" ulx="202" uly="1806" lrx="1060" lry="1891" type="printedtext" start="idtext181"/>    
+         <zone xml:id="pag153.p2t" ulx="202" uly="1806" lrx="1060" lry="1891" type="printedtext" start="#idtext181"/>    
       </surface>
       <surface xml:id="pag154">
          <graphic url="pag154.jpg" width="1668px" height="2500px"/>
@@ -3610,7 +3610,7 @@
          <zone xml:id="pag154.det1" ulx="563" uly="1445" lrx="619" lry="1629" hand="#m1" corresp="#pag154.t">
             <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag154.det"/>
          </zone> 
-         <zone xml:id="pag154.t" ulx="608" uly="1401" lrx="1488" lry="1627" type="printedtext" start="idtext182"/>    
+         <zone xml:id="pag154.t" ulx="608" uly="1401" lrx="1488" lry="1627" type="printedtext" start="#idtext182"/>    
          </zone>
       </surface>
       <surface xml:id="pag157">
@@ -3630,7 +3630,7 @@
          <zone xml:id="pag158.det1" ulx="559" uly="511" lrx="595" lry="609" hand="#m1" corresp="#pag158.t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag158.det"/>
          </zone>
-         <zone xml:id="pag158.t" ulx="582" uly="483" lrx="1461" lry="607" type="printedtext" start="idtext183"/>    
+         <zone xml:id="pag158.t" ulx="582" uly="483" lrx="1461" lry="607" type="printedtext" start="#idtext183"/>    
          </zone>
       </surface>
       <surface xml:id="pag161">
@@ -3658,7 +3658,7 @@
                <metamark function="highlighting" rend="double_wavy" place="vertical_line" target="#pag161.p1det1 #pag161.p1det"/>
             </zone>
             </zone>
-            <zone xml:id="pag161.p1t" ulx="214" uly="590" lrx="1207" lry="806" type="printedtext" start="idtext184"/>    
+            <zone xml:id="pag161.p1t" ulx="214" uly="590" lrx="1207" lry="806" type="printedtext" start="#idtext184"/>    
          </zone>
          <zone xml:id="pag161.p2" points=" 151,785 159,1041 537,1033 537,967 1209,973 1197,751 851,751 849,793 "> 
             <zone xml:id="pag161.p2det" ulx="155" uly="757" lrx="243" lry="1087" hand="#m1" corresp="#pag161.p2t">
@@ -3667,7 +3667,7 @@
             <zone xml:id="pag161.p2det1" points=" 859,757 857,793 239,819 231,1033 533,1031 537,963 1193,961 1197,749 " corresp="#pag161.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag161.p2det1"/> 
             </zone>
-            <zone xml:id="pag161.p2t" ulx="230" uly="751" lrx="1199" lry="1021" type="printedtext" start="idtext185"/>    
+            <zone xml:id="pag161.p2t" ulx="230" uly="751" lrx="1199" lry="1021" type="printedtext" start="#idtext185"/>    
          </zone>
          <zone xml:id="pag161.p3" points=" 833,1613 833,1661 217,1661 217,1841 1111,1829 1113,1781 1261,1781 1253,1601 "> 
             <zone xml:id="pag161.p3det" ulx="1207" uly="1623" lrx="1257" lry="1813" hand="#m1" corresp="#pag161.p3t1">
@@ -3676,8 +3676,8 @@
             <zone xml:id="pag161.p3det1" points=" 507,1723 499,1769 235,1767 231,1841 1111,1835 1115,1781 1193,1781 1193,1723 " hand="#m1" corresp="#pag161.p3t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag161.p3det1"/>  
             </zone>
-            <zone xml:id="pag161.p3t1" ulx="237" uly="1605" lrx="1209" lry="1833" type="printedtext" start="idtext186"/>    
-            <zone xml:id="pag161.p3t2" ulx="230" uly="1720" lrx="1196" lry="1813" type="printedtext" start="idtext187"/>    
+            <zone xml:id="pag161.p3t1" ulx="237" uly="1605" lrx="1209" lry="1833" type="printedtext" start="#idtext186"/>    
+            <zone xml:id="pag161.p3t2" ulx="230" uly="1720" lrx="1196" lry="1813" type="printedtext" start="#idtext187"/>    
          </zone>
       </surface>  
       <surface xml:id="pag162">
@@ -3689,13 +3689,13 @@
             <zone xml:id="pag162.p1det1" points=" 547,1421 545,1509 677,1507 673,1461 1431,1447 1429,1387 " hand="#m1" corresp="#pag162.p1t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag162.p1det1"/>
             </zone>
-            <zone xml:id="pag162.p1t" ulx="538" uly="1363" lrx="1437" lry="1495" type="printedtext" start="idtext188"/>    
+            <zone xml:id="pag162.p1t" ulx="538" uly="1363" lrx="1437" lry="1495" type="printedtext" start="#idtext188"/>    
          </zone>
          <zone xml:id="pag162.p2" points=" 493,1783 487,1963 1185,1939 1185,1879 1431,1879 1425,1767 ">
             <zone xml:id="pag162.p2det" ulx="499" uly="1787" lrx="561" lry="1967" hand="#m1" corresp="#pag162.p2t">
                <metamark function="evidenziazione" rend="wavy" place="vertical_line" target="#pag162.p2"/>
             </zone> 
-            <zone xml:id="pag162.p2t" ulx="551" uly="1755" lrx="1434" lry="1929" type="printedtext" start="idtext189"/>    
+            <zone xml:id="pag162.p2t" ulx="551" uly="1755" lrx="1434" lry="1929" type="printedtext" start="#idtext189"/>    
          </zone>
       </surface>
       <surface xml:id="pag163">
@@ -3712,8 +3712,8 @@
                   <metamark function="highlighting" rend="underlining" place="inline" target="#pag163.p1det1m2"/>
                </zone> 
             </zone>
-            <zone xml:id="pag163.p1t1" uly="807" lrx="1199" lry="1177" type="printedtext" start="idtext190"/>    
-            <zone xml:id="pag163.p1t2" ulx="232" uly="1133" lrx="757" lry="1179" type="printedtext" start="idtext191"/>    
+            <zone xml:id="pag163.p1t1" uly="807" lrx="1199" lry="1177" type="printedtext" start="#idtext190"/>    
+            <zone xml:id="pag163.p1t2" ulx="232" uly="1133" lrx="757" lry="1179" type="printedtext" start="#idtext191"/>    
          </zone>
          <zone xml:id="pag163.p2" type="authornote" ulx="1187" uly="1217" lrx="1433" lry="1595" hand="#m1" corresp="#pag163.p2t"> 
             <line> il conoscere </line>
@@ -3724,14 +3724,14 @@
             <line> in un altro, </line>
             <line> è "stile" </line>
          </zone>
-         <zone xml:id="pag163.p2t" ulx="242" uly="1180" lrx="1200" lry="1278" type="printedtext" start="idtext192"/>    
+         <zone xml:id="pag163.p2t" ulx="242" uly="1180" lrx="1200" lry="1278" type="printedtext" start="#idtext192"/>    
       </surface>
       <surface xml:id="pag165">
          <graphic url="pag165.jpg" width="1668px" height="2500px"/>
          <zone xml:id="pag165.p1" ulx="245" uly="775" lrx="645" lry="803" hand="#m1" corresp="#pag165.p1t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag165.p1"/>
          </zone> 
-         <zone xml:id="pag165.p1t" ulx="249" uly="746" lrx="668" lry="795" type="printedtext" start="idtext193"/>    
+         <zone xml:id="pag165.p1t" ulx="249" uly="746" lrx="668" lry="795" type="printedtext" start="#idtext193"/>    
          <zone xml:id="pag165.p2" points=" 1059,829 1059,883 245,889 247,1375 531,1375 535,1325 1319,1321 1313,811 "> 
             <zone xml:id="pag165.p2det" ulx="1105" uly="787" lrx="1317" lry="1325" hand="#m1" corresp="#pag165.p2t">
                <metamark function="highlighting" rend="vertical_wavy_line_and_pound_sign" place="margin" target="#pag165.p2"/>
@@ -3739,7 +3739,7 @@
             <zone xml:id="pag165.p2det1" points=" 1063,837 1063,885 245,891 251,1375 537,1373 541,1321 1111,1317 1127,833 " hand="#m1" corresp="#pag165.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag165.p2det1"/>
             </zone>
-            <zone xml:id="pag165.p2t" ulx="244" uly="842" lrx="1128" lry="1364" type="printedtext" start="idtext194"/>    
+            <zone xml:id="pag165.p2t" ulx="244" uly="842" lrx="1128" lry="1364" type="printedtext" start="#idtext194"/>    
          </zone>
       </surface>
       <surface xml:id="pag166">
@@ -3751,7 +3751,7 @@
             <zone xml:id="pag166.det2" ulx="575" uly="547" lrx="1053" lry="571" hand="#m1" corresp="#pag166.t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag166.det2"/>
             </zone> 
-            <zone xml:id="pag166.t" ulx="568" uly="511" lrx="1065" lry="567" type="printedtext" start="idtext195"/>    
+            <zone xml:id="pag166.t" ulx="568" uly="511" lrx="1065" lry="567" type="printedtext" start="#idtext195"/>    
          </zone>  
       </surface>
       <surface xml:id="pag167">
@@ -3759,7 +3759,7 @@
          <zone xml:id="pag167.det" points=" 643,1217 639,1255 233,1269 233,1321 1107,1317 1101,1211 " hand="#m1" corresp="#pag167.t">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag167.det"/>
          </zone>  
-         <zone xml:id="pag167.t" ulx="244" uly="1216" lrx="1105" lry="1319" type="printedtext" start="idtext196"/>    
+         <zone xml:id="pag167.t" ulx="244" uly="1216" lrx="1105" lry="1319" type="printedtext" start="#idtext196"/>    
       </surface>
       <surface xml:id="pag168">
          <graphic url="Bassani_445.jpg" width="1668px" height="2500px"/>
@@ -3767,7 +3767,7 @@
          <zone xml:id="pag168.det1" ulx="539" uly="1055" lrx="575" lry="1221" hand="#m1" corresp="#pag168.t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag168.det"/>
          </zone>
-         <zone xml:id="pag168.t" ulx="573" uly="1033" lrx="1441" lry="1228" type="printedtext" start="idtext197"/>    
+         <zone xml:id="pag168.t" ulx="573" uly="1033" lrx="1441" lry="1228" type="printedtext" start="#idtext197"/>    
          </zone>
       </surface>
       <surface xml:id="pag169">
@@ -3788,7 +3788,7 @@
                   <metamark function="highlighting" rend="underlining" place="inline" target="#pag.169det2m2 #pag169.det1"/>
                </zone>
             </zone>
-            <zone xml:id="pag169.t" ulx="197" uly="1873" lrx="1176" lry="2012" type="printedtext" start="idtext198"/>    
+            <zone xml:id="pag169.t" ulx="197" uly="1873" lrx="1176" lry="2012" type="printedtext" start="#idtext198"/>    
          </zone>
       </surface>
       <surface xml:id="pag170"> 
@@ -3797,17 +3797,17 @@
          <zone xml:id="pag170.p1det" ulx="465" uly="1123" lrx="573" lry="1237" hand="#m1" corresp="#pag170.p1t">
             <metamark function="highlighting" rend="double_slash" place="margin" target="#pag170.p1"/>
          </zone>
-         <zone xml:id="pag170.p1t" ulx="607" uly="1072" lrx="1482" lry="1317" type="printedtext" start="idtext199"/>    
+         <zone xml:id="pag170.p1t" ulx="607" uly="1072" lrx="1482" lry="1317" type="printedtext" start="#idtext199"/>    
          </zone>
          <zone xml:id="pag170.p2" ulx="837" uly="1124" lrx="870" lry="1146" hand="#m1" corresp="#pag170.p2t">
             <metamark function="correction_of_misprint" rend="oblique_line" place="inline" target="#pag170.p2"/>
          </zone> 
-         <zone xml:id="pag170.p2t" ulx="829" uly="1133" lrx="866" lry="1164" type="printedtext" start="idtext200"/>      
+         <zone xml:id="pag170.p2t" ulx="829" uly="1133" lrx="866" lry="1164" type="printedtext" start="#idtext200"/>      
          <zone xml:id="pag170.p3" points=" 537,1695 535,1851 1057,1851 1059,1797 1489,1795 1473,1693 ">
             <zone xml:id="pag170.p3det" ulx="539" uly="1699" lrx="613" lry="1835" hand="#m1" corresp="#pag170.p3t">
                <metamark function="highlighting" rend="double_wavy" place="vertical_line" target="#pag170.p3"/>
             </zone> 
-            <zone xml:id="pag170.p3t" ulx="611" uly="1703" lrx="1477" lry="1849" type="printedtext" start="idtext201"/>      
+            <zone xml:id="pag170.p3t" ulx="611" uly="1703" lrx="1477" lry="1849" type="printedtext" start="#idtext201"/>      
          </zone>
       </surface>
       <surface xml:id="pag172">
@@ -3823,7 +3823,7 @@
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag172.det2 #pag172.det1"/>   
             </zone>
             </zone>
-            <zone xml:id="pag172.t" ulx="556" uly="489" lrx="1445" lry="675" type="printedtext" start="idtext202"/>      
+            <zone xml:id="pag172.t" ulx="556" uly="489" lrx="1445" lry="675" type="printedtext" start="#idtext202"/>      
          </zone> 
       </surface>
       <surface xml:id="pag175">
@@ -3832,28 +3832,28 @@
             <line> come corollario </line>
             <line> della precedente identità </line>
          </zone>  
-         <zone xml:id="pag175.t" ulx="255" uly="831" lrx="1136" lry="910" type="printedtext" start="idtext203"/>      
+         <zone xml:id="pag175.t" ulx="255" uly="831" lrx="1136" lry="910" type="printedtext" start="#idtext203"/>      
       </surface>
       <surface xml:id="pag193">
          <graphic url="pag193.jpg" width="1668px" height="2500px"/>
          <zone xml:id="pag193.p1" points=" 725,1211 723,1255 223,1253 223,1313 499,1321 501,1269 1199,1283 1199,1215 " hand="#m2" corresp="#pag193.p1">
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag193.p1"/>
          </zone>
-         <zone xml:id="pag193.p1t" ulx="213" uly="1200" lrx="1184" lry="1318" type="printedtext" start="idtext204"/>      
+         <zone xml:id="pag193.p1t" ulx="213" uly="1200" lrx="1184" lry="1318" type="printedtext" start="#idtext204"/>      
          <zone xml:id="pag193.p2" points=" 811,1531 811,1567 211,1571 209,1845 759,1853 761,1797 1209,1799 1215,1525 ">
          <zone xml:id="pag193.p2det" ulx="1157" uly="1543" lrx="1215" lry="1791" hand="#m2" corresp="#pag193.p2t">
             <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag193.p2"/>
          </zone> 
-         <zone xml:id="pag193.p2t" ulx="206" uly="1527" lrx="1167" lry="1737" type="printedtext" start="idtext205"/>  
+         <zone xml:id="pag193.p2t" ulx="206" uly="1527" lrx="1167" lry="1737" type="printedtext" start="#idtext205"/>  
          </zone>    
          <zone xml:id="pag193.p3" ulx="573" uly="1823" lrx="761" lry="1855" hand="#m2" corresp="#pag193.p3t">   
             <metamark function="highlighting" rend="underlining" place="inline" target="#pag193.p3"/>
          </zone>
-         <zone xml:id="pag193.p3t" ulx="495" uly="1795" lrx="745" lry="1843" type="printedtext" start="idtext206"/>  
+         <zone xml:id="pag193.p3t" ulx="495" uly="1795" lrx="745" lry="1843" type="printedtext" start="#idtext206"/>  
          <zone xml:id="pag193.p4" type="authornote" ulx="1207" uly="1753" lrx="1485" lry="1897" hand="#m3" corresp="#pag193.p4t">
                <line> scelta </line>
          </zone>  
-         <zone xml:id="pag193.p4t" ulx="207" uly="1895" lrx="1157" lry="2006" type="printedtext" start="idtext207"/>     
+         <zone xml:id="pag193.p4t" ulx="207" uly="1895" lrx="1157" lry="2006" type="printedtext" start="#idtext207"/>     
       </surface>
       <surface xml:id="pag195">
          <graphic url="pag195.jpg" width="1668px" height="2500px"/>
@@ -3864,8 +3864,8 @@
             <zone xml:id="pag195.det2" ulx="715" uly="1377" lrx="983" lry="1399" hand="#m2" corresp="#pag195.t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag195.det2"/>
             </zone> 
-            <zone xml:id="pag195.t1" ulx="230" uly="1243" lrx="1099" lry="1479" type="printedtext" start="idtext208"/>     
-            <zone xml:id="pag195.t2" ulx="720" uly="1349" lrx="982" lry="1393" type="printedtext" start="idtext209"/>     
+            <zone xml:id="pag195.t1" ulx="230" uly="1243" lrx="1099" lry="1479" type="printedtext" start="#idtext208"/>     
+            <zone xml:id="pag195.t2" ulx="720" uly="1349" lrx="982" lry="1393" type="printedtext" start="#idtext209"/>     
          </zone>  
       </surface>
       <surface xml:id="pag198">
@@ -3877,7 +3877,7 @@
             <zone xml:id="pag198.det2" points=" 989,673 989,699 547,713 543,767 913,761 911,721 1407,719 1411,659 " hand="#m2" corresp="#pag198.t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag198.det2"/>
             </zone> 
-            <zone xml:id="pag198.t" ulx="528" uly="655" lrx="1419" lry="753" type="printedtext" start="idtext210"/>     
+            <zone xml:id="pag198.t" ulx="528" uly="655" lrx="1419" lry="753" type="printedtext" start="#idtext210"/>     
          </zone>  
       </surface>
       <surface xml:id="pag210">
@@ -3889,8 +3889,8 @@
             <zone xml:id="pag210.det2" points=" 1219,1169 1217,1213 547,1239 545,1391 1423,1379 1421,1167 " hand="#m2" corresp="#pag210.t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag210.det2"/>
             </zone> 
-            <zone xml:id="pag210.t1" ulx="542" uly="1140" lrx="1451" lry="1370" type="printedtext" start="idtext211"/>     
-            <zone xml:id="pag210.t2" ulx="545" uly="1188" lrx="1423" lry="1364" type="printedtext" start="idtext212"/>     
+            <zone xml:id="pag210.t1" ulx="542" uly="1140" lrx="1451" lry="1370" type="printedtext" start="#idtext211"/>     
+            <zone xml:id="pag210.t2" ulx="545" uly="1188" lrx="1423" lry="1364" type="printedtext" start="#idtext212"/>     
          </zone>  
       </surface>
       <!-- pag 213 mancante-->
@@ -3907,7 +3907,7 @@
             <zone xml:id="pag213.det2" ulx="20" uly="20" lrx="20" lry="20" hand="#m2" corresp="#pag213.t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag213.det1"/>   
             </zone>
-            <zone xml:id="pag213.t" type="printedtext" start="idtext213"/>     
+            <zone xml:id="pag213.t" type="printedtext" start="#idtext213"/>     
          </zone>
       </surface>
       <surface xml:id="pag235">
@@ -3921,7 +3921,7 @@
                <metamark function="highlighting" rend="wavy" place="vertical_line" target="#pag235.det2 #pag235.det"/>   
             </zone>
          </zone>
-         <zone xml:id="pag235.t" ulx="213" uly="621" lrx="1103" lry="957" type="printedtext" start="idtext214"/>     
+         <zone xml:id="pag235.t" ulx="213" uly="621" lrx="1103" lry="957" type="printedtext" start="#idtext214"/>     
          </zone>
       </surface>
       <surface xml:id="pag240">
@@ -3936,7 +3936,7 @@
                </choice>
             </line>
          </zone> 
-         <zone xml:id="pag240.p1t" ulx="488" uly="978" lrx="1483" lry="1246" type="printedtext" start="idtext215"/>     
+         <zone xml:id="pag240.p1t" ulx="488" uly="978" lrx="1483" lry="1246" type="printedtext" start="#idtext215"/>     
          <zone xml:id="pag240.p2" points=" 135,1229 1561,1243 1545,1467 1075,1465 1077,1507 135,1509 "> 
             <zone xml:id="pag240.p2det" ulx="133" uly="1231" lrx="475" lry="1475" hand="#m2" corresp="#pag240.p2t">
                <line> 
@@ -3951,7 +3951,7 @@
                <metamark function="highlighting" rend="straight" place="vertical_line" target="#pag240.p2det1 #pag240.p2det"/> 
             </zone>
             </zone>
-            <zone xml:id="pag240.p2t" ulx="489" uly="1250" lrx="1472" lry="1520" type="printedtext" start="idtext216"/>     
+            <zone xml:id="pag240.p2t" ulx="489" uly="1250" lrx="1472" lry="1520" type="printedtext" start="#idtext216"/>     
          </zone>
       </surface> 
       <surface xml:id="pag247">
@@ -3963,7 +3963,7 @@
             <zone xml:id="pag247.det2" points=" 285,1483 285,1581 857,1581 861,1537 1165,1539 1159,1479 " hand="#m1" corresp="#pag247.t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag247.det2"/>
             </zone> 
-            <zone xml:id="pag247.t" ulx="278" uly="1473" lrx="1155" lry="1579" type="printedtext" start="idtext217"/>     
+            <zone xml:id="pag247.t" ulx="278" uly="1473" lrx="1155" lry="1579" type="printedtext" start="#idtext217"/>     
          </zone>  
       </surface>
       <surface xml:id="pag248">
@@ -3975,8 +3975,8 @@
             <zone xml:id="pag248.p1det1" points=" 645,955 645,987 557,993 553,1049 673,1049 673,1005 1423,1001 1423,949 " hand="#m1" corresp="#pag248.p1t2">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag248.p1det1"/>
             </zone>
-            <zone xml:id="pag248.p1t1" ulx="550" uly="892" lrx="1458" lry="1233" type="printedtext" start="idtext218"/>     
-            <zone xml:id="pag248.p1t2" ulx="558" uly="943" lrx="1435" lry="1037" type="printedtext" start="idtext219"/>     
+            <zone xml:id="pag248.p1t1" ulx="550" uly="892" lrx="1458" lry="1233" type="printedtext" start="#idtext218"/>     
+            <zone xml:id="pag248.p1t2" ulx="558" uly="943" lrx="1435" lry="1037" type="printedtext" start="#idtext219"/>     
          </zone>
          <zone xml:id="pag248.p2" points=" 975,1351 975,1373 485,1363 481,1485 873,1477 873,1435 1465,1441 1457,1341 ">
             <zone xml:id="pag248.p2det" ulx="487" uly="1363" lrx="557" lry="1483" hand="#m1" corresp="#pag248.p2t"> 
@@ -3985,7 +3985,7 @@
             <zone xml:id="pag248.p2det1" points=" 1173,1343 1173,1369 555,1379 555,1441 1161,1437 1161,1391 1461,1383 1457,1343 " hand="#m1" corresp="#pag248.p2t">
                <metamark function="highlighting" rend="underlining" place="inline" target="#pag248.p2det1"/>
             </zone> 
-            <zone xml:id="pag248.p2t" ulx="558" uly="943" lrx="1435" lry="1037" type="printedtext" start="idtext220"/>     
+            <zone xml:id="pag248.p2t" ulx="558" uly="943" lrx="1435" lry="1037" type="printedtext" start="#idtext220"/>     
          </zone>  
       </surface>  
    </sourceDoc>
