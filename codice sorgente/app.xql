@@ -14,6 +14,7 @@ import module namespace lib="http://exist-db.org/xquery/html-templating/lib";
 import module namespace config="http://exist-db.org/apps/postille/config" at "config.xqm";
 (: modulo stanford nlp ner :)
 import module namespace ner = "http://exist-db.org/xquery/stanford-nlp/ner";
+import module namespace nlp="http://exist-db.org/xquery/stanford-nlp";
 (: modulo kwic :)
 import module namespace kwic= "http://exist-db.org/xquery/kwic";
 (: dichiarazione namespace tei :)
@@ -179,11 +180,11 @@ declare function app:cercaradice($postille as xs:string?){
         if(contains($stringa, '.'))
     then 
         <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
+        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
         <td>{kwic:summarize($hit, <config width="100"/>)}</td>
         </tr>
     else <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
+        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
         <td>{kwic:summarize($hit, <config width="100"/>)}</td>
         </tr>
         
@@ -233,12 +234,12 @@ declare function app:fuzzy($fuzzy as xs:string?){
     then
             
             <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
+        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
         <td><p>{kwic:summarize($hit, <config width="100"/>)}</p></td>
         </tr>
     else
         <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
+        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
         <td><p>{kwic:summarize($hit, <config width="100"/>)}</p></td>
         </tr>
         
@@ -280,7 +281,7 @@ function app:evidenzia($risfrase as node()) {
             return app:evidenzia($nodofiglio)
 };
 
-declare function app:input($distanza as xs:integer?){
+declare function app:input($distanza as xs:string?){
 let $termnumero := request:get-parameter("input", "")
         let $query := <near slop="{$distanza}" ordered="no">
     {
@@ -300,11 +301,11 @@ let $termnumero := request:get-parameter("input", "")
         if(contains($stringa, '.'))
     then 
         <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
+        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
         <td>{app:evidenzia($expanded)}</td>
         </tr>
     else <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
+        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
         <td>{app:evidenzia($expanded)}</td>
         </tr>
 };
@@ -363,11 +364,11 @@ declare function app:cercapersonecitate($persona as xs:string?){
         if(contains($stringa, '.'))
     then 
         <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
+        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
         <td>{app:evidenzia($expanded)}</td>
         </tr>
     else <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
+        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
         <td>{app:evidenzia($expanded)}</td>
         </tr>
 };
@@ -398,6 +399,7 @@ declare function app:stampapersonecitate($node as node(), $model as map(*), $per
 declare function app:parolevoc($node as node(), $model as map(*)){
     let $parole:= unparsed-text("/db/apps/postille/filejson/antifascismo.json") => json-to-xml()
     for $i in $parole//fn:string
+    order by $i
     return 
         <form method="GET">
             <input type="hidden" name="parola" value="{$i}"/>
@@ -411,21 +413,34 @@ declare function app:cercaparolevoc($parola as xs:string?){
     let $stringa := replace($div,"t", "")
     let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
     let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
-    order by ft:score($hit) descending
     
+    let $correspp := $hit/parent::tei:div/@corresp
+    let $correspcorretto := replace($correspp, "#", "")
+    let $item := doc("/db/apps/postille/filexml/postille.xml")//tei:msItem[@xml:id=$correspcorretto]
+    let $locus := $item//tei:locus[position() = 1]/@facs
+    let $locusok := replace($locus, "#", "")
+    let $zone := doc("/db/apps/postille/filexml/postille.xml")//tei:zone[@xml:id=$locusok]
+    let $zone1 := $zone/@corresp
+    let $corresp2 := replace($zone1, "#", "")
+    let $zone2 := doc("/db/apps/postille/filexml/postille.xml")//tei:zone[@xml:id=$corresp2]
+    let $start := replace($zone2/@start, "#", "")
+    
+    let $expanded := util:expand($hit)
     
     return
         if(contains($stringa, '.'))
     then
             
             <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
-        <td><p>{kwic:summarize($hit, <config width="100"/>)}</p></td>
+        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
+        <td><p>{app:evidenzia($expanded)}</p></td>
+        <td>{doc("/db/apps/postille/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab}</td>
         </tr>
     else
         <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
-        <td><p>{kwic:summarize($hit, <config width="100"/>)}</p></td>
+        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
+        <td><p>{app:evidenzia($expanded)}</p></td>
+        <td>{doc("/db/apps/postille/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab}</td>
         </tr>
     
 };
@@ -443,6 +458,7 @@ declare %templates:wrap function app:vocabolario($node as node(), $model as map(
         <tr>
             <th>Pagina</th>
             <th>Risultato</th>
+            <th>Testo a stampa</th>
         </tr>
         {app:cercaparolevoc($parola)}
         </table>
@@ -456,37 +472,7 @@ declare %templates:wrap function app:vocabolario($node as node(), $model as map(
 
 
 (: fine ricerca :)
- 
-declare function app:contapostille($node as node(), $model as map(*)){
-    let $documento := doc("/db/apps/postille/filexml/postille.xml")//tei:body/tei:div
-    return count($documento)-1
-};
 
-declare function app:pverb39($immagine as xs:string){
-    let $immaginestr := replace($immagine, '.jpg', '')
-    let $doc := doc("/db/apps/postille/filexml/postille.xml")
-    let $linea := $doc/tei:TEI/tei:sourceDoc/tei:surface[@xml:id=$immaginestr]//tei:zone
-return 
-    if($linea/child::tei:line)
-    then
-    <div>
-    <h4> Postille verbali: </h4>
-<div>
-    {
-for $i in $linea
-return
-        <div>
-        <h6>Postilla:</h6>
-        {for $t at $m in $i/tei:line
-        return
-        <p>{$m}){$t}<br/></p>}
-        </div>
-    }
-    <input type="submit" class="btn btn-primary" value = "Dettagli" id="bnota"/>
-    </div>
-    </div>
-    else ()
-};
 declare function app:citazioni($immagine as xs:string){
     let $i := "ciao"
     return
@@ -542,7 +528,35 @@ declare function app:ungaretti($immagine as xs:string?){
     
 };
 
-(: funzione che stampa le postille verbali e il testo a cui sono riferite :)
+
+declare function app:bootstrap($node as node(), $model as map(*), $immagine as xs:string){
+    let $immaginestr := replace($immagine, '.jpg', '')
+    let $doc := doc("/db/apps/postille/filexml/postille.xml")
+let $linea := $doc/tei:TEI/tei:sourceDoc/tei:surface[@xml:id=$immaginestr]//tei:zone
+return 
+    if($linea/descendant::tei:line)
+    then
+        <span class="postilleverbalidiv">
+    <h4> Postille verbali: </h4>
+    <ul class="">
+    <a class="linkpost" style="display:none"></a>
+    {
+for $i at $t in $linea
+return
+if ($i/@corresp and $i/child::tei:line and $linea[position() = 1])then
+let $testo := $doc/tei:TEI/tei:text/tei:group/tei:text/tei:body
+where data($i/@corresp) = data($testo/tei:div/@facs) and $i/descendant::tei:line
+return
+	    <li class="btn btn-danger postillamostra"><a href="#{replace($i/@xml:id, '\.', '')}" class="linkpost" data-toggle="tab"></a></li>
+	else if(not($i//@corresp) and $i/child::tei:line)
+	then <li class="btn btn-danger postillamostra"><a href="#{replace($i/@xml:id, '\.', '')}" class="linkpost" data-toggle="tab"></a></li>
+    else ""}
+    </ul>
+    </span>
+    else ""
+};
+
+
 declare function app:postilleverbali($node as node(), $model as map(*), $immagine as xs:string){
 let $immaginestr := replace($immagine, '.jpg', '')
 let $doc := doc("/db/apps/postille/filexml/postille.xml")
@@ -550,16 +564,18 @@ let $linea := $doc/tei:TEI/tei:sourceDoc/tei:surface[@xml:id=$immaginestr]//tei:
 return 
     if($linea/descendant::tei:line)
     then
-    <div class="postilleverbalidiv">
-    <h4> Postille verbali: </h4>
-<div>
+<div class="tab-content">
     {
 for $i in $linea
+return
+if ($i/@corresp and $i/child::tei:line) then
 let $testo := $doc/tei:TEI/tei:text/tei:group/tei:text/tei:body
 where data($i/@corresp) = data($testo/tei:div/@facs) and $i/descendant::tei:line
 return
-        <div>
-        <h6>Postilla:</h6>
+        <div id="{replace($i/@xml:id, '\.', '')}" class="tab-pane">
+		<div>
+        
+        <h6>Postilla: <button type="button" class="analisi btn btn-primary" rel="{replace(replace($i/@corresp, "#",""),'\.','')}1"> Analisi </button></h6>
         {for $t in $i/tei:line
         return 
         <div id="postillav">{$t}<br></br></div>
@@ -567,10 +583,57 @@ return
         <br></br>
         <h6>Testo:</h6>
         <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p>
-        <button type="button" class="dettagli1 btn btn-primary" rel="{replace(replace($i/@corresp, "#",""),'\.','')}"> Dettagli </button><br></br>
+        <button type="button" class="dettagli1 btn btn-primary" rel="{replace(replace($i/@corresp, "#",""),'\.','')}"> Dettagli </button> <br></br></div>
+        {let $properties := json-doc("/db/apps/stanford-nlp/data/StanfordCoreNLP-italian.json")
+        return <div><xmp id="{replace(replace($i/@corresp, "#",""),'\.','')}1" style="display:none; overflow-y:scroll; height:400px;" class="analisix">
+        {let $funzione := nlp:parse($i, $properties)//token
+        for $k in $funzione
+        return <StanfordNLP>{$k//word} 
+        {$k//POS} 
+        {$k//NER}
+        </StanfordNLP>
+        }</xmp></div>}
         {
             let $note := $doc/tei:TEI//tei:msContents//tei:msItem/tei:note
-            return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}" style="display: none;">
+            return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}" style="display: none; clear:both;">
+            {
+            for $n in $note
+            where replace(data($n/preceding-sibling::tei:locus/@facs), '#', '') = data($i/@xml:id) and $i/descendant::tei:line
+            return 
+            <div>
+            <h6> Note:</h6>
+            <p>{$n}</p>
+            <p><h6>Categorie:</h6>
+                {replace(replace(replace(data($n/parent::tei:msItem/@class),"#", ''), " ", ", "),"_", " ")}</p>
+                {if($n/preceding-sibling::tei:textLang)
+                then <p>
+                    <h6>Lingua:</h6>
+                    {$n/preceding-sibling::tei:textLang}
+                    </p>
+                else <p>
+                    <h6>Lingua:</h6>italiano</p>
+            } 
+                {app:handverbali($immagine)}
+                {app:citazioni($immagine)}
+                {app:ungaretti($immagine)}
+            </div>
+        }
+        
+        <hr></hr>
+        </div>
+        }
+        </div>
+    else if(not($i//@corresp) and $i/child::tei:line) then 
+        <div id="{replace($i/@xml:id, '\.', '')}" class="tab-pane">
+        <h6>Postilla</h6>
+        {for $t in $i/tei:line
+        return 
+        <div id="postillav">{$t}<br></br></div>
+        }
+        <button type="button" class="dettagli1 btn btn-primary" rel="{replace($i/@xml:id,'\.','')}"> Dettagli </button><br></br>
+        {
+            let $note := $doc/tei:TEI//tei:msContents//tei:msItem/tei:note
+            return <div id="{replace($i/@xml:id,'\.','')}" style="display: none;">
             {
             for $n in $note
             where replace(data($n/preceding-sibling::tei:locus/@facs), '#', '') = data($i/@xml:id) and $i/descendant::tei:line
@@ -588,17 +651,14 @@ return
                 else <p>
                     <h6>Lingua:</h6>italiano</p>
             }
-                {app:handverbali($immagine)}
-                {app:citazioni($immagine)}
-                {app:ungaretti($immagine)}
-            </div>
-        }
-        <hr></hr>
+        
         </div>
         }
         </div>
-    }
-    </div>
+        }
+        </div>
+        
+    else ""}
     </div>
     else <p>In questa pagina non sono presenti postille verbali</p>
 };
@@ -651,7 +711,7 @@ declare function app:postmute($node as node(), $model as map(*), $immagine as xs
                             <p><img src="https://img.icons8.com/material-rounded/24/000000/vertical-line.png"/>Linea verticale:</p>
                         else if($i/descendant::tei:metamark/@rend = "square_bracket_and_straight_vertical_line")
                         then
-                                <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-4.png" width="24" height="24"/>Parentesi quadra e linea verticale:</p>
+                                <p><img src="resources/images/mega-creator-4.png" width="24" height="24"/>Parentesi quadra e linea verticale:</p>
                         else if($i/descendant::tei:metamark/@rend = "double_straight" or $i/descendant::tei:metamark/@rend = "doppia" and $i/descendant::tei:metamark/@place = "vertical_line")
                         then
                             <p><span class="bi bi-pause" width="32" height="32"></span>Doppia barra laterale:</p>
@@ -661,42 +721,44 @@ declare function app:postmute($node as node(), $model as map(*), $immagine as xs
                             else if($i/descendant::tei:metamark/@rend = "pound_sign")
                             then <p><img src="https://img.icons8.com/ios/24/000000/hashtag.png"/>Cancelletto:</p>
                             else if($i/descendant::tei:metamark/@rend = "square_bracket" or $i/descendant::tei:metamark/@rend = "parentesi_quadra" or $i/descendant::tei:metamark/@rend ="corner_bracket")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/pquadra.png" width="24" height="24"/>Parentesi quadra:</p>
+                            then <p><img src="resources/images/pquadra.png" width="24" height="24"/>Parentesi quadra:</p>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_plus_sign")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-2.png" width="24" height="24"/>Segno più e linea verticale ondulata:</p>
+                            then <p><img src="resources/images/mega-creator-2.png" width="24" height="24"/>Segno più e linea verticale ondulata:</p>
                             else if($i/descendant::tei:metamark/@rend = "asterisk")
                             then <p><img src="https://img.icons8.com/material-two-tone/24/000000/asterisk.png"/>Asterisco:</p>
                             else if($i/descendant::tei:metamark/@rend = "double_straight_line_and_ics")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-3.png" width="24" height="24"/>Linea verticale doppia e ics:</p>
+                            then <p><img src="resources/images/mega-creator-3.png" width="24" height="24"/>Linea verticale doppia e ics:</p>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_asterisk")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-5.png" width="24" height="24"/>Linea verticale ondulata e asterisco:</p>
+                            then <p><img src="resources/images/mega-creator-5.png" width="24" height="24"/>Linea verticale ondulata e asterisco:</p>
                             else if($i/descendant::tei:metamark/@rend = "square_barcket_and_ics")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-6.png" width="24" height="24"/>Parentesi quadra e ics: </p>
+                            then <p><img src="resources/images/mega-creator-6.png" width="24" height="24"/>Parentesi quadra e ics: </p>
                             else if($i/descendant::tei:metamark/@rend = "ics")
                             then <p><img src="https://img.icons8.com/fluency-systems-regular/24/000000/x.png"/>ics:</p>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_dash")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-7.png" width="24" height="24"/>Linea verticale ondulata e trattino:</p>
+                            then <p><img src="resources/images/mega-creator-7.png" width="24" height="24"/>Linea verticale ondulata e trattino:</p>
                             else if($i/descendant::tei:metamark/@rend = "double_wavy" and $i/descendant::tei:metamark/@place = "vertical_line")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-8.png" width="24" height="24"/>Doppia linea ondulata verticale:</p>
+                            then <p><img src="resources/images/mega-creator-8.png" width="24" height="24"/>Doppia linea ondulata verticale:</p>
                             else if($i/descendant::tei:metamark/@rend = "double_curve")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-9.png" width="24" height="24"/>Parentesi tonda doppia:</p>
+                            then <p><img src="resources/images/mega-creator-9.png" width="24" height="24"/>Parentesi tonda doppia:</p>
                             else if($i/descendant::tei:metamark/@rend = "triple_straight")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-10.png" width="24" height="24"/>Linea tripla verticale:</p>
+                            then <p><img src="resources/images/mega-creator-10.png" width="24" height="24"/>Linea tripla verticale:</p>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_pound_sign")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-11.png" width="24" height="24"/>Linea verticale ondulata e cancelletto:</p>
+                            then <p><img src="resources/images/mega-creator-11.png" width="24" height="24"/>Linea verticale ondulata e cancelletto:</p>
                             else if($i/descendant::tei:metamark/@rend = "double_slash")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-12.png" width="24" height="24"/>Doppio slash:</p>
+                            then <p><img src="resources/images/mega-creator-12.png" width="24" height="24"/>Doppio slash:</p>
                             else if($i/descendant::tei:metamark/@rend = "oblique_line" and $i/descendant::tei:metamark/@function = "correction_of_misprint")
                             then <p><img src="https://img.icons8.com/external-outline-black-m-oki-orlando/24/000000/external-slash-math-vol-1-outline-outline-black-m-oki-orlando.png"/>Correzione di un errore di stampa (slash): </p>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_ics")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/mega-creator-13.png" width="24" height="24"/>Linea verticale ondulata e ics:</p>
+                            then <p><img src="resources/images/mega-creator-13.png" width="24" height="24"/>Linea verticale ondulata e ics:</p>
                             else if($i/descendant::tei:metamark/@rend = "angle_bracket")
                             then <p><img src="https://img.icons8.com/material-rounded/24/000000/less-than.png"/> Parentesi angolata:</p>
                             else if($i/descendant::tei:metamark/@rend = "double_square_bracket")
                             then <p><img src="https://img.icons8.com/ios-glyphs/24/000000/square-brackets.png"/>Doppia parentesi quadra:</p>
                             else if($i/descendant::tei:metamark/@rend = "curve")
-                            then <p><img src="http://localhost:8080/exist/apps/postille/resources/images/parentesitonda.png" width="24" height="24"/>Parentesi tonda: </p>
-                            else "i"
+                            then <p><img src="resources/images/parentesitonda.png" width="24" height="24"/>Parentesi tonda: </p>
+                            else if($i/descendant::tei:metamark/@rend = "line" and $i/descendant::tei:metamark/@function = "addition")
+                            then <p><span class="bi bi-plus"></span>Parola aggiunta nel testo: <i>{data($i//tei:add)}</i></p>
+                            else ""
                         }
                         <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p>
                     </div>
@@ -795,7 +857,7 @@ declare function app:ricercapagine($node as node(), $model as map(*), $url){
             {for $url in $immagini
             let $risultato := app:titoloselect($url)
                 return
-            <option value="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$url}">{$risultato}</option>
+            <option value="mostra.html?immagine={$url}">{$risultato}</option>
             }
             </select>
         </form>
@@ -812,70 +874,5 @@ declare function app:codificaxml($node as node(), $model as map(*), $immagine as
             <xmp>{$codifica}</xmp>
         </div>
     
-};
-
-declare function app:commento($commento as xs:string?){
-let $text := doc("/db/apps/postille/filexml/postille.xml")//tei:div[@type="testo_critico"]//tei:div
-return
-for $i in $text
-let $comm := doc("/db/apps/postille/filexml/postille.xml")//tei:msContents//tei:msItem
-for $n in $comm
-where replace($i/@corresp, "#", "") = $n/@xml:id and contains($n//@class, $commento)
-return 
-    let $div := $i/@xml:id
-    let $stringa := replace($div,"t", "")
-    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
-    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
-    return
-        if(contains($stringa, '.'))
-    then 
-        <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
-        <td>{$i}</td>
-        </tr>
-    else <tr>
-        <td><a href="http://localhost:8080/exist/apps/postille/mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
-        <td>{$i}</td>
-        </tr>
-};
-
-declare function app:stampacommento($node as node(), $model as map(*), $commento as xs:string?){
-    if ($commento = "polemica") then
-        <div>
-        <h3>Categoria: Postille polemiche </h3>
-        <p>Occorrenze: {count(app:commento($commento))}</p>
-        <table>
-        <tr>
-            <th>Pagina</th>
-            <th>Postilla</th>
-        </tr>
-        {app:commento($commento)}
-        </table>
-        </div>
-    else if ($commento = "elogiativa") then
-        <div>
-        <h3>Categoria: Postille elogiative </h3>
-        <p>Occorrenze: {count(app:commento($commento))}</p>
-        <table>
-        <tr>
-            <th>Pagina</th>
-            <th>Postilla</th>
-        </tr>
-        {app:commento($commento)}
-        </table>
-        </div>
-    else if ($commento = "personale") then
-        <div>
-        <h3>Categoria: Postille personali </h3>
-        <p>Occorrenze: {count(app:commento($commento))}</p>
-        <table>
-        <tr>
-            <th>Pagina</th>
-            <th>Postilla</th>
-        </tr>
-        {app:commento($commento)}
-        </table>
-        </div>
-    else ""
 };
 
