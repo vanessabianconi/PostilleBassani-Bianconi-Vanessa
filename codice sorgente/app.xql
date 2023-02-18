@@ -434,13 +434,17 @@ declare function app:cercaparolevoc($parola as xs:string?){
             <tr>
         <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
         <td><p>{app:evidenzia($expanded)}</p></td>
-        <td>{doc("/db/apps/postille/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab}</td>
+        <td>{if(exists(doc("/db/apps/postille/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
+        then doc("/db/apps/postille/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
+        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
         </tr>
     else
         <tr>
         <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
         <td><p>{app:evidenzia($expanded)}</p></td>
-        <td>{doc("/db/apps/postille/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab}</td>
+        <td>{if(exists(doc("/db/apps/postille/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
+        then doc("/db/apps/postille/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
+        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
         </tr>
     
 };
@@ -491,7 +495,7 @@ declare function app:citazioni($immagine as xs:string){
         <p><h6>Persone citate:</h6>
             <a href="https://www.treccani.it/enciclopedia/guido-calogero_(Dizionario-Biografico)">Guido Calogero</a>
         </p>
-    else if($immagine = "pag34.jpg")
+    else if($immagine = "pag34.jpg" or $immagine = "pag96.jpg")
     then 
         <p><h6>Persone citate:</h6>
             <a href="https://it.wikipedia.org/wiki/Benedetto_Croce">Benedetto Croce</a>
@@ -575,7 +579,7 @@ return
         <div id="{replace($i/@xml:id, '\.', '')}" class="tab-pane">
 		<div>
         
-        <h6>Postilla: <button type="button" class="analisi btn btn-primary" rel="{replace(replace($i/@corresp, "#",""),'\.','')}1"> Analisi </button></h6>
+        <h6>Postilla:</h6>
         {for $t in $i/tei:line
         return 
         <div id="postillav">{$t}<br></br></div>
@@ -583,9 +587,9 @@ return
         <br></br>
         <h6>Testo:</h6>
         <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p>
-        <button type="button" class="dettagli1 btn btn-primary" rel="{replace(replace($i/@corresp, "#",""),'\.','')}"> Dettagli </button> <br></br></div>
+        <button type="button" class="dettagli1 btn btn-primary" rel="{replace(replace($i/@corresp, "#",""),'\.','')}det"> Dettagli </button> <button type="button" class="analisi btn btn-dark" rel="{replace(replace($i/@corresp, "#",""),'\.','')}an"> Analisi linguistica </button> <br></br></div>
         {let $properties := json-doc("/db/apps/stanford-nlp/data/StanfordCoreNLP-italian.json")
-        return <div><xmp id="{replace(replace($i/@corresp, "#",""),'\.','')}1" style="display:none; overflow-y:scroll; height:400px;" class="analisix">
+        return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}an" style="display:none; overflow-y:scroll; height:400px;" class="analisix"><xmp>
         {let $funzione := nlp:parse($i, $properties)//token
         for $k in $funzione
         return <StanfordNLP>{$k//word} 
@@ -595,7 +599,7 @@ return
         }</xmp></div>}
         {
             let $note := $doc/tei:TEI//tei:msContents//tei:msItem/tei:note
-            return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}" style="display: none; clear:both;">
+            return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}det" style="display: none; clear:both;">
             {
             for $n in $note
             where replace(data($n/preceding-sibling::tei:locus/@facs), '#', '') = data($i/@xml:id) and $i/descendant::tei:line
@@ -630,10 +634,19 @@ return
         return 
         <div id="postillav">{$t}<br></br></div>
         }
-        <button type="button" class="dettagli1 btn btn-primary" rel="{replace($i/@xml:id,'\.','')}"> Dettagli </button><br></br>
+        <button type="button" class="dettagli1 btn btn-primary" rel="{replace($i/@xml:id,'\.','')}det"> Dettagli </button> <button type="button" class="analisi btn btn-dark" rel="{replace(replace($i/@corresp, "#",""),'\.','')}an"> Analisi linguistica </button> <br></br>
+        {let $properties := json-doc("/db/apps/stanford-nlp/data/StanfordCoreNLP-italian.json")
+        return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}an" style="display:none; overflow-y:scroll; height:400px;" class="analisix"><xmp>
+        {let $funzione := nlp:parse($i, $properties)//token
+        for $k in $funzione
+        return <StanfordNLP>{$k//word} 
+        {$k//POS} 
+        {$k//NER}
+        </StanfordNLP>
+        }</xmp></div>}
         {
             let $note := $doc/tei:TEI//tei:msContents//tei:msItem/tei:note
-            return <div id="{replace($i/@xml:id,'\.','')}" style="display: none;">
+            return <div id="{replace($i/@xml:id,'\.','')}det" style="display: none;">
             {
             for $n in $note
             where replace(data($n/preceding-sibling::tei:locus/@facs), '#', '') = data($i/@xml:id) and $i/descendant::tei:line
@@ -689,7 +702,7 @@ declare function app:postmute($node as node(), $model as map(*), $immagine as xs
     let $doc := doc("/db/apps/postille/filexml/postille.xml")
     let $linea := $doc/tei:TEI/tei:sourceDoc/tei:surface[@xml:id=$immaginestr]//tei:zone
     return 
-        if($linea/descendant::tei:metamark)
+        if($linea/descendant::tei:metamark/@function != "addition")
         then
             <div class="postillemutediv">
             <h4>Postille mute</h4>
@@ -697,70 +710,67 @@ declare function app:postmute($node as node(), $model as map(*), $immagine as xs
                 {
                     for $i in $linea
                     let $testo := $doc/tei:TEI/tei:text/tei:group/tei:text/tei:body
-                    where data($i/@corresp) = data($testo/tei:div/@facs) and $i/descendant::tei:metamark 
+                    where data($i/@corresp) = data($testo/tei:div/@facs) and $i/descendant::tei:metamark
                     return
                         <div>
                         {if($i/descendant::tei:metamark/@rend = "wavy" and $i/descendant::tei:metamark/@place = "vertical_line" or $i/descendant::tei:metamark/@place = "vertical line")
                         then
-                            <p><img src="https://img.icons8.com/material-sharp/24/000000/squiggly-line.png"/>Barra laterale ondulata:</p>
+                            <div><img src="https://img.icons8.com/material-sharp/24/000000/squiggly-line.png"/>Barra laterale ondulata: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "underlining" and $i/descendant::tei:metamark/@place = "inline")
                             then 
-                            <p><span class="bi bi-type-underline"></span>Testo sottolineato:</p>
+                            <div><span class="bi bi-type-underline"></span>Testo sottolineato:<br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                         else if($i/descendant::tei:metamark/@rend = "straight" or $i/descendant::tei:metamark/@rend = "underlining"  and $i/descendant::tei:metamark/@place = "vertical_line" or $i/descendant::tei:metamark/@place = "vertical line")
                             then 
-                            <p><img src="https://img.icons8.com/material-rounded/24/000000/vertical-line.png"/>Linea verticale:</p>
+                            <div><img src="https://img.icons8.com/material-rounded/24/000000/vertical-line.png"/>Linea verticale: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                         else if($i/descendant::tei:metamark/@rend = "square_bracket_and_straight_vertical_line")
                         then
-                                <p><img src="resources/images/mega-creator-4.png" width="24" height="24"/>Parentesi quadra e linea verticale:</p>
+                                <div><img src="resources/images/mega-creator-4.png" width="24" height="24"/>Parentesi quadra e linea verticale:<br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                         else if($i/descendant::tei:metamark/@rend = "double_straight" or $i/descendant::tei:metamark/@rend = "doppia" and $i/descendant::tei:metamark/@place = "vertical_line")
                         then
-                            <p><span class="bi bi-pause" width="32" height="32"></span>Doppia barra laterale:</p>
+                            <div><span class="bi bi-pause" width="32" height="32"></span>Doppia barra laterale: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "wavy" and $i/descendant::tei:metamark/@place = "inline")
                             then
-                                <p><img src="https://img.icons8.com/material-two-tone/24/000000/wavy-line.png"/> Sottolineatura ondulata: </p>
+                                <div><img src="https://img.icons8.com/material-two-tone/24/000000/wavy-line.png"/> Sottolineatura ondulata: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "pound_sign")
-                            then <p><img src="https://img.icons8.com/ios/24/000000/hashtag.png"/>Cancelletto:</p>
+                            then <div><img src="https://img.icons8.com/ios/24/000000/hashtag.png"/>Cancelletto: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "square_bracket" or $i/descendant::tei:metamark/@rend = "parentesi_quadra" or $i/descendant::tei:metamark/@rend ="corner_bracket")
-                            then <p><img src="resources/images/pquadra.png" width="24" height="24"/>Parentesi quadra:</p>
+                            then <div><img src="resources/images/pquadra.png" width="24" height="24"/>Parentesi quadra: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_plus_sign")
-                            then <p><img src="resources/images/mega-creator-2.png" width="24" height="24"/>Segno più e linea verticale ondulata:</p>
+                            then <div><img src="resources/images/mega-creator-2.png" width="24" height="24"/>Segno più e linea verticale ondulata: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "asterisk")
-                            then <p><img src="https://img.icons8.com/material-two-tone/24/000000/asterisk.png"/>Asterisco:</p>
+                            then <div><img src="https://img.icons8.com/material-two-tone/24/000000/asterisk.png"/>Asterisco: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "double_straight_line_and_ics")
-                            then <p><img src="resources/images/mega-creator-3.png" width="24" height="24"/>Linea verticale doppia e ics:</p>
+                            then <div><img src="resources/images/mega-creator-3.png" width="24" height="24"/>Linea verticale doppia e ics: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_asterisk")
-                            then <p><img src="resources/images/mega-creator-5.png" width="24" height="24"/>Linea verticale ondulata e asterisco:</p>
+                            then <div><img src="resources/images/mega-creator-5.png" width="24" height="24"/>Linea verticale ondulata e asterisco: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "square_barcket_and_ics")
-                            then <p><img src="resources/images/mega-creator-6.png" width="24" height="24"/>Parentesi quadra e ics: </p>
+                            then <div><img src="resources/images/mega-creator-6.png" width="24" height="24"/>Parentesi quadra e ics: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "ics")
-                            then <p><img src="https://img.icons8.com/fluency-systems-regular/24/000000/x.png"/>ics:</p>
+                            then <div><img src="https://img.icons8.com/fluency-systems-regular/24/000000/x.png"/>ics: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_dash")
-                            then <p><img src="resources/images/mega-creator-7.png" width="24" height="24"/>Linea verticale ondulata e trattino:</p>
+                            then <div><img src="resources/images/mega-creator-7.png" width="24" height="24"/>Linea verticale ondulata e trattino: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "double_wavy" and $i/descendant::tei:metamark/@place = "vertical_line")
-                            then <p><img src="resources/images/mega-creator-8.png" width="24" height="24"/>Doppia linea ondulata verticale:</p>
+                            then <div><img src="resources/images/mega-creator-8.png" width="24" height="24"/>Doppia linea ondulata verticale: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "double_curve")
-                            then <p><img src="resources/images/mega-creator-9.png" width="24" height="24"/>Parentesi tonda doppia:</p>
+                            then <div><img src="resources/images/mega-creator-9.png" width="24" height="24"/>Parentesi tonda doppia: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "triple_straight")
-                            then <p><img src="resources/images/mega-creator-10.png" width="24" height="24"/>Linea tripla verticale:</p>
+                            then <div><img src="resources/images/mega-creator-10.png" width="24" height="24"/>Linea tripla verticale: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_pound_sign")
-                            then <p><img src="resources/images/mega-creator-11.png" width="24" height="24"/>Linea verticale ondulata e cancelletto:</p>
+                            then <div><img src="resources/images/mega-creator-11.png" width="24" height="24"/>Linea verticale ondulata e cancelletto: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "double_slash")
-                            then <p><img src="resources/images/mega-creator-12.png" width="24" height="24"/>Doppio slash:</p>
+                            then <div><img src="resources/images/mega-creator-12.png" width="24" height="24"/>Doppio slash: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "oblique_line" and $i/descendant::tei:metamark/@function = "correction_of_misprint")
-                            then <p><img src="https://img.icons8.com/external-outline-black-m-oki-orlando/24/000000/external-slash-math-vol-1-outline-outline-black-m-oki-orlando.png"/>Correzione di un errore di stampa (slash): </p>
+                            then <div><img src="https://img.icons8.com/external-outline-black-m-oki-orlando/24/000000/external-slash-math-vol-1-outline-outline-black-m-oki-orlando.png"/>Correzione di un errore di stampa (slash): <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "vertical_wavy_line_and_ics")
-                            then <p><img src="resources/images/mega-creator-13.png" width="24" height="24"/>Linea verticale ondulata e ics:</p>
+                            then <div><img src="resources/images/mega-creator-13.png" width="24" height="24"/>Linea verticale ondulata e ics: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "angle_bracket")
-                            then <p><img src="https://img.icons8.com/material-rounded/24/000000/less-than.png"/> Parentesi angolata:</p>
+                            then <div><img src="https://img.icons8.com/material-rounded/24/000000/less-than.png"/> Parentesi angolata: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "double_square_bracket")
-                            then <p><img src="https://img.icons8.com/ios-glyphs/24/000000/square-brackets.png"/>Doppia parentesi quadra:</p>
+                            then <div><img src="https://img.icons8.com/ios-glyphs/24/000000/square-brackets.png"/>Doppia parentesi quadra: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else if($i/descendant::tei:metamark/@rend = "curve")
-                            then <p><img src="resources/images/parentesitonda.png" width="24" height="24"/>Parentesi tonda: </p>
-                            else if($i/descendant::tei:metamark/@rend = "line" and $i/descendant::tei:metamark/@function = "addition")
-                            then <p><span class="bi bi-plus"></span>Parola aggiunta nel testo: <i>{data($i//tei:add)}</i></p>
+                            then <div><img src="resources/images/parentesitonda.png" width="24" height="24"/>Parentesi tonda: <br/> <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p></div>
                             else ""
                         }
-                        <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p>
                     </div>
                 }
                 </div>
