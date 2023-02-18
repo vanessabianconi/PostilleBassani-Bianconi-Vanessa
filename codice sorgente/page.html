@@ -221,12 +221,14 @@
     $(".dettagli1").click(function(){
         var id = $(this).attr('rel');
         $("#"+id).slideToggle('slow');
+        $(".analisi").slideToggle('slow');
         
     });
     
     $(".analisi").click(function(){
         var id = $(this).attr('rel');
         $("#"+id).slideToggle('slow');
+        $(".dettagli1").slideToggle('slow');
         
     });
     
