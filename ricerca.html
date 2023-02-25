@@ -1,0 +1,120 @@
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+<div class="contenuto1">
+<h1 id="titolohome">Ricerca</h1>
+</div>
+<div class="introv">
+<p>In questa pagina è possibile effettuare una ricerca all'interno delle postille. E' stata realizzata usando Apache Lucene e sono stati implementati tre tipi di ricerca:
+    <ul>
+  <li>
+                    <b>Ricerca con caratteri jolly:</b> Lucene supporta la ricerca con caratteri jolly multipli o singoli nel caso di ricerca della singola parola e non di frasi. Il carattere jolly può anche essere inserito all'interno di un termine.
+                    <ul>
+                        <li>Per eseguire una ricerca con carattere jolly singolo, utilizzare il simbolo "?" . La ricerca con carattere jolly singolo cerca i termini che corrispondono a quello con il singolo carattere sostituito</li>
+                        <li>Per eseguire una ricerca con più caratteri jolly utilizzare il simbolo "*". Le ricerche carattere jolly multiplo cercano 0 o più caratteri. (Ad esempio, per cercare storia, storico o storicismo, puoi scrivere stori*)</li>
+                    </ul>
+                    </li>
+  <li>
+                    <b>Ricerca fuzzy:</b> è un tipo di ricerca approssimativa. </li>
+  <li>Possibilità di cercare <b>termini vicini</b>
+                </li>
+    <li>Ricerca <b>entità nominate</b>
+                </li>
+</ul>  
+</p>
+</div>
+<div class="formric">
+<div class="form">
+    <form method="GET" id="form1">
+    <label for="prova">Scegli un tipo di ricerca:</label> <br/>
+    <select id="prova" name="ricercatipo" class="form-select" aria-label="Default select example">
+        <option value="">Seleziona...</option>
+        <option name="wildcard" value="wildcard">Ricerca wildcard</option>
+        <option value="fuzzy">Ricerca fuzzy</option>
+        <option value="doppio">Ricerca termini vicini</option>
+        <option value="personecitate">Ricerca entità nominate</option>
+    </select>
+    </form>
+    
+</div>
+<div class="form-group wildcard">
+    <form method="GET">
+        <h6>Ricerca Wildcard</h6>
+            <label for="postille">Parola</label>
+            <div class="form-outline w-25 testo">
+            <input type="text" class="form-control" name="postille" value="" required="yes"/>
+            </div>
+            <button type="submit" class="btn btn-primary bricerca">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg> Cerca</button>
+    </form>
+    
+</div>
+<div class="riswildcard" data-template="app:parolaradice"/>
+
+<div class="form-group fuzzy">
+    <form method="GET">
+        <h6>Ricerca fuzzy</h6>
+        <label for="fuzzy">Parola</label>
+        <div class="form-outline w-25 testo">
+        <input type="text" class="form-control" name="fuzzy" value="" required="yes"/>
+        </div>
+        <button type="submit" class="btn btn-primary bricerca">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg> Cerca</button>
+    </form>
+</div>
+<div data-template="app:ricercafuzzy"/>
+
+<div class="form-group doppio">
+    <form method="GET">
+        <h6>Ricerca termini vicini </h6>
+        <div class="form-outline w-25 testo">
+        <input type="text" class="form-control" name="input" required="yes"/> <span>
+                        <button type="button" class="aggiungi btn btn-secondary bricerca">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+</svg>
+                        </button>
+                        <button type="button" class="rimuovi btn btn-danger bricerca">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
+  <path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/>
+</svg>
+                        </button>
+                    </span>
+        </div>
+        <div id="nuovoinput" class="form-outline w-25 testo"/> 
+        <input type="hidden" value="1" name="totaleinput" id="totale_input"/> <div id="errore">
+                    <b>Non puoi aggiungere altri termini</b>
+                </div>
+        <label for="distanza">Distanza massima tra i termini</label>
+      <select name="distanza">
+      <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select> <br/>
+        <button type="submit" class="btn btn-primary bricerca">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg> Cerca</button>
+    </form>
+</div>
+<form method="GET" class="personecitate">
+<span data-template="app:personecitate"/>
+<button type="submit" class="btn btn-primary bricerca">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg> Cerca</button>
+</form>
+<div data-template="app:stampapersonecitate"/>
+<div data-template="app:cercatermini"/>
+</div>
+</div>
