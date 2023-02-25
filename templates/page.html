@@ -1,0 +1,317 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title data-template="config:app-title">postille</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta data-template="config:app-meta"/>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css"/>
+        <link rel="shortcut icon" href="resources/images/exist_icon_16x16.ico"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/exist-2.2.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"/>
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css"/>
+       <script src="https://www.gstatic.com/charts/loader.js"/>
+        <script src="http://code.jquery.com/jquery-latest.js"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.js"/>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"/>
+        <link rel="stylesheet" href="resources/css/magnific-popup.css"/>
+        <script src="resources/js/jquery.easyPaginate.js"/>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"/>
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"/>
+   
+    </head>
+    <div class="navbar navbar-expand-md navbar-dark bg-dark mb-4" id="topheader" role="navigation">
+    <div class="navbar-brand">
+      <img src="resources/images/logoGB.jpeg" alt="" width="50" height="50" class="d-inline-block align-text-top"/>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"/>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item casa">
+                <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span>
+                    </a>
+            </li>
+            <li class="nav-item biblio">
+                <a class="nav-link" href="principale.html">Archivio</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link ricerca" href="ricerca.html">Ricerca</a>
+            </li>
+            <li class="nav-item about">
+                <a class="nav-link" href="vocabolario.html">Vocabolario dell'antifascismo</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div id="prova"/>
+    <body>
+    <div class="body">
+    <div id="content"/>
+    </div>
+        <!--div class="body">
+            <div class="container" id="main-container">
+                <div class="row">
+                    <div class="col-md-12" id="header">
+                        <a href="/" id="logo">eXistDB</a>
+                    </div>
+                </div>
+                <div id="content" class="row"/>
+            </div>
+        </div-->
+        <a id="poweredby" href="http://exist-db.org"/>
+        <footer class="bg-light text-center text-lg-start">
+  <!-- Grid container -->
+  <div class="container p-4">
+    <!--Grid row-->
+    <div class="row">
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Sito</h5>
+        <p>
+          Applicazione web realizzata da Vanessa Bianconi per il progetto di tirocinio e tesi.<br/>
+          Corso di laurea in Informatica Umanistica
+        </p>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Codifica</h5>
+
+        <p>
+        Codifica delle postille a cura di Angela Siciliano <br/>
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2022 Copyright:
+    <a class="text-dark" href="https://www.unipi.it/">Università di Pisa</a> 
+  </div>
+</footer>
+    </body>
+    <script src="//openseadragon.github.io/openseadragon/openseadragon.min.js"/>
+    <script type="text/javascript" src="resources/js/zoom.js"/>
+    <script src="resources/js/jquery.magnific-popup.js"/>
+    
+    <script>
+    
+    $(document).ready(function() {
+        
+        
+    $(".postilleverbalidiv li:first").addClass("active");
+    $(".tab-content div:first").addClass("active");
+ 
+    $("#errore").hide();
+    $(".fuzzy").hide();
+    $(".wildcard").hide();
+    $(".doppio").hide();
+    $(".personecitate").hide();
+    $(".argomento").hide();
+    
+    $("select#prova").on("change", function(){
+        var selectedValue = $("select#prova").val();
+        if(selectedValue == 'wildcard'){
+            $('.wildcard').show();
+            $('.fuzzy').hide();
+            $('.doppio').hide();
+            $('.cercadoppio').hide();
+            $('.cercafuzzy').hide();
+            $(".personecitate").hide();
+            $('.argomento').hide();
+        }else if(selectedValue == 'fuzzy'){
+            $('.fuzzy').show();
+            $('.doppio').hide();
+            $('.wildcard').hide();
+            $('.cercawild').hide();
+            $('.cercadoppio').hide();
+            $(".personecitate").hide();
+            $('.argomento').hide();
+        }else if(selectedValue == 'doppio'){
+            $('.doppio').show();
+            $('.fuzzy').hide();
+            $('.wildcard').hide();
+            $('.cercadoppio').show();
+            $('.cercafuzzy').hide();
+            $('.cercawild').hide();
+            $(".personecitate").hide();
+            $('.argomento').hide();
+        }else if(selectedValue == 'personecitate'){
+            $('.personecitate').show();
+            $('.fuzzy').hide();
+            $('.wildcard').hide();
+            $('.cercadoppio').hide();
+            $('.cercafuzzy').hide();
+            $('.cercawild').hide();
+            $(".doppio").hide();
+            $('.argomento').hide();
+        }else if(selectedValue == 'argomento'){
+            $('.argomento').show();
+            $('.personecitate').hide();
+            $('.fuzzy').hide();
+            $('.wildcard').hide();
+            $('.cercadoppio').hide();
+            $('.cercafuzzy').hide();
+            $('.cercawild').hide();
+            $(".doppio").hide();
+        }else if(selectValue == ''){
+            $('.doppio').hide();
+            $('.fuzzy').hide();
+            $('.wildcard').hide();
+            $('.cercadoppio').hide();
+            $(".personecitate").hide();
+        }
+    });
+        
+    $(".codificaxml").hide();
+    
+    $('.js-example-basic-multiple').on('change', function() {
+        var url = $(this).val();
+        window.location = url;
+        
+    });
+        var url = window.location.href;
+  // passes on every "a" tag
+    $(".navbar-nav .nav-link").each(function () {
+    // checks if its the same on the address bar
+    if (url == (this.href)) {
+      $(this).closest("li").addClass("active");
+      //for making parent of submenu active
+      $(this).closest("li").parent().parent().addClass("active");
+    }
+    $('.js-example-basic-multiple').select2({
+        width: 500,
+        placeholder: "Digita una pagina"
+    });
+    $('.js-example-basic-multiple').on("select2:select", function(evt) {
+        var element = evt.params.data.element;
+        var $element = $(element);
+        $element.detach();
+        $(this).append($element);
+        $(this).trigger("change");
+    });
+    
+    });
+    
+    $("#mostracodifica").click(function() {
+        $(".codificaxml").toggle();
+        $(".postillemutediv").toggle();
+        $(".pverb").toggle();
+        $(".paramute").toggle();
+    });
+    $("#bnota").click(function () {
+        $("#nota").toggle();
+    });
+    
+    $("#bnota1").click(function () {
+        $("#nota1").toggle();
+    });
+    
+    $("#dettaglilibro").click(function () {
+        $("#librodet").slideToggle('slow');
+    });
+    
+    $(".dettagli1").click(function(){
+        var id = $(this).attr('rel');
+        $("#"+id).slideToggle('slow');
+        $(".analisi").slideToggle('slow');
+        
+    });
+    
+    $(".analisi").click(function(){
+        var id = $(this).attr('rel');
+        $("#"+id).slideToggle('slow');
+        $(".dettagli1").slideToggle('slow');
+        
+    });
+    
+    $(".dettagli").click(function(){
+        var id = $(this).attr('rel');
+        $("#"+id).toggle();
+        
+    });
+
+    $('.js-example-basic-multiple').select2();
+    $('.popup-gallery').magnificPopup({
+		delegate: 'a.info',
+		type: 'image',
+		tLoading: 'Loading image #%curr%...',
+		mainClass: 'mfp-img-mobile',
+		gallery: {
+			enabled: true,
+			navigateByImgClick: true,
+			preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+		},
+		image: {
+			tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+			titleSrc: function(item) {
+				return item.el.attr('title');
+			}
+		}
+	});
+    });
+    
+    $('#easypaginate').easyPaginate({
+    paginateElement: 'div#thumb',
+    elementsPerPage: 10,
+    effect: 'fade'
+    });
+    
+</script>
+<script>
+var path = window.location.href;
+var string = path.split('/');
+var lastSegmentOfUrl = string[string.length-1];
+var reg = /\d+/;
+var currentPageID = lastSegmentOfUrl.match(reg);
+var nextPageID = parseInt(currentPageID) + 1;
+var previousPageID = parseInt(currentPageID) - 1;
+if(path.includes("_MG_7838.jpg")){
+$('#next').attr('href', "mostra.html?immagine=_MG_7867.jpg");
+$('#previous').hide();
+} else if(path.includes("MG_7867.jpg")){
+    $('#previous').attr('href', "mostra.html?immagine=_MG_7838.jpg");
+    $('#next').attr('href', "mostra.html?immagine=Copertina.jpg");
+} else if(path.includes("Copertina.jpg")){
+    $("#previous").attr('href', "mostra.html?immagine=_MG_7867.jpg");
+    $("#next").attr('href', "mostra.html?immagine=Foglio+di+guardia+anteriore.jpg");
+} else if(path.includes("Foglio+di+guardia+anteriore.jpg")){
+    $('#previous').attr('href', "mostra.html?immagine=Copertina.jpg");
+    $('#next').attr('href', "mostra.html?immagine=Frontespizio1.jpg");
+} else if(path.includes("Frontespizio1.jpg")){
+    $("#previous").attr('href', "mostra.html?immagine=Foglio+di+guardia+anteriore.jpg");
+    $("#next").attr('href',"mostra.html?immagine=Frontespizio2.jpg");
+} else if(path.includes("Frontespizio2.jpg")){
+    $("#previous").attr('href',"mostra.html?immagine=Frontespizio1.jpg");
+    $("#next").attr('href', "mostra.html?immagine=Indice.jpg");
+} else if(path.includes("mostra.html?immagine=Indice.jpg")){
+    $("#previous").attr('href', "mostra.html?immagine=Frontespizio2.jpg");
+    $("#next").attr('href', "mostra.html?immagine=pag1.jpg");
+} else if(currentPageID == "1"){
+    $("#previous").attr('href',"mostra.html?immagine=Indice.jpg");
+    $("#next").attr('href', "mostra.html?immagine=pag3.jpg")
+} else if(path.includes("mostra.html?immagine=pag258.jpg")){
+    $('#previous').attr('href', "mostra.html?immagine=pag" + previousPageID + ".jpg");
+    $('#next').attr('href',"mostra.html?immagine=pagVII.jpg");
+} else if(path.includes("pagVII.jpg")){
+    $('#previous').attr('href',"mostra.html?immagine=pag258.jpg");
+    $('#next').attr('href',"mostra.html?immagine=pagVIII.jpg")
+} else if(path.includes("pagVIII.jpg")){
+    $('#previous').attr('href',"mostra.html?immagine=pagVII.jpg");
+    $('#next').hide();
+} else if(currentPageID == "3"){
+    $("#previous").attr('href', "mostra.html?immagine=pag1.jpg");
+    $("#next").attr('href', "mostra.html?immagine=pag" + nextPageID + ".jpg");
+} else{
+$('#previous').attr('href', "mostra.html?immagine=pag" + previousPageID + ".jpg");
+$('#next').attr('href', "mostra.html?immagine=pag" + nextPageID + ".jpg");
+}
+</script>
+<script type="text/javascript" src="resources/js/input.js"/>
+<script type="text/javascript" src="resources/js/postillemostra.js"/>
+
+</html>
