@@ -1,0 +1,12 @@
+{
+    "annotators": ["tokenize", "cdc_tokenize", "ssplit","pos", "lemma","ner","depparse"],
+    "ner.applyFineGrained": "false",
+    "ner.applyNumericClassifiers" : "false",
+    "ner.useSUTime" : "false",
+    "pos.model" : "http://localhost:8080/exist/apps/postille/Stanfordnlp/italian-big.tagger",
+    "ner.model" : "http://localhost:8080/exist/apps/postille/Stanfordnlp/italian-ner-wikinews.ser.gz",
+    "depparse.model" : "http://localhost:8080/exist/apps/postille/Stanfordnlp/UD_Italian.gz",
+    "cdc_tokenize.model" : "http://localhost:8080/exist/apps/postille/Stanfordnlp/it-tokenizer.ser.gz",
+    "cdc_tokenize.multiWordRules" : "http://localhost:8080/exist/apps/postille/Stanfordnlp/it-multiword.txt",
+    "parse.model" : "http://localhost:8080/exist/apps/postille/Stanfordnlp/italian-consituency.ser.gz"
+}
