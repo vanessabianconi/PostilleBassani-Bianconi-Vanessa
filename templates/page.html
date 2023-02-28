@@ -209,7 +209,13 @@
     });
     
     $("#dettaglilibro").click(function () {
-        $("#librodet").slideToggle('slow');
+        $("#librodet").toggle();
+        $("#librodet").css({
+            "position":"absolute",
+            "margin-left": "10px",
+            "background-color": "white",
+            "opacity": "0.8"
+        });
     });
     
     $(".dettagli1").click(function(){
