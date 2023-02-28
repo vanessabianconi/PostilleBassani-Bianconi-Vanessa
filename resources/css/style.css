@@ -140,29 +140,21 @@ img.copertina{
     color:black;
 }
 
-.libro:hover{
+.libro2:hover {
   opacity: 0.5;
 }
 
-.libro img{
-    padding: 5px;
-    border: 2px solid white;
-    background-color:white;
-}
 
-.libro {
-    width: 10%;
-}
 
 .titoloprinci{
     margin-left: 35px;
 }
 
-.infolibro{
+/*.infolibro{
     position: absolute;
     top: 320px;
     left: 220px;
-}
+}*/
 
 
 #easypaginate {
@@ -279,8 +271,6 @@ expan::after{
   stroke-width: 3px;
   vector-effect: non-scaling-stroke;
 }
-
-
 table, th, td {
   border: 1px solid black;
 }*/
@@ -416,3 +406,21 @@ table tbody tr:nth-child(odd) {
 .analisi{
     margin-left: 5px;
 }
+
+.titoloprinci h5{
+    display: inline-block;
+}
+
+.libro img{
+    padding: 5px;
+    border: 2px solid white;
+    background-color:white;
+    float:left;
+}
+
+
+.libro{
+    margin-left: auto;
+    margin-right: auto;
+}
+
