@@ -67,8 +67,8 @@ function app:stampa-titolo($node as node(), $model as map(*)) {
     return data($titolo/tei:title)
 };
 
-declare
-%templates:wrap  function app:titoloimmagine($node as node(), $model as map(*), $immagine as xs:string?){
+(: funzione che gestisce il titolo del dettaglio immagine. In questo caso ho usato il templates wrap in modo da preservare l'h5 definito nel file HTML :)
+declare %templates:wrap  function app:titoloimmagine($node as node(), $model as map(*), $immagine as xs:string?){
     let $titoloimg := functx:insert-string($immagine,'ina ',4)
     let $maiuscolo := functx:capitalize-first($titoloimg)
     return
@@ -87,6 +87,7 @@ declare
         replace($maiuscolo, '.jpg', '')
 };
 
+(: funzione che serve per stampare una stringa in base allo strumento usato da Bassani per postillare la pagina :)
 declare function app:handverbali($immagine as xs:string?){
     let $nuovo := replace($immagine, '.jpg', '')
     let $line := doc( $config:app-root || "/filexml/postille.xml")/tei:TEI/tei:sourceDoc/tei:surface[@xml:id=$nuovo]//tei:zone
@@ -113,11 +114,14 @@ declare function app:handverbali($immagine as xs:string?){
         
 };
 
+(: funzione che prende la lista delle immagini (dal file json) :)
 declare function app:immagini(){
     let $prova := unparsed-text($config:app-root ||"/filejson/images.json") => json-to-xml()
     for $i in $prova//fn:string
     return $i
 };
+
+(: funzione che gestisce i titoli delle thumbnails :)
 declare function app:titolothumb($url as xs:string){
     let $titoloimg := functx:insert-string($url,'ina ',4)
     let $maiuscolo := functx:capitalize-first($titoloimg)
@@ -137,6 +141,8 @@ declare function app:titolothumb($url as xs:string){
         <strong>{replace($maiuscolo, '.jpg', '')}</strong>
     
 };
+
+(: funzione scritta per la creazioni delle thumbnails delle immagini :)
 declare function app:thumb($node as node(), $model as map(*), $url){
     let $doc := app:immagini()
     for $url in $doc
@@ -157,25 +163,15 @@ declare function app:thumb($node as node(), $model as map(*), $url){
         </div>
         </div>
 };
-
+(: da togliere 
 declare function app:mostraimg($node as node(), $model as map(*), $immagine){
     <img src="riproduzioni/{$immagine}" width="300" heigth="300"></img>
         
-};
+};:)
 
 (: inizio ricerca :)
-
-
-declare function app:cercaradice($postille as xs:string?){
-    let $query := <query>
-        <bool><wildcard>{$postille}</wildcard></bool>
-    </query>
-    for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $query)]
-    let $div := $hit/parent::tei:div/@xml:id
-    let $stringa := replace($div,"t", "")
-    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
-    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
-    
+(: funzione che gestisce il recupero del testo a stampa legato alle postille nella pagina "Ricerca" :)
+declare function app:testoastampa($hit as node()){
     let $correspp := $hit/parent::tei:div/@corresp
     let $correspcorretto := replace($correspp, "#", "")
     let $item := doc($config:app-root || "/filexml/postille.xml")//tei:msItem[@xml:id=$correspcorretto]
@@ -186,34 +182,57 @@ declare function app:cercaradice($postille as xs:string?){
     let $corresp2 := replace($zone1, "#", "")
     let $zone2 := doc($config:app-root || "/filexml/postille.xml")//tei:zone[@xml:id=$corresp2]
     let $start := replace($zone2/@start, "#", "")
+    return 
+        if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
+        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
+        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>
+};
+
+(: funzione usata per visualizzare il link all'immagine nella pagina della ricerca :)
+declare function app:stringaimmagine($hit as node()){
+    let $div := $hit/parent::tei:div/@xml:id
+    let $stringa := replace($div,"t", "")
+    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
+    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
+    return 
+        if(contains($stringa, '.'))
+        then <a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a>
+        else <a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a>
+};
+
+(: funzione ricorsiva che evidenzia la parola cercata all'interno della pagina ricerca :)
+declare function app:evidenziamatch($hit as node()) {
+        if (not($hit/name())) then
+            $hit
+        else if ($hit[contains(name(),"exist:match")]) then
+                <b style="background-color:yellow"> {$hit} </b>
+        else
+            for $i in $hit/child::node()
+            return app:evidenziamatch($i)
+};
+
+(: funzione che gestisce la ricerca di parole, usando un carattere jolly o wildcard :)
+declare function app:cercawildcard($postille as xs:string?){
+    let $query := <query>
+        <bool><wildcard>{$postille}</wildcard></bool>
+    </query>
+    for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $query)]
+    let $expanded := kwic:expand($hit)
     order by ft:score($hit) descending
     return
-        if(contains($stringa, '.'))
-    then 
         <tr>
-        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
-        <td>{kwic:summarize($hit, <config width="100"/>)}</td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
+        <td>{app:stringaimmagine($hit)}</td>
+        <td>{app:evidenziamatch($expanded)}</td>
+        <td>{app:testoastampa($hit)}</td>
         </tr>
-    else <tr>
-        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
-        <td>{kwic:summarize($hit, <config width="100"/>)}</td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
-        </tr>
-        
-    
 };
 
 
-
-declare function app:parolaradice($node as node(), $model as map(*), $postille as xs:string?){
-    let $contaoccorrenze := count(app:cercaradice($postille))
+(: funzione che stampa i risultati della ricerca wildcard :)
+declare function app:wildcard($node as node(), $model as map(*), $postille as xs:string?){
+    let $contaoccorrenze := count(app:cercawildcard($postille))
     return
-    if($contaoccorrenze> 0)
+    if($contaoccorrenze > 0)
     then 
         <div class="cercawild">
         <p><b>Tipo di ricerca:</b> Wildcard </p>
@@ -226,60 +245,31 @@ declare function app:parolaradice($node as node(), $model as map(*), $postille a
             <th>Risultato</th>
             <th>Testo a stampa</th>
         </tr>
-        {app:cercaradice($postille)}
+        {app:cercawildcard($postille)}
         </table>
         </div>
         </div>
     else ""
 };
 
-
+(: funzione che gestisce la ricerca fuzzy, basata sull'edit distance :)
 declare function app:fuzzy($fuzzy as xs:string?){
     let $query := 
     <query>
         <bool><fuzzy>{$fuzzy}~</fuzzy></bool>
     </query>
     for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $query)]
-    let $div := $hit/parent::tei:div/@xml:id
-    let $stringa := replace($div,"t", "")
-    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
-    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
-    let $correspp := $hit/parent::tei:div/@corresp
-    let $correspcorretto := replace($correspp, "#", "")
-    let $item := doc($config:app-root || "/filexml/postille.xml")//tei:msItem[@xml:id=$correspcorretto]
-    let $locus := $item//tei:locus[position() = 1]/@facs
-    let $locusok := replace($locus[1], "#", "")
-    let $zone := doc($config:app-root || "/filexml/postille.xml")//tei:zone[@xml:id=$locusok]
-    let $zone1 := $zone/@corresp
-    let $corresp2 := replace($zone1, "#", "")
-    let $zone2 := doc($config:app-root || "/filexml/postille.xml")//tei:zone[@xml:id=$corresp2]
-    let $start := replace($zone2/@start, "#", "")
     order by ft:score($hit) descending
-    
-    
+    let $expanded := kwic:expand($hit)
     return
-        if(contains($stringa, '.'))
-    then
-            
-            <tr>
-        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
-        <td><p>{kwic:summarize($hit, <config width="100"/>)}</p></td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
-        </tr>
-    else
         <tr>
-        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
-        <td><p>{kwic:summarize($hit, <config width="100"/>)}</p></td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
+        <td>{app:stringaimmagine($hit)}</td>
+        <td>{app:evidenziamatch($expanded)}</td>
+        <td>{app:testoastampa($hit)}</td>
         </tr>
-        
     
 };
-
+(: funzione che stampa i risultati della ricerca fuzzy :)
 declare function app:ricercafuzzy($node as node(), $model as map(*), $fuzzy as xs:string?){
     let $conta := count(app:fuzzy($fuzzy))
     return
@@ -304,18 +294,7 @@ declare function app:ricercafuzzy($node as node(), $model as map(*), $fuzzy as x
     else ""
 };
 
-
-declare
-function app:evidenzia($risfrase as node()) {
-        if (not($risfrase/local-name())) then
-            $risfrase
-        else if ($risfrase/local-name() = "match" ) then
-                <b style="background-color:yellow"> {$risfrase} </b>
-        else
-            for $nodofiglio in $risfrase/child::node()
-            return app:evidenzia($nodofiglio)
-};
-
+(: funzione che gestisce la ricerca di termini vicini :)
 declare function app:input($distanza as xs:string?){
 let $termnumero := request:get-parameter("input", "")
         let $query := <near slop="{$distanza}" ordered="no">
@@ -325,42 +304,17 @@ let $termnumero := request:get-parameter("input", "")
     }
         
     </near> 
+     for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $query)]
+    let $expanded := kwic:expand($hit)
     return
-    for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $query)]
-    let $div := $hit/parent::tei:div/@xml:id
-    let $stringa := replace($div,"t", "")
-    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
-    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
-    let $correspp := $hit/parent::tei:div/@corresp
-    let $correspcorretto := replace($correspp, "#", "")
-    let $item := doc($config:app-root || "/filexml/postille.xml")//tei:msItem[@xml:id=$correspcorretto]
-    let $locus := $item//tei:locus[position() = 1]/@facs
-    let $locusok := replace($locus[1], "#", "")
-    let $zone := doc($config:app-root || "/filexml/postille.xml")//tei:zone[@xml:id=$locusok]
-    let $zone1 := $zone/@corresp
-    let $corresp2 := replace($zone1, "#", "")
-    let $zone2 := doc($config:app-root || "/filexml/postille.xml")//tei:zone[@xml:id=$corresp2]
-    let $start := replace($zone2/@start, "#", "")
-    let $expanded := util:expand($hit)
-    return
-        if(contains($stringa, '.'))
-    then 
         <tr>
-        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
-        <td>{app:evidenzia($expanded)}</td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
-        </tr>
-    else <tr>
-        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
-        <td>{app:evidenzia($expanded)}</td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
+        <td>{app:stringaimmagine($hit)}</td>
+        <td>{app:evidenziamatch($expanded)}</td>
+        <td>{app:testoastampa($hit)}</td>
         </tr>
 };
 
+(: funzione che stampa la ricerca di termini vicini :)
 declare function app:cercatermini($node as node(), $model as map(*), $distanza as xs:integer?){
     let $termini := request:get-parameter("input", "")
     let $conta := count(app:input($distanza))
@@ -390,6 +344,7 @@ declare function app:cercatermini($node as node(), $model as map(*), $distanza a
     else ""
 };
 
+(: funzione che gestisce la creazione della select per la ricerca delle entità nominate :)
 declare %templates:wrap function app:personecitate($node as node(), $model as map(*)){
 let $listapersone := doc($config:app-root ||"/filexml/postille.xml")//tei:listPerson
 return
@@ -405,43 +360,19 @@ return
         </span>
 };
 
+(: funzione che gestisce la ricerca di entità nominate :)
 declare function app:cercapersonecitate($persona as xs:string?){
     for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $persona)]
-    let $div := $hit/parent::tei:div/@xml:id
-    let $stringa := replace($div,"t", "")
-    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
-    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
-    let $correspp := $hit/parent::tei:div/@corresp
-    let $correspcorretto := replace($correspp, "#", "")
-    let $item := doc($config:app-root || "/filexml/postille.xml")//tei:msItem[@xml:id=$correspcorretto]
-    let $locus := $item//tei:locus[position() = 1]/@facs
-    let $locusok := replace($locus[1], "#", "")
-    let $zone := doc($config:app-root || "/filexml/postille.xml")//tei:zone[@xml:id=$locusok]
-    let $zone1 := $zone/@corresp
-    let $corresp2 := replace($zone1, "#", "")
-    let $zone2 := doc($config:app-root || "/filexml/postille.xml")//tei:zone[@xml:id=$corresp2]
-    let $start := replace($zone2/@start, "#", "")
-    let $expanded := util:expand($hit)
+    order by ft:score($hit) descending
     return
-        if(contains($stringa, '.'))
-    then 
         <tr>
-        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
-        <td>{app:evidenzia($expanded)}</td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
-        </tr>
-    else <tr>
-        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
-        <td>{app:evidenzia($expanded)}</td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
+        <td>{app:stringaimmagine($hit)}</td>
+        <td>{kwic:summarize($hit, <config width="100"/>)}</td>
+        <td>{app:testoastampa($hit)}</td>
         </tr>
 };
 
-
+(: funzione che stampa la ricerca delle entità nominate :)
 declare function app:stampapersonecitate($node as node(), $model as map(*), $persona as xs:string?){
      let $conta := count(app:cercapersonecitate($persona))
     return
@@ -464,7 +395,7 @@ declare function app:stampapersonecitate($node as node(), $model as map(*), $per
     else ""
 };
 
-
+(: funzione che crea i bottoni del vocabolario dell'antifascismo, tramite un file json, all'interno del quale ho inserito la lista delle parole selezionate :)
 declare function app:parolevoc($node as node(), $model as map(*)){
     let $parole:= unparsed-text($config:app-root ||"/filejson/antifascismo.json") => json-to-xml()
     for $i in $parole//fn:string
@@ -476,48 +407,20 @@ declare function app:parolevoc($node as node(), $model as map(*)){
         </form>
 };
 
+(: funzione che gestisce la ricerca delle parole del vocabolario dell'antifascismo :)
 declare function app:cercaparolevoc($parola as xs:string?){
     for $hit in doc($config:app-root || "/filexml/postille.xml")//tei:p[ft:query(., $parola)]
-    let $div := $hit/parent::tei:div/@xml:id
-    let $stringa := replace($div,"t", "")
-    let $stringadef := functx:insert-string(functx:insert-string($stringa, 'pag', 1), '.jpg', 7)
-    let $stringa2 := substring($stringa, 1, string-length($stringa) - 2)
-    
-    let $correspp := $hit/parent::tei:div/@corresp
-    let $correspcorretto := replace($correspp, "#", "")
-    let $item := doc($config:app-root || "/filexml/postille.xml")//tei:msItem[@xml:id=$correspcorretto]
-    let $locus := $item//tei:locus[position() = 1]/@facs
-    let $locusok := replace($locus[1], "#", "")
-    let $zone := doc($config:app-root || "/filexml/postille.xml")//tei:zone[@xml:id=$locusok]
-    let $zone1 := $zone/@corresp
-    let $corresp2 := replace($zone1, "#", "")
-    let $zone2 := doc($config:app-root || "/filexml/postille.xml")//tei:zone[@xml:id=$corresp2]
-    let $start := replace($zone2/@start, "#", "")
-    
+    order by $hit descending
     let $expanded := util:expand($hit)
-    
     return
-        if(contains($stringa, '.'))
-    then
-            
-            <tr>
-        <td><a href="mostra.html?immagine={functx:insert-string(functx:insert-string($stringa2, 'pag', 1), '.jpg', 7)}">{functx:insert-string($stringa2, 'Pagina ', 1)}</a></td>
-        <td><p>{app:evidenzia($expanded)}</p></td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
-        </tr>
-    else
-        <tr>
-        <td><a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a></td>
-        <td><p>{app:evidenzia($expanded)}</p></td>
-        <td>{if(exists(doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab))
-        then doc($config:app-root ||"/filexml/postille.xml")//tei:div[@xml:id=$start]/tei:ab
-        else <p>Questa postilla non si riferisce a nessun testo a stampa</p>}</td>
-        </tr>
-    
+    <tr>
+        <td>{app:stringaimmagine($hit)}</td>
+        <td>{app:evidenziamatch($expanded)}</td>
+        <td>{app:testoastampa($hit)}</td>
+    </tr>
 };
 
+(: funzione che stampa i risultati del vocabolario dell'antifascismo :)
 declare %templates:wrap function app:vocabolario($node as node(), $model as map(*), $parola as xs:string?){
     let $conta := count(app:cercaparolevoc($parola))
     return
@@ -592,6 +495,7 @@ declare function app:citazioni($immagine as xs:string){
     else ()
 };
 
+(: funzione creata per la pagina 152 che contiene il verso di una poesia di Ungaretti :)
 declare function app:ungaretti($immagine as xs:string?){
        if($immagine = "pag152.jpg")
        then <div>
@@ -601,7 +505,7 @@ declare function app:ungaretti($immagine as xs:string?){
     
 };
 
-
+(: funzione per la creazione dei tasti usati per navigare tra le postille di una stessa pagina :)
 declare function app:bootstrap($node as node(), $model as map(*), $immagine as xs:string){
     let $immaginestr := replace($immagine, '.jpg', '')
     let $doc := doc($config:app-root ||"/filexml/postille.xml")
@@ -610,7 +514,7 @@ return
     if($linea/descendant::tei:line)
     then
         <span class="postilleverbalidiv">
-    <h4> Postille verbali: </h4>
+    <h4> Postille verbali</h4>
     <ul class="">
     <a class="linkpost" style="display:none"></a>
     {
@@ -656,7 +560,7 @@ return
         <br></br>
         <h6>Testo:</h6>
         <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p>
-        <button type="button" class="dettagli1 btn btn-primary" rel="{replace(replace($i/@corresp, "#",""),'\.','')}det"> Dettagli </button> <button type="button" class="analisi btn btn-dark" rel="{replace(replace($i/@corresp, "#",""),'\.','')}an"> Analisi linguistica </button> <br></br></div>
+        <button type="button" class="dettagli1 btn btn-primary" rel="{replace(replace($i/@corresp, "#",""),'\.','')}det"> Dettagli </button> <button type="button" class="analisi btn btn-dark" rel="{replace(replace($i/@corresp, "#",""),'\.','')}an"> Analisi linguistica </button> <button type="button" class="fenomeni btn btn-secondary">Interventi autoriali</button><br></br></div>
         {let $properties := json-doc($config:app-root || "/Stanfordnlp/StanfordCoreNLP-italian.json")
         return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}an" style="display:none; overflow-y:scroll; height:400px;" class="analisix"><textarea readonly="yes" rows="10" style="margin-top:10px">
         {let $funzione := nlp:parse($i, $properties)//token
@@ -701,7 +605,8 @@ return
         return 
         <div id="postillav">{$t}<br></br></div>
         }
-        <button type="button" class="dettagli1 btn btn-primary" rel="{replace($i/@xml:id,'\.','')}det"> Dettagli </button> <button type="button" class="analisi btn btn-dark" rel="{replace(replace($i/@corresp, "#",""),'\.','')}an"> Analisi linguistica </button> <br></br>
+        <button type="button" class="dettagli1 btn btn-primary" rel="{replace($i/@xml:id,'\.','')}det"> Dettagli </button> <button type="button" class="analisi btn btn-dark" rel="{replace(replace($i/@corresp, "#",""),'\.','')}an"> Analisi linguistica </button>
+        <button type="button" class="fenomeni btn btn-secondary">Interventi autoriali</button><br></br>
         {let $properties := json-doc($config:app-root || "/Stanfordnlp/StanfordCoreNLP-italian.json")
         return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}an" style="display:none; overflow-y:scroll; height:400px;" class="analisix"><textarea readonly="yes" rows="10" style="margin-top:10px">
         {let $funzione := nlp:parse($i, $properties)//token
@@ -742,40 +647,18 @@ return
     </div>
     else <p>In questa pagina non sono presenti postille verbali</p>
 };
-declare function app:mostranotemute($immagine as xs:string){
-    let $immaginestr := replace($immagine, '.jpg', '')
-    let $doc := doc($config:app-root || "/filexml/postille.xml")
-    let $note := $doc/tei:TEI//tei:msContents//tei:msItem/tei:note
-    return <div style="display:none;" id="nota1">
-        {
-    for $i in $note
-        let $corresp := $doc//tei:surface[@xml:id=$immaginestr]//tei:zone
-        for $t in $corresp
-        where replace(data($i/preceding-sibling::tei:locus/@facs), '#', '') = data($t/@xml:id) and $t/descendant::tei:metamark
-        return 
-            <div>
-            <h6> Note:</h6>
-            <p>{$i}</p>
-            <p><h6>Categorie:</h6>
-                {replace(replace(replace(data($i/parent::tei:msItem/@class),"#", ''), " ", ", "),"_", " ")}</p>
-            <hr></hr>
-            </div>
-        }
-        {app:handverbali($immagine)}
-            </div>
-};
 declare function app:postmute($node as node(), $model as map(*), $immagine as xs:string){
     let $immaginestr := replace($immagine, '.jpg', '')
     let $doc := doc($config:app-root || "/filexml/postille.xml")
     let $linea := $doc/tei:TEI/tei:sourceDoc/tei:surface[@xml:id=$immaginestr]//tei:zone
     return 
         if($immagine = "pag157.jpg" or $immagine = "pag39.jpg")
-        then <div>Non sono presenti postille mute in questa pagina</div>
+        then <div>Non sono presenti postille non verbali in questa pagina</div>
         else 
         if($linea/descendant::tei:metamark)
         then
             <div class="postillemutediv">
-            <h4>Postille mute</h4>
+            <h4>Postille non verbali</h4>
             <div>
                 {
                     for $i in $linea
@@ -845,7 +728,7 @@ declare function app:postmute($node as node(), $model as map(*), $immagine as xs
                 }
                 </div>
                 </div>
-        else <p class="paramute">Non sono presenti postille mute in questa pagina</p>
+        else <p class="paramute">Non sono presenti postille non verbali in questa pagina</p>
 };
 
 declare
