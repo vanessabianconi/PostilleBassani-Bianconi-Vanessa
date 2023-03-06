@@ -200,17 +200,6 @@ declare function app:stringaimmagine($hit as node()){
         else <a href="mostra.html?immagine={$stringadef}">{functx:insert-string($stringa, 'Pagina ', 1)}</a>
 };
 
-(: funzione ricorsiva che evidenzia la parola cercata all'interno della pagina ricerca :)
-declare function app:evidenziamatch($hit as node()) {
-        if (not($hit/name())) then
-            $hit
-        else if ($hit[contains(name(),"exist:match")]) then
-                <b style="background-color:yellow"> {$hit} </b>
-        else
-            for $i in $hit/child::node()
-            return app:evidenziamatch($i)
-};
-
 (: funzione che gestisce la ricerca di parole, usando un carattere jolly o wildcard :)
 declare function app:cercawildcard($postille as xs:string?){
     let $query := <query>
@@ -222,7 +211,7 @@ declare function app:cercawildcard($postille as xs:string?){
     return
         <tr>
         <td>{app:stringaimmagine($hit)}</td>
-        <td>{app:evidenziamatch($expanded)}</td>
+        <td>{$expanded}</td>
         <td>{app:testoastampa($hit)}</td>
         </tr>
 };
@@ -237,7 +226,7 @@ declare function app:wildcard($node as node(), $model as map(*), $postille as xs
         <div class="cercawild">
         <p><b>Tipo di ricerca:</b> Wildcard </p>
         <p> <b>Parola cercata: </b> {$postille}</p>
-        <p><b>Occorrenze: </b> {$contaoccorrenze}</p>
+        <p><b>Postille trovate: </b> {$contaoccorrenze}</p>
         <div>
         <table>
         <tr>
@@ -264,7 +253,7 @@ declare function app:fuzzy($fuzzy as xs:string?){
     return
         <tr>
         <td>{app:stringaimmagine($hit)}</td>
-        <td>{app:evidenziamatch($expanded)}</td>
+        <td>{$expanded}</td>
         <td>{app:testoastampa($hit)}</td>
         </tr>
     
@@ -278,7 +267,7 @@ declare function app:ricercafuzzy($node as node(), $model as map(*), $fuzzy as x
         <div class="cercafuzzy">
         <p><b>Tipo di ricerca:</b> Fuzzy </p>
         <p> <b>Parola cercata: </b> {$fuzzy}</p>
-        <p><b>Occorrenze: </b> {$conta}</p>
+        <p><b>Postille trovate: </b> {$conta}</p>
         <div>
         <table>
         <tr>
@@ -309,7 +298,7 @@ let $termnumero := request:get-parameter("input", "")
     return
         <tr>
         <td>{app:stringaimmagine($hit)}</td>
-        <td>{app:evidenziamatch($expanded)}</td>
+        <td>{$expanded}</td>
         <td>{app:testoastampa($hit)}</td>
         </tr>
 };
@@ -363,18 +352,21 @@ return
 (: funzione che gestisce la ricerca di entità nominate :)
 declare function app:cercapersonecitate($persona as xs:string?){
     for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $persona)]
+    let $expanded := kwic:expand($hit)
     order by ft:score($hit) descending
     return
         <tr>
         <td>{app:stringaimmagine($hit)}</td>
-        <td>{kwic:summarize($hit, <config width="100"/>)}</td>
+        <td>{for $match in $expanded//exist:match 
+        return
+        kwic:get-summary($expanded, $match, <config width="60"/>)}</td>
         <td>{app:testoastampa($hit)}</td>
         </tr>
 };
 
 (: funzione che stampa la ricerca delle entità nominate :)
 declare function app:stampapersonecitate($node as node(), $model as map(*), $persona as xs:string?){
-     let $conta := count(app:cercapersonecitate($persona))
+    let $conta := count(app:cercapersonecitate($persona))
     return
     if($persona != " " and $conta > 0)
     then 
@@ -410,12 +402,11 @@ declare function app:parolevoc($node as node(), $model as map(*)){
 (: funzione che gestisce la ricerca delle parole del vocabolario dell'antifascismo :)
 declare function app:cercaparolevoc($parola as xs:string?){
     for $hit in doc($config:app-root || "/filexml/postille.xml")//tei:p[ft:query(., $parola)]
-    order by $hit descending
-    let $expanded := util:expand($hit)
+    let $expanded := kwic:expand($hit)
     return
     <tr>
         <td>{app:stringaimmagine($hit)}</td>
-        <td>{app:evidenziamatch($expanded)}</td>
+        <td>{$expanded}</td>
         <td>{app:testoastampa($hit)}</td>
     </tr>
 };
@@ -533,7 +524,81 @@ return
     else ""
 };
 
+(: funzione per l'analisi automatica delle postille, tramite StanfordNLP :)
+declare function app:stanfordNLP($i){
+    let $properties := json-doc($config:app-root || "/Stanfordnlp/StanfordCoreNLP-italian.json")
+        return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}an" style="display:none; overflow-y:scroll; height:400px;" class="analisix"><textarea readonly="yes" rows="10" style="margin-top:10px">
+        {let $funzione := nlp:parse($i, $properties)//token
+        for $k in $funzione
+        return <StanfordNLP>{$k//word} {$k//POS} {$k//NER}
+        </StanfordNLP>
+        }</textarea></div>
+};
 
+(: funzione che stampa i dettagli delle postille verbali :)
+declare function app:noteverbali($i, $immagine as xs:string){
+    let $doc := doc($config:app-root ||"/filexml/postille.xml")
+    let $immaginestr := replace($immagine, '.jpg', '')
+    return
+    if($i//@corresp) then
+    let $note := $doc/tei:TEI//tei:msContents//tei:msItem/tei:note
+        return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}det" style="display: none; clear:both;">
+        {
+            for $n in $note
+            where replace(data($n/preceding-sibling::tei:locus/@facs), '#', '') = data($i/@xml:id) and $i/descendant::tei:line
+            return 
+            <div>
+            <h6> Note:</h6>
+            <p>{$n}</p>
+            <p><h6>Categorie:</h6>
+                {replace(replace(replace(data($n/parent::tei:msItem/@class),"#", ''), " ", ", "),"_", " ")}</p>
+                {if($n/preceding-sibling::tei:textLang)
+                then <p>
+                    <h6>Lingua:</h6>
+                    {$n/preceding-sibling::tei:textLang}
+                    </p>
+                else <p>
+                    <h6>Lingua:</h6>italiano</p>
+        } 
+                {app:handverbali($immagine)}
+                {app:citazioni($immagine)}
+                {app:ungaretti($immagine)}
+            </div>
+        }
+        
+        <hr></hr>
+        </div>
+        else if(not($i/@corresp))then
+            let $note := $doc/tei:TEI//tei:msContents//tei:msItem/tei:note
+            return <div id="{replace($i/@xml:id,'\.','')}det" style="display: none;">
+            {
+            for $n in $note
+            where replace(data($n/preceding-sibling::tei:locus/@facs), '#', '') = data($i/@xml:id) and $i/descendant::tei:line
+            return 
+            <div>
+            <h6> Note:</h6>
+            <p>{$n}</p>
+            <p><h6>Categorie:</h6>
+                {replace(replace(replace(data($n/parent::tei:msItem/@class),"#", ''), " ", ", "),"_", " ")}</p>
+                {if($n/preceding-sibling::tei:textLang)
+                then <p>
+                    <h6>Lingua:</h6>
+                    {$n/preceding-sibling::tei:textLang}
+                    </p>
+                else <p>
+                    <h6>Lingua:</h6>italiano</p>
+            }
+            {app:handverbali($immagine)}
+                {app:citazioni($immagine)}
+                {app:ungaretti($immagine)}
+        
+        </div>
+        }
+        </div>
+        else ""
+};
+
+(: funzione che stampa le postille verbali con il testo a stampa :)
 declare function app:postilleverbali($node as node(), $model as map(*), $immagine as xs:string){
 let $immaginestr := replace($immagine, '.jpg', '')
 let $doc := doc($config:app-root ||"/filexml/postille.xml")
@@ -561,42 +626,8 @@ return
         <h6>Testo:</h6>
         <p style="background-color: powderblue;">"{$testo/tei:div[@facs = $i/@corresp]/tei:ab}"</p>
         <button type="button" class="dettagli1 btn btn-primary" rel="{replace(replace($i/@corresp, "#",""),'\.','')}det"> Dettagli </button> <button type="button" class="analisi btn btn-dark" rel="{replace(replace($i/@corresp, "#",""),'\.','')}an"> Analisi linguistica </button> <button type="button" class="fenomeni btn btn-secondary">Interventi autoriali</button><br></br></div>
-        {let $properties := json-doc($config:app-root || "/Stanfordnlp/StanfordCoreNLP-italian.json")
-        return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}an" style="display:none; overflow-y:scroll; height:400px;" class="analisix"><textarea readonly="yes" rows="10" style="margin-top:10px">
-        {let $funzione := nlp:parse($i, $properties)//token
-        for $k in $funzione
-        return <StanfordNLP>{$k//word} {$k//POS} {$k//NER}
-        </StanfordNLP>
-        }</textarea></div>}
-        {
-            let $note := $doc/tei:TEI//tei:msContents//tei:msItem/tei:note
-            return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}det" style="display: none; clear:both;">
-            {
-            for $n in $note
-            where replace(data($n/preceding-sibling::tei:locus/@facs), '#', '') = data($i/@xml:id) and $i/descendant::tei:line
-            return 
-            <div>
-            <h6> Note:</h6>
-            <p>{$n}</p>
-            <p><h6>Categorie:</h6>
-                {replace(replace(replace(data($n/parent::tei:msItem/@class),"#", ''), " ", ", "),"_", " ")}</p>
-                {if($n/preceding-sibling::tei:textLang)
-                then <p>
-                    <h6>Lingua:</h6>
-                    {$n/preceding-sibling::tei:textLang}
-                    </p>
-                else <p>
-                    <h6>Lingua:</h6>italiano</p>
-            } 
-                {app:handverbali($immagine)}
-                {app:citazioni($immagine)}
-                {app:ungaretti($immagine)}
-            </div>
-        }
-        
-        <hr></hr>
-        </div>
-        }
+        {app:stanfordNLP($i)}
+        {app:noteverbali($i, $immagine)}
         </div>
     else if(not($i//@corresp) and $i/child::tei:line) then 
         <div id="{replace($i/@xml:id, '\.', '')}" class="tab-pane">
@@ -607,46 +638,16 @@ return
         }
         <button type="button" class="dettagli1 btn btn-primary" rel="{replace($i/@xml:id,'\.','')}det"> Dettagli </button> <button type="button" class="analisi btn btn-dark" rel="{replace(replace($i/@corresp, "#",""),'\.','')}an"> Analisi linguistica </button>
         <button type="button" class="fenomeni btn btn-secondary">Interventi autoriali</button><br></br>
-        {let $properties := json-doc($config:app-root || "/Stanfordnlp/StanfordCoreNLP-italian.json")
-        return <div id="{replace(replace($i/@corresp, "#",""),'\.','')}an" style="display:none; overflow-y:scroll; height:400px;" class="analisix"><textarea readonly="yes" rows="10" style="margin-top:10px">
-        {let $funzione := nlp:parse($i, $properties)//token
-        for $k in $funzione
-        return <StanfordNLP>{$k//word} 
-        {$k//POS} 
-        {$k//NER}
-        </StanfordNLP>
-        }</textarea></div>}
-        {
-            let $note := $doc/tei:TEI//tei:msContents//tei:msItem/tei:note
-            return <div id="{replace($i/@xml:id,'\.','')}det" style="display: none;">
-            {
-            for $n in $note
-            where replace(data($n/preceding-sibling::tei:locus/@facs), '#', '') = data($i/@xml:id) and $i/descendant::tei:line
-            return 
-            <div>
-            <h6> Note:</h6>
-            <p>{$n}</p>
-            <p><h6>Categorie:</h6>
-                {replace(replace(replace(data($n/parent::tei:msItem/@class),"#", ''), " ", ", "),"_", " ")}</p>
-                {if($n/preceding-sibling::tei:textLang)
-                then <p>
-                    <h6>Lingua:</h6>
-                    {$n/preceding-sibling::tei:textLang}
-                    </p>
-                else <p>
-                    <h6>Lingua:</h6>italiano</p>
-            }
-        
-        </div>
-        }
-        </div>
-        }
+        {app:stanfordNLP($i)}
+        {app:noteverbali($i, $immagine)}
         </div>
         
     else ""}
     </div>
     else <p>In questa pagina non sono presenti postille verbali</p>
 };
+
+(: funzione che stampa le postille non verbali con il testo a stampa :)
 declare function app:postmute($node as node(), $model as map(*), $immagine as xs:string){
     let $immaginestr := replace($immagine, '.jpg', '')
     let $doc := doc($config:app-root || "/filexml/postille.xml")
@@ -731,12 +732,13 @@ declare function app:postmute($node as node(), $model as map(*), $immagine as xs
         else <p class="paramute">Non sono presenti postille non verbali in questa pagina</p>
 };
 
-declare
-%templates:wrap function app:stampatitolo2($node as node(), $model as map(*)){
+(: funzione per la stampa del titolo nella pagina Archivio :)
+declare%templates:wrap function app:stampatitolo2($node as node(), $model as map(*)){
     let $doc := doc($config:app-root || "/filexml/postille.xml")
     let $titolo := $doc//tei:biblStruct[@xml:id="Scuola_uomo"]/tei:monogr/tei:title
     return data($titolo)
 };
+(: metadati volume "La scuola dell'uomo" :)
 declare function app:stampaautore($node as node(), $model as map(*)){
     let $doc := doc($config:app-root || "/filexml/postille.xml")
     let $autore := $doc//tei:biblStruct[@xml:id="Scuola_uomo"]//tei:author
@@ -791,7 +793,9 @@ declare function app:biblioluogo($node as node(), $model as map(*)){
     return
         <p><b>Luogo:</b><a href="https://www.fondazionegiorgiobassani.it">{data($biblioluogo)}</a>, {data($luogobiblio)}</p>
 };
+(: fine metadati :)
 
+(: funzione usata per modificare la stringa durante la digitazione nell'input (cerca pagine) :)
 declare
 %templates:wrap  function app:titoloselect($immagine as xs:string?){
     let $titoloimg := functx:insert-string($immagine,'ina ',4)
@@ -812,6 +816,7 @@ declare
         replace($maiuscolo, '.jpg', '')
 };
 
+(: funzione che crea la select per la ricerca di pagine :)
 declare function app:ricercapagine($node as node(), $model as map(*), $url){
     let $immagini := app:immagini()
     return 
@@ -826,7 +831,7 @@ declare function app:ricercapagine($node as node(), $model as map(*), $url){
         </form>
     
 };
-
+(: funzione che gestisce la comparsa della codifica xml (surface) :)
 declare function app:codificaxml($node as node(), $model as map(*), $immagine as xs:string){
     let $immaginestr := replace($immagine, '.jpg', '')
     let $doc := doc($config:app-root || "/filexml/postille.xml")
