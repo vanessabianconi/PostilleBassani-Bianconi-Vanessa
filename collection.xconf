@@ -4,7 +4,6 @@
             <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer"/>
             <analyzer id="ws" class="org.apache.lucene.analysis.core.WhitespaceAnalyzer"/>
             <text qname="tei:p"/> 
-            <text qname="tei:ab"/> 
     </lucene>
   </index>
 </collection>
