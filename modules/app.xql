@@ -207,7 +207,6 @@ declare function app:cercawildcard($postille as xs:string?){
     </query>
     for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $query)]
     let $expanded := kwic:expand($hit)
-    order by ft:score($hit) descending
     return
         <tr>
         <td>{app:stringaimmagine($hit)}</td>
@@ -248,7 +247,6 @@ declare function app:fuzzy($fuzzy as xs:string?){
         <bool><fuzzy>{$fuzzy}~</fuzzy></bool>
     </query>
     for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $query)]
-    order by ft:score($hit) descending
     let $expanded := kwic:expand($hit)
     return
         <tr>
@@ -353,7 +351,6 @@ return
 declare function app:cercapersonecitate($persona as xs:string?){
     for $hit in doc($config:app-root ||"/filexml/postille.xml")//tei:p[ft:query(., $persona)]
     let $expanded := kwic:expand($hit)
-    order by ft:score($hit) descending
     return
         <tr>
         <td>{app:stringaimmagine($hit)}</td>
