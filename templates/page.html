@@ -226,6 +226,7 @@
         var id = $(this).attr('rel');
         $("#"+id).slideToggle('slow');
         $(".analisi").slideToggle('slow');
+	$(".fenomeni").slideToggle('slow');
         
     });
     
@@ -233,6 +234,7 @@
         var id = $(this).attr('rel');
         $("#"+id).slideToggle('slow');
         $(".dettagli1").slideToggle('slow');
+	$(".fenomeni").slideToggle('slow');
         
     });
     
@@ -252,8 +254,8 @@
             $('gap').siblings("span").toggle();
         }
         $(".legenda").toggle();
-        $(".dettagli1").toggle();
-        $(".analisi").toggle();
+        $(".dettagli1").slideToggle('slow');
+        $(".analisi").slideToggle('slow');
     });
 
     
